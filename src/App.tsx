@@ -1,9 +1,10 @@
 import React from 'react';
+import './assets/scss/app.scss';
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
-      <header className="App-header">Header</header>
+      <header className="header">Header</header>
     </>
   );
 }

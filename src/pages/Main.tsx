@@ -3,12 +3,12 @@ import { fetchAllBoards } from '../store/reducers/actionCreators';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { RootState } from '../store/store';
 
-const Projects: React.FC = () => {
+const Main: React.FC = () => {
   const { boards } = useAppSelector((state: RootState) => state);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAllBoards());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -18,4 +18,4 @@ const Projects: React.FC = () => {
   );
 };
 
-export default Projects;
+export default Main;

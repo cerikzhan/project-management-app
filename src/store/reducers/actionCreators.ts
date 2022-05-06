@@ -9,8 +9,11 @@ export const fetchAllBoards = createAsyncThunk('boards/fetchAllBoards', async ()
 });
 
 //возвращает доску по ее id
-export const fetchBoard = createAsyncThunk('boards/fetchBoard', async (boardId: number) => {
-  //Тут нужно вызвать axios get запрос для получения всех досок
-  //return response.data;
-  return boardsData.find((board) => board.id === boardId);
-});
+export const fetchBoard = createAsyncThunk(
+  'boards/fetchBoard',
+  async (boardId: string | undefined) => {
+    //Тут нужно вызвать axios get запрос для получения всех досок
+    //return response.data;
+    return boardsData.find((board) => board.id === Number(boardId));
+  }
+);

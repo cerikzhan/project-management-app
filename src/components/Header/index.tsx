@@ -10,9 +10,6 @@ const Header: React.FC = () => (
           <Link className={cl.header__navbar_link} to="/">
             Home
           </Link>
-          <Link className={cl.header__navbar_link} to="/login">
-            Login
-          </Link>
           <Link className={cl.header__navbar_link} to="/projects">
             Projects
           </Link>
@@ -21,9 +18,18 @@ const Header: React.FC = () => (
           </Link>
         </nav>
         <div className={cl.header__usermenu}>
-          <div className={cl.header__usermenu_button}>Edit profile</div>
-          <div className={cl.header__usermenu_button}>Logout</div>
-          <div className={cl.header__usermenu_button}>New board</div>
+          <Link className={cl.header__usermenu_button} to="/login">
+            Login
+          </Link>
+          <Link className={cl.header__usermenu_button} to="">
+            Logout
+          </Link>
+          <Link className={cl.header__usermenu_button} to="/profile">
+            Edit profile
+          </Link>
+          <Link className={cl.header__usermenu_button} to="">
+            New board
+          </Link>
         </div>
       </div>
     </div>

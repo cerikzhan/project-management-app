@@ -10,7 +10,7 @@ interface StateTypeBoard {
 
 interface TypeBoard {
   id: number;
-  name: string;
+  title: string;
 }
 
 const initialState: StateTypeBoard = {

@@ -1,6 +1,13 @@
 import React from 'react';
 import cl from './header.module.scss';
 import { Link } from 'react-router-dom';
+import Toggle from 'react-toggle';
+
+import './../../assets/library/toggle.css';
+
+const chooseLang = (e: React.ChangeEvent<HTMLInputElement>) => {
+  console.log('choose Lang', e.target.checked);
+};
 
 const Header: React.FC = () => (
   <header className={cl.header}>
@@ -30,6 +37,13 @@ const Header: React.FC = () => (
           <Link className={cl.header__usermenu_button} to="">
             New board
           </Link>
+          <label className="react-toggle-label">
+            <Toggle
+              defaultChecked={false}
+              icons={{ checked: 'en', unchecked: 'ru' }}
+              onChange={chooseLang}
+            />
+          </label>
         </div>
       </div>
     </div>

@@ -1,0 +1,45 @@
+.footer {
+  font-size: 1.125rem;
+  padding: 20px 10px;
+  border-top: 1px solid #cccccc;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  &__year {
+    
+  }
+  &__logo {
+    width: 80px;
+    height: 40px;
+    background-image: url("../../assets/icons/rs_school_js.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    &__container {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    &__links {
+      justify-content: space-between;
+    }
+    &__year {
+      align-self: center;
+    }
+    &__rss {
+      align-self: center;
+    }
+    &__logo{
+
+    }
+  }
+}

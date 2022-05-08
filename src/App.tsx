@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Projects from './pages/Main';
 import Project from './pages/Board';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import './assets/scss/app.scss';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/projects/:id" element={<Project />} />
         </Routes>
       </div>
+      <Footer />
     </Provider>
   );
 };

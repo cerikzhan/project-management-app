@@ -9,15 +9,15 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
     height: 100vh;
     width: 40vw;
     position: fixed;
-    background-color: #be8b7b;
+    background-color: #959595;
     z-index: 1;
-
+    padding: 5rem 1rem;
     display: flex;
     flex-direction: column;
-    padding: 10rem 0;
-
+    padding: 5rem 1rem;
     transition: transform 0.3s ease-in-out;
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
+    font-size: 25px;
   }
   @media (max-width: 600px) {
     width: 100%;
@@ -26,13 +26,9 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
 
 export const StyledLink = styled.a`
   @media (max-width: 768px) {
-    padding: 0 2rem;
-    font-size: 2rem;
-    color: #fdf2e9;
+    padding: 0.4rem 2rem;
+    font-size: 1em;
     text-decoration: none;
-
-    :hover {
-      color: #fbe69b;
-    }
+    text-transform: none;
   }
 `;

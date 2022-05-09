@@ -1,14 +1,10 @@
 import React from 'react';
 import cl from './header.module.scss';
 import { Link } from 'react-router-dom';
-import Toggle from '@choco-cat/react-toggle/';
 import './../../assets/library/toggle.css';
 import Menu from './../Menu';
 
 const Header: React.FC = () => {
-  const chooseLang = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('choose Lang', e.target.checked);
-  };
   return (
     <header className={cl.header}>
       <div className="container">

@@ -6,8 +6,19 @@
   font-size: 1.125rem;
   text-transform: uppercase;
   background: #cccccc;
-  padding: 1rem;;
-
+  padding: 1rem;
+  &-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
+    background-color: #9d9d9d !important;
+    animation: 500ms ease-in-out 300s normal none 1 running fadeInDown;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
   &__navbar {
     height: 100%;
     display: flex;

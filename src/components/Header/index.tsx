@@ -15,7 +15,7 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', onScroll);
 
     return () => window.removeEventListener('scroll', onScroll);
-  }, [isSticky]);
+  }, []);
 
   return (
     <header className={`${cl.header} ${isSticky ? cl['header-sticky'] : ''}`}>

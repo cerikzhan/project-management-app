@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Projects from './pages/Main';
-import Project from './pages/Board';
 import Profile from './pages/Profile';
+import Main from './pages/Main';
+import Board from './pages/Board';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './assets/scss/app.scss';
@@ -21,8 +21,8 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<Project />} />
+          <Route path="/boards" element={<Main />} />
+          <Route path="/board/:id" element={<Board />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

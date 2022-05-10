@@ -1,3 +1,3 @@
 export default {
-  baseUrl: process.env.BASE_URL || '',
+  baseUrl: process.env.REACT_APP_API_URL || '',
 };

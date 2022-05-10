@@ -25,11 +25,11 @@ const Header: React.FC = () => {
             <Link className={cl.header__navbar_link} to="/">
               Home
             </Link>
-            <Link className={cl.header__navbar_link} to="/projects">
-              Projects
+            <Link className={cl.header__navbar_link} to="/boards">
+              Boards
             </Link>
-            <Link className={cl.header__navbar_link} to="/projects/1">
-              Single Project
+            <Link className={cl.header__navbar_link} to="/boards/1">
+              Single Board
             </Link>
           </nav>
           <UserMenu />

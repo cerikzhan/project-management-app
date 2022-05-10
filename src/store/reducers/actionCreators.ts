@@ -1,19 +1,13 @@
-//import axios from '../../services/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { boardsData } from './../../mockdata/boards';
+import request from '../../api/request';
+import { Board, BoardItem } from '../../types/Entities/Board';
+
 //возвращает массив досок
 export const fetchAllBoards = createAsyncThunk('boards/fetchAllBoards', async () => {
-  //Тут нужно вызвать axios get запрос для получения всех досок
-  //return response.data;
-  return boardsData;
+  return request.get<Board[]>('/boards');
 });
 
 //возвращает доску по ее id
-export const fetchBoard = createAsyncThunk(
-  'boards/fetchBoard',
-  async (boardId: string | undefined) => {
-    //Тут нужно вызвать axios get запрос для получения всех досок
-    //return response.data;
-    return boardsData.find((board) => board.id === Number(boardId));
-  }
-);
+export const fetchBoard = createAsyncThunk('boards/fetchBoard', async (boardId: string) => {
+  return request.get<BoardItem>(`/boards/${boardId}`);
+});

@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import './assets/scss/app.scss';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import './translation';
 
 const App: React.FC = () => {
   return (

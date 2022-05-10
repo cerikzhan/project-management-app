@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Hamburger from '../Hamburger';
 import Toggle from '@choco-cat/react-toggle';
-import mn from './menu.module.scss';
+import cl from './menu.module.scss';
 
 const Menu = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -14,17 +14,17 @@ const Menu = () => {
 
   return (
     <div ref={node}>
-      <nav className={`${mn.usermenu} ${open && mn['usermenu-open']}`}>
-        <Link onClick={() => close()} className={mn.usermenu_button} to="/login">
+      <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
+        <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
           Login
         </Link>
-        <Link onClick={() => close()} className={mn.usermenu_button} to="">
+        <Link onClick={() => close()} className={cl.usermenu_button} to="">
           Logout
         </Link>
-        <Link onClick={() => close()} className={mn.usermenu_button} to="/profile">
+        <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
           Edit profile
         </Link>
-        <Link onClick={() => close()} className={mn.usermenu_button} to="">
+        <Link onClick={() => close()} className={cl.usermenu_button} to="">
           New board
         </Link>
         <label className="react-toggle-label">

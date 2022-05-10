@@ -1,29 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import cl from './header.module.scss';
 import { Link } from 'react-router-dom';
 import './../../assets/library/toggle.css';
 import UserMenu from './../Menu';
 
 const Header: React.FC = () => {
-  useEffect(() => {
-    window.addEventListener('scroll', isSticky);
-    return () => {
-      window.removeEventListener('scroll', isSticky);
-    };
-  });
+  const [isSticky, setSticky] = useState(false);
 
-  const isSticky = () => {
-    const header = document.querySelector(`.${cl.header}`);
-    const scrollTop = window.scrollY;
-    if (header) {
-      scrollTop >= 250
-        ? header.classList.add(cl['header-sticky'])
-        : header.classList.remove(cl['header-sticky']);
-    }
-  };
+  useEffect(() => {
+    const onScroll = (e: Event) => {
+      const doc = e.target as HTMLDocument;
+      setSticky(doc.documentElement.scrollTop > 50);
+    };
+    window.addEventListener('scroll', onScroll);
+
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [isSticky]);
 
   return (
-    <header className={cl.header}>
+    <header className={`${cl.header} ${isSticky ? cl['header-sticky'] : ''}`}>
       <div className="container">
         <div className={cl.header__container}>
           <nav className={cl.header__navbar}>

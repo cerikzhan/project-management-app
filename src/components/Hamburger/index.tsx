@@ -9,7 +9,7 @@ export type Props = {
 const MyHamburger = (props: Props) => {
   return (
     <button
-      className={`${cl.hamburger} ${props.open && cl['hamburger-open']}`}
+      className={`${cl.hamburger} ${props.open ? cl['hamburger-open'] : ''}`}
       onClick={() => props.setOpen(!props.open)}
     >
       <div className={`${cl.hamburger__line} ${props.open && cl['hamburger__line-open']}`}></div>

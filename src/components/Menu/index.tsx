@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import Hamburger from '../Hamburger';
 import Toggle from '@choco-cat/react-toggle';
 import cl from './menu.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const Menu = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const node = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
@@ -16,16 +18,16 @@ const Menu = () => {
     <div ref={node}>
       <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
         <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
-          Login
+          {t('menu.login')}
         </Link>
         <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
-          Sign Up
+          {t('menu.signup')}
         </Link>
         <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
-          Edit profile
+          {t('menu.edit_profile')}
         </Link>
         <Link onClick={() => close()} className={cl.usermenu_button} to="">
-          New board
+          {t('menu.new_board')}
         </Link>
         <label className="react-toggle-label">
           <Toggle

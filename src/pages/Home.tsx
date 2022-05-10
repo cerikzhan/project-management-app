@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  return <div>{t('components.welcome_page')}</div>;
+  return <div>{t('home.welcome_page')}</div>;
 };
 
 export default Home;

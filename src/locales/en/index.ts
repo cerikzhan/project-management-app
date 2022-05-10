@@ -1,7 +1,13 @@
-import components from './components';
+import home from './home';
+import menu from './menu';
+import board from './board';
+import user from './user';
 
 export default {
   translation: {
-    components,
+    home,
+    menu,
+    board,
+    user,
   },
 };

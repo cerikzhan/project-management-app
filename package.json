@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@choco-cat/react-toggle": "^4.1.7",
+    "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,6 +12,7 @@
     "@types/node": "^16.11.33",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
+    "@types/react-toggle": "^4.0.3",
     "axios": "^0.27.2",
     "dart-sass": "^1.25.0",
     "react": "^18.1.0",
@@ -54,7 +57,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "react-redux": "^8.0.1"
   },
   "husky": {
     "hooks": {

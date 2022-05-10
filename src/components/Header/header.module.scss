@@ -1,14 +1,29 @@
 .header {
   width: 100%;
-  height: 80px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #cccccc;
   font-size: 1.125rem;
   text-transform: uppercase;
-
-  &__navbar {
+  background: #cccccc;
+  padding: 1rem;
+  @media (max-width: 768px) {
+    min-height: 55px;
+  }
+  &-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
+    background-color: #9d9d9d !important;
+    animation: 500ms ease-in-out 300s normal none 1 running fadeInDown;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 1rem;
+  }
+  &__navbar {
     height: 100%;
     display: flex;
     align-items: center;
@@ -17,5 +32,11 @@
     &_link {
       margin-right: 1rem;
     }
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
   }
 }

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchAllBoards, fetchBoard } from './../reducers/actionCreators';
+import { fetchAllBoards, fetchBoard } from '../../api/board.api';
 import { Board, BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {

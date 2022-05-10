@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import request from '../../api/request';
-import { Board, BoardItem } from '../../types/Entities/Board';
+import request from './request';
+import { Board, BoardItem } from '../types/Entities/Board';
 
 //возвращает массив досок
 export const fetchAllBoards = createAsyncThunk('boards/fetchAllBoards', async () => {

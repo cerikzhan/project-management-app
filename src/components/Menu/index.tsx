@@ -1,35 +1,32 @@
-//source https://webformyself.com/reaktivnoe-react-gamburger-menyu/
 import React, { useState, useRef } from 'react';
-
+import { Link } from 'react-router-dom';
 import Hamburger from '../Hamburger';
-import { StyledMenu, StyledLink } from './Menu.styled';
-import cl from '../Header/header.module.scss';
 import Toggle from '@choco-cat/react-toggle';
+import mn from './menu.module.scss';
 
 const Menu = () => {
   const [open, setOpen] = useState<boolean>(false);
   const node = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
-
   const chooseLang = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('choose Lang', e.target.checked);
   };
 
   return (
     <div ref={node}>
-      <StyledMenu open={open}>
-        <StyledLink onClick={() => close()} className={cl.header__usermenu_button} href="/login">
+      <nav className={`${mn.usermenu} ${open && mn['usermenu-open']}`}>
+        <Link onClick={() => close()} className={mn.usermenu_button} to="/login">
           Login
-        </StyledLink>
-        <StyledLink onClick={() => close()} className={cl.header__usermenu_button} href="">
+        </Link>
+        <Link onClick={() => close()} className={mn.usermenu_button} to="">
           Logout
-        </StyledLink>
-        <StyledLink onClick={() => close()} className={cl.header__usermenu_button} href="/profile">
+        </Link>
+        <Link onClick={() => close()} className={mn.usermenu_button} to="/profile">
           Edit profile
-        </StyledLink>
-        <StyledLink onClick={() => close()} className={cl.header__usermenu_button} href="">
+        </Link>
+        <Link onClick={() => close()} className={mn.usermenu_button} to="">
           New board
-        </StyledLink>
+        </Link>
         <label className="react-toggle-label">
           <Toggle
             defaultChecked={false}
@@ -37,7 +34,7 @@ const Menu = () => {
             onChange={chooseLang}
           />
         </label>
-      </StyledMenu>
+      </nav>
       <Hamburger open={open} setOpen={setOpen} />
     </div>
   );

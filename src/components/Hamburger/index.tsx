@@ -1,5 +1,5 @@
 import React from 'react';
-import hb from './hamburger.module.scss';
+import cl from './hamburger.module.scss';
 
 export type Props = {
   open: boolean;
@@ -7,13 +7,14 @@ export type Props = {
 };
 
 const MyHamburger = (props: Props) => {
-  const classNameButton = props.open ? hb['hamburger-open'] : hb.hamburger;
-  const classNameLine = props.open ? hb['hamburger__line-open'] : hb.hamburger__line;
   return (
-    <button className={classNameButton} onClick={() => props.setOpen(!props.open)}>
-      <div className={classNameLine}></div>
-      <div className={classNameLine}></div>
-      <div className={classNameLine}></div>
+    <button
+      className={`${cl.hamburger} ${props.open && cl['hamburger-open']}`}
+      onClick={() => props.setOpen(!props.open)}
+    >
+      <div className={`${cl.hamburger__line} ${props.open && cl['hamburger__line-open']}`}></div>
+      <div className={`${cl.hamburger__line} ${props.open && cl['hamburger__line-open']}`}></div>
+      <div className={`${cl.hamburger__line} ${props.open && cl['hamburger__line-open']}`}></div>
     </button>
   );
 };

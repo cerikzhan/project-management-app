@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import cl from './header.module.scss';
 import { Link } from 'react-router-dom';
 import './../../assets/library/toggle.css';
-import Menu from './../Menu';
+import UserMenu from './../Menu';
 
 const Header: React.FC = () => {
   useEffect(() => {
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
               Single Project
             </Link>
           </nav>
-          <Menu />
+          <UserMenu />
         </div>
       </div>
     </header>

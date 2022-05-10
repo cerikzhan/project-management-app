@@ -1,25 +1,46 @@
 .footer {
   font-size: 1.125rem;
-  padding: 20px 10px;
+  padding: 10px;
   border-top: 1px solid #cccccc;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #363636;
+  color: #fff;
 
   &__container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
+
   &__links {
     display: flex;
     gap: 1.5rem;
   }
-  &__year {
-    
+
+  &__link:hover &__github {
+    transform: scale(1.2);
   }
+
   &__logo {
     width: 80px;
     height: 40px;
     background-image: url("../../assets/icons/rs_school_js.svg");
     background-repeat: no-repeat;
     background-size: contain;
+  }
+
+  &__github {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../assets/icons/icons-github.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: transform 0.4s;
   }
 }
 
@@ -29,17 +50,23 @@
       flex-direction: column;
       gap: 1.5rem;
     }
+    
     &__links {
+      gap: 0.9rem;
       justify-content: space-between;
     }
+
     &__year {
       align-self: center;
     }
+
     &__rss {
       align-self: center;
     }
-    &__logo{
 
+    &__github {
+      width: 20px;
+      height: 20px;
     }
   }
 }

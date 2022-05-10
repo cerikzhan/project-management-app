@@ -18,8 +18,8 @@ const Menu = () => {
         <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
           Login
         </Link>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="">
-          Logout
+        <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
+          Sign Up
         </Link>
         <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
           Edit profile

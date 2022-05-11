@@ -3,5 +3,5 @@ import { LoginDTO } from '../types/DTO/LoginDTO';
 
 export const login = async (payload: LoginDTO) => {
   const response = await request.post('signin', payload);
-  console.log(response);
+  localStorage.setItem('access_token', response.data.token);
 };

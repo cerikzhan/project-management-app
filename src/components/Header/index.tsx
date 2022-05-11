@@ -26,10 +26,10 @@ const Header: React.FC = () => {
             <Link className={cl.header__navbar_link} to="/">
               {t('menu.home')}
             </Link>
-            <Link className={cl.header__navbar_link} to="/projects">
+            <Link className={cl.header__navbar_link} to="/boards">
               {t('menu.projects')}
             </Link>
-            <Link className={cl.header__navbar_link} to="/projects/1">
+            <Link className={cl.header__navbar_link} to="/boards/1">
               {t('menu.project')}
             </Link>
           </nav>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { fetchAllBoards } from '../store/reducers/actionCreators';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { RootState } from '../store/store';
+import { useTranslation } from 'react-i18next';
 
 const Main: React.FC = () => {
   const { boards } = useAppSelector((state: RootState) => state);
@@ -9,10 +10,10 @@ const Main: React.FC = () => {
   useEffect(() => {
     dispatch(fetchAllBoards());
   }, [dispatch]);
-
+  const { t } = useTranslation();
   return (
     <div>
-      Projects page
+      {t('board.boards_page')}
       {JSON.stringify(boards)}
     </div>
   );

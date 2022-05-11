@@ -65,6 +65,4 @@ export const boardSlice = createSlice({
   },
 });
 
-//export const { setSearchWord, setLang } = boardSlice.actions;
-
 export default boardSlice.reducer;

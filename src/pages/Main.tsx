@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { fetchAllBoards } from '../store/reducers/actionCreators';
+import { fetchAllBoards } from '../api/board.api';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { RootState } from '../store/store';
 import { useTranslation } from 'react-i18next';

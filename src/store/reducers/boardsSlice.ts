@@ -1,21 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchAllBoards, fetchBoard } from './../reducers/actionCreators';
+import { fetchAllBoards, fetchBoard } from '../../api/board.api';
+import { Board, BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
-  boards: TypeBoard[];
+  boards: Board[];
   loading: boolean;
   search: string;
   error: boolean;
   lang: string;
 }
 
-interface TypeBoard {
-  id: number;
-  title: string;
-}
-
 const initialState: StateTypeBoard = {
-  boards: [] as TypeBoard[],
+  boards: [] as Board[],
   loading: true,
   search: 'testboard',
   error: false,
@@ -37,10 +33,7 @@ export const boardSlice = createSlice({
     [fetchAllBoards.pending.type]: (state) => {
       state.loading = true;
     },
-    [fetchAllBoards.fulfilled.type]: (
-      state: StateTypeBoard,
-      action: PayloadAction<TypeBoard[]>
-    ) => {
+    [fetchAllBoards.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
       state.loading = false;
       state.boards = action.payload;
     },
@@ -52,7 +45,7 @@ export const boardSlice = createSlice({
     [fetchBoard.pending.type]: (state) => {
       state.loading = true;
     },
-    [fetchBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<TypeBoard>) => {
+    [fetchBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem>) => {
       state.loading = false;
       state.boards = [];
       state.boards.push(action.payload);

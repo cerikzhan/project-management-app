@@ -3,8 +3,10 @@ import cl from './header.module.scss';
 import { Link } from 'react-router-dom';
 import './../../assets/library/toggle.css';
 import UserMenu from './../Menu';
+import { useTranslation } from 'react-i18next';
 
 const Header: React.FC = () => {
+  const { t } = useTranslation();
   const [isSticky, setSticky] = useState(false);
   useEffect(() => {
     const onScroll = (e: Event) => {
@@ -22,13 +24,13 @@ const Header: React.FC = () => {
         <div className={cl.header__container}>
           <nav className={cl.header__navbar}>
             <Link className={cl.header__navbar_link} to="/">
-              Home
+              {t('menu.home')}
             </Link>
             <Link className={cl.header__navbar_link} to="/projects">
-              Projects
+              {t('menu.projects')}
             </Link>
             <Link className={cl.header__navbar_link} to="/projects/1">
-              Single Project
+              {t('menu.project')}
             </Link>
           </nav>
           <UserMenu />

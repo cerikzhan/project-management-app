@@ -6,7 +6,7 @@ import cl from './menu.module.scss';
 import { useTranslation } from 'react-i18next';
 import { boardSlice } from './../../store/reducers/boardsSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { i18n } from '../../translation';
+import i18n from 'i18next';
 
 const Menu = () => {
   const { lang } = useAppSelector((state) => state.boards);

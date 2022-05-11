@@ -11,4 +11,4 @@ const initTranslation = (lang: string) =>
     },
   });
 
-export { initTranslation, i18n };
+export default initTranslation;

@@ -11,9 +11,10 @@ import Footer from './components/Footer';
 import './assets/scss/app.scss';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-import './translation';
+import { initTranslation } from './translation';
 
 const App: React.FC = () => {
+  initTranslation('ru');
   return (
     <Provider store={store}>
       <Header />

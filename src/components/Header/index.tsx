@@ -6,7 +6,6 @@ import UserMenu from './../Menu';
 
 const Header: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
-
   useEffect(() => {
     const onScroll = (e: Event) => {
       const doc = e.target as HTMLDocument;

@@ -6,6 +6,7 @@ interface StateTypeBoard {
   loading: boolean;
   search: string;
   error: boolean;
+  lang: string;
 }
 
 interface TypeBoard {
@@ -18,14 +19,18 @@ const initialState: StateTypeBoard = {
   loading: true,
   search: 'testboard',
   error: false,
+  lang: 'ru',
 };
 
-export const boardSLice = createSlice({
+export const boardSlice = createSlice({
   name: 'boardSLice',
   initialState,
   reducers: {
     setSearchWord: (state: StateTypeBoard, action: PayloadAction<string>) => {
       state.search = action.payload;
+    },
+    setLang: (state: StateTypeBoard, action: PayloadAction<string>) => {
+      state.lang = action.payload;
     },
   },
   extraReducers: {
@@ -60,6 +65,6 @@ export const boardSLice = createSlice({
   },
 });
 
-export const { setSearchWord } = boardSLice.actions;
+//export const { setSearchWord, setLang } = boardSlice.actions;
 
-export default boardSLice.reducer;
+export default boardSlice.reducer;

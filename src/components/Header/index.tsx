@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import './../../assets/library/toggle.css';
 import UserMenu from './../Menu';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../../hooks/redux';
 
 const Header: React.FC = () => {
+  const { user } = useAppSelector((state) => state);
   const { t } = useTranslation();
   const [isSticky, setSticky] = useState(false);
   useEffect(() => {
@@ -26,12 +28,16 @@ const Header: React.FC = () => {
             <Link className={cl.header__navbar_link} to="/">
               {t('menu.home')}
             </Link>
-            <Link className={cl.header__navbar_link} to="/boards">
-              {t('menu.projects')}
-            </Link>
-            <Link className={cl.header__navbar_link} to="/boards/1">
-              {t('menu.project')}
-            </Link>
+            {user.user.userId && (
+              <>
+                <Link className={cl.header__navbar_link} to="/boards">
+                  {t('menu.projects')}
+                </Link>
+                <Link className={cl.header__navbar_link} to="/boards/1">
+                  {t('menu.project')}
+                </Link>
+              </>
+            )}
           </nav>
           <UserMenu />
         </div>

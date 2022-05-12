@@ -7,4 +7,5 @@ export default {
   home: 'Home',
   projects: 'Projects',
   project: 'Project',
+  logout: 'Logout',
 };

@@ -1,5 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import boardsReducer from './reducers/boardsSlice';
+import userReducer from './reducers/userSlice';
+
 const customizedMiddleware = getDefaultMiddleware({
   serializableCheck: false,
 });
@@ -7,6 +9,7 @@ const customizedMiddleware = getDefaultMiddleware({
 export const store = configureStore({
   reducer: {
     boards: boardsReducer,
+    user: userReducer,
   },
   middleware: () => customizedMiddleware,
 });

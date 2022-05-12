@@ -1,22 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
+import i18n from 'i18next';
 import { Link } from 'react-router-dom';
 import Hamburger from '../Hamburger';
 import Toggle from '@choco-cat/react-toggle';
 import cl from './menu.module.scss';
 import { useTranslation } from 'react-i18next';
-import { boardSlice } from './../../store/reducers/boardsSlice';
+import { userSlice } from './../../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import i18n from 'i18next';
 
 const Menu = () => {
-  const { lang } = useAppSelector((state) => state.boards);
+  const { user, lang } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const node = useRef<HTMLDivElement>(null);
-  const close = () => setOpen(false);
-
-  const { setLang } = boardSlice.actions;
   const dispatch = useAppDispatch();
+  const close = () => setOpen(false);
+  const { setLang, logoutUser } = userSlice.actions;
+
+  const logout = async () => {
+    await dispatch(logoutUser());
+    close();
+  };
 
   const chooseLang = async (e: React.ChangeEvent<HTMLInputElement>) => {
     await dispatch(setLang(e.target.checked ? 'en' : 'ru'));
@@ -29,18 +33,30 @@ const Menu = () => {
   return (
     <div ref={node}>
       <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
-          {t('menu.login')}
-        </Link>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
-          {t('menu.signup')}
-        </Link>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
-          {t('menu.edit_profile')}
-        </Link>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="">
-          {t('menu.new_board')}
-        </Link>
+        {!user.userId && (
+          <>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
+              {t('menu.signup')}
+            </Link>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
+              {t('menu.login')}
+            </Link>
+          </>
+        )}
+        {user.userId && (
+          <>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
+              {t('menu.edit_profile')}
+            </Link>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="">
+              {t('menu.new_board')}
+            </Link>
+            <div className={cl.usermenu_username}>{user.login}</div>
+            <Link onClick={() => logout()} className={cl.usermenu_button} to="/">
+              {t('menu.logout')}
+            </Link>
+          </>
+        )}
         <label className="react-toggle-label">
           <Toggle
             defaultChecked={lang === 'en'}

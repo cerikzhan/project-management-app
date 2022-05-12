@@ -4,7 +4,7 @@ import { useAppSelector } from '../hooks/redux';
 import { RootState } from '../store/store';
 
 const Profile: React.FC = () => {
-  const { user } = useAppSelector((state: RootState) => state.boards);
+  const { user } = useAppSelector((state: RootState) => state);
   const { t } = useTranslation();
   return (
     <>

@@ -48,6 +48,10 @@ const Menu = () => {
             <Link onClick={() => close()} className={cl.usermenu_button} to="">
               {t('menu.new_board')}
             </Link>
+            <div className={cl.usermenu_username}>{user.user.login}</div>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/logout">
+              {t('menu.logout')}
+            </Link>
           </>
         )}
         <label className="react-toggle-label">

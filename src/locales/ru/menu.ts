@@ -6,4 +6,5 @@ export default {
   home: 'Главная',
   projects: 'Проекты',
   project: 'Проект',
+  logout: 'Выход',
 };

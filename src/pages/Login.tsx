@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { login } from '../api/auth.api';
 import { useTranslation } from 'react-i18next';
+import { login } from '../api/auth.api';
+import { useAppDispatch } from '../hooks/redux';
 
 const Login: React.FC = () => {
   const { t } = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useAppDispatch();
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
-    await login({ login: username, password });
+    await dispatch(login({ login: username, password }));
   };
 
   return (

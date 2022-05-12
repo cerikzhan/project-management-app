@@ -7,6 +7,7 @@ import { decodeToken } from 'react-jwt';
 export const login = createAsyncThunk('user/login', async (userdata: LoginDTO) => {
   const response = await request.post<{ token: string }>('signin', userdata);
   const { token } = response.data;
+  localStorage.setItem('access_token', response.data.token);
   const decodeUserData = decodeToken(token) as User;
   const { userId, login } = decodeUserData;
   return { userId, login };

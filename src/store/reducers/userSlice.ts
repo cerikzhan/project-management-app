@@ -28,6 +28,10 @@ export const userSlice = createSlice({
     setLang: (state: StateTypeUser, action: PayloadAction<string>) => {
       state.lang = action.payload;
     },
+    logoutUser: (state: StateTypeUser) => {
+      localStorage.setItem('access_token', '');
+      state.user = {} as User;
+    },
   },
   extraReducers: {
     [login.pending.type]: (state) => {

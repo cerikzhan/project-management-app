@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import i18n from 'i18next';
 import { Link } from 'react-router-dom';
 import Hamburger from '../Hamburger';
 import Toggle from '@choco-cat/react-toggle';
@@ -6,17 +7,20 @@ import cl from './menu.module.scss';
 import { useTranslation } from 'react-i18next';
 import { userSlice } from './../../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import i18n from 'i18next';
 
 const Menu = () => {
   const { user, lang } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const node = useRef<HTMLDivElement>(null);
-  const close = () => setOpen(false);
-
-  const { setLang } = userSlice.actions;
   const dispatch = useAppDispatch();
+  const close = () => setOpen(false);
+  const { setLang, logoutUser } = userSlice.actions;
+
+  const logout = async () => {
+    await dispatch(logoutUser());
+    close();
+  };
 
   const chooseLang = async (e: React.ChangeEvent<HTMLInputElement>) => {
     await dispatch(setLang(e.target.checked ? 'en' : 'ru'));
@@ -48,7 +52,7 @@ const Menu = () => {
               {t('menu.new_board')}
             </Link>
             <div className={cl.usermenu_username}>{user.login}</div>
-            <Link onClick={() => close()} className={cl.usermenu_button} to="/logout">
+            <Link onClick={() => logout()} className={cl.usermenu_button} to="/">
               {t('menu.logout')}
             </Link>
           </>

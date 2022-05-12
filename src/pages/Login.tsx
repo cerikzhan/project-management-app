@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAppSelector((state) => state);
+  const { user } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,10 +17,10 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
-    if (user.user.userId) {
+    if (user.userId) {
       navigate('/boards');
     }
-  }, [user.user.userId]);
+  }, [user.userId]);
 
   return (
     <>

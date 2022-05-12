@@ -21,6 +21,7 @@ export const userSlice = createSlice({
   extraReducers: {
     [login.pending.type]: (state) => {
       state.loading = true;
+      state.error = '';
     },
     [login.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
       state.loading = false;

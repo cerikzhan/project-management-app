@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../api/auth.api';
-import { useAppDispatch } from '../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { RootState } from '../store/store';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const { user } = useAppSelector((state: RootState) => state);
   const { t } = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
-    await dispatch(login({ login: username, password }));
+    dispatch(login({ login: username, password }));
   };
+
+  useEffect(() => {
+    if (user.user.userId) {
+      navigate('/boards');
+    }
+  }, [user.user.userId]);
 
   return (
     <>

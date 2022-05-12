@@ -9,7 +9,7 @@ const Profile: React.FC = () => {
   return (
     <>
       {t('user.profile_page')}
-      console.log({JSON.stringify(user)});
+      {JSON.stringify(user)}
     </>
   );
 };

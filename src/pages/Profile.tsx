@@ -1,10 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../hooks/redux';
-import { RootState } from '../store/store';
 
 const Profile: React.FC = () => {
-  const { user } = useAppSelector((state: RootState) => state);
+  const { user } = useAppSelector((state) => state);
   const { t } = useTranslation();
   return (
     <>

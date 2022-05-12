@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import i18n from 'i18next';
 
 const Menu = () => {
+  const { user } = useAppSelector((state) => state);
   const { lang } = useAppSelector((state) => state.boards);
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
@@ -29,18 +30,26 @@ const Menu = () => {
   return (
     <div ref={node}>
       <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
-          {t('menu.login')}
-        </Link>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
-          {t('menu.signup')}
-        </Link>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
-          {t('menu.edit_profile')}
-        </Link>
-        <Link onClick={() => close()} className={cl.usermenu_button} to="">
-          {t('menu.new_board')}
-        </Link>
+        {!user.user.userId && (
+          <>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
+              {t('menu.signup')}
+            </Link>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
+              {t('menu.login')}
+            </Link>
+          </>
+        )}
+        {user.user.userId && (
+          <>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
+              {t('menu.edit_profile')}
+            </Link>
+            <Link onClick={() => close()} className={cl.usermenu_button} to="">
+              {t('menu.new_board')}
+            </Link>
+          </>
+        )}
         <label className="react-toggle-label">
           <Toggle
             defaultChecked={lang === 'en'}

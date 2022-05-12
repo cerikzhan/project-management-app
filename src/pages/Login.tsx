@@ -3,11 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api/auth.api';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { RootState } from '../store/store';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAppSelector((state: RootState) => state);
+  const { user } = useAppSelector((state) => state);
   const { t } = useTranslation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

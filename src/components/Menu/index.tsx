@@ -4,19 +4,18 @@ import Hamburger from '../Hamburger';
 import Toggle from '@choco-cat/react-toggle';
 import cl from './menu.module.scss';
 import { useTranslation } from 'react-i18next';
-import { boardSlice } from './../../store/reducers/boardsSlice';
+import { userSlice } from './../../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import i18n from 'i18next';
 
 const Menu = () => {
-  const { user } = useAppSelector((state) => state);
-  const { lang } = useAppSelector((state) => state.boards);
+  const { user, lang } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const node = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
 
-  const { setLang } = boardSlice.actions;
+  const { setLang } = userSlice.actions;
   const dispatch = useAppDispatch();
 
   const chooseLang = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +29,7 @@ const Menu = () => {
   return (
     <div ref={node}>
       <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-        {!user.user.userId && (
+        {!user.userId && (
           <>
             <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
               {t('menu.signup')}
@@ -40,7 +39,7 @@ const Menu = () => {
             </Link>
           </>
         )}
-        {user.user.userId && (
+        {user.userId && (
           <>
             <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
               {t('menu.edit_profile')}
@@ -48,7 +47,7 @@ const Menu = () => {
             <Link onClick={() => close()} className={cl.usermenu_button} to="">
               {t('menu.new_board')}
             </Link>
-            <div className={cl.usermenu_username}>{user.user.login}</div>
+            <div className={cl.usermenu_username}>{user.login}</div>
             <Link onClick={() => close()} className={cl.usermenu_button} to="/logout">
               {t('menu.logout')}
             </Link>

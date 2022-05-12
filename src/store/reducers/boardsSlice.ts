@@ -5,30 +5,19 @@ import { Board, BoardItem } from '../../types/Entities/Board';
 interface StateTypeBoard {
   boards: Board[];
   loading: boolean;
-  search: string;
   error: boolean;
-  lang: string;
 }
 
 const initialState: StateTypeBoard = {
   boards: [] as Board[],
   loading: true,
-  search: 'testboard',
   error: false,
-  lang: 'ru',
 };
 
 export const boardSlice = createSlice({
   name: 'boardSLice',
   initialState,
-  reducers: {
-    setSearchWord: (state: StateTypeBoard, action: PayloadAction<string>) => {
-      state.search = action.payload;
-    },
-    setLang: (state: StateTypeBoard, action: PayloadAction<string>) => {
-      state.lang = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: {
     [fetchAllBoards.pending.type]: (state) => {
       state.loading = true;

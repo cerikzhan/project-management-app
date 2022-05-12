@@ -6,18 +6,29 @@ interface StateTypeUser {
   user: User;
   loading: boolean;
   error: string;
+  lang: string;
+  search: string;
 }
 
 const initialState: StateTypeUser = {
   user: {} as User,
   loading: false,
   error: '',
+  lang: 'ru',
+  search: 'testboard',
 };
 
 export const userSlice = createSlice({
   name: 'userSLice',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchWord: (state: StateTypeUser, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
+    setLang: (state: StateTypeUser, action: PayloadAction<string>) => {
+      state.lang = action.payload;
+    },
+  },
   extraReducers: {
     [login.pending.type]: (state) => {
       state.loading = true;

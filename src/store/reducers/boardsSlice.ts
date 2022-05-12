@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchAllBoards, fetchBoard } from '../../api/board.api';
+import { login } from '../../api/auth.api';
 import { Board, BoardItem } from '../../types/Entities/Board';
+import { User } from '../../types/Entities/User';
 
 interface StateTypeBoard {
   boards: Board[];
@@ -8,6 +10,7 @@ interface StateTypeBoard {
   search: string;
   error: boolean;
   lang: string;
+  user: User;
 }
 
 const initialState: StateTypeBoard = {
@@ -16,6 +19,7 @@ const initialState: StateTypeBoard = {
   search: 'testboard',
   error: false,
   lang: 'ru',
+  user: {} as User,
 };
 
 export const boardSlice = createSlice({
@@ -54,6 +58,18 @@ export const boardSlice = createSlice({
       state.loading = false;
       state.error = action.error;
       state.boards = [];
+    },
+    [login.pending.type]: (state) => {
+      state.loading = true;
+    },
+    [login.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<User>) => {
+      state.loading = false;
+      state.user = action.payload;
+    },
+    [login.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+      state.user = {} as User;
     },
   },
 });

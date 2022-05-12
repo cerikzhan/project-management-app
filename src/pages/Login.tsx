@@ -18,7 +18,7 @@ const Login: React.FC = () => {
       <form onSubmit={handleLogin}>
         <input type="text" onChange={(event) => setUsername(event.target.value)} value={username} />
         <input type="text" onChange={(event) => setPassword(event.target.value)} value={password} />
-        <button type="submit">login</button>
+        <button type="submit">{t('user.login')}</button>
       </form>
     </>
   );

@@ -29,7 +29,7 @@ export const userSlice = createSlice({
       state.lang = action.payload;
     },
     logoutUser: (state: StateTypeUser) => {
-      localStorage.setItem('access_token', '');
+      localStorage.removeItem('access_token');
       state.user = {} as User;
     },
   },

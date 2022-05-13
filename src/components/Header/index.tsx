@@ -4,19 +4,26 @@ import { Link } from 'react-router-dom';
 import './../../assets/library/toggle.css';
 import UserMenu from './../Menu';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { userSlice } from '../../store/reducers/userSlice';
 
 const Header: React.FC = () => {
   const { user } = useAppSelector((state) => state);
   const { t } = useTranslation();
   const [isSticky, setSticky] = useState(false);
+  const dispatch = useAppDispatch();
+  const { authUser } = userSlice.actions;
+
+  useEffect(() => {
+    dispatch(authUser());
+  }, []);
+
   useEffect(() => {
     const onScroll = (e: Event) => {
       const doc = e.target as HTMLDocument;
       setSticky(doc.documentElement.scrollTop > 50);
     };
     window.addEventListener('scroll', onScroll);
-
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 

@@ -2,7 +2,7 @@ import { User } from '../types/Entities/User';
 import { decodeToken } from 'react-jwt';
 
 export const getUserFromToken = () => {
-  const token = localStorage.getItem('access_token');
+  const token = document.cookie.split('token=')[1];
   if (token) {
     const decodeUserData = decodeToken(token) as User;
     const { userId, login } = decodeUserData;
@@ -12,5 +12,5 @@ export const getUserFromToken = () => {
 };
 
 export const resetToken = () => {
-  localStorage.removeItem('access_token');
+  document.cookie = 'token=; Max-Age=-99999999;';
 };

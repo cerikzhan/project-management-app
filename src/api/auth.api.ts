@@ -21,7 +21,7 @@ export const fetchLogin = async (userdata: LoginDTO) => {
 export const fetchChangeUser = async (userData: UserData) => {
   const response = await request.put(`users/${userData.userId}`, userData.user);
 
-  return response.data as User;
+  return response.data;
 };
 
 export const fetchDeleteUser = async (userId: string) => {

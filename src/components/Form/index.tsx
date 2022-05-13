@@ -6,9 +6,9 @@ type FormProps = {
   name: string;
   login: string;
   password: string;
-  SetName: (name: string) => void;
-  SetLogin: (login: string) => void;
-  SetPassword: (password: string) => void;
+  setName: (name: string) => void;
+  setLogin: (login: string) => void;
+  setPassword: (password: string) => void;
   submitHandler: (e: React.FormEvent) => void;
   submitValue: string;
 };
@@ -25,7 +25,7 @@ const UserFrom: React.FC<FormProps> = (props) => {
           className={cl.form__input}
           type="text"
           value={props.name}
-          onChange={(e) => props.SetName(e.target.value)}
+          onChange={(e) => props.setName(e.target.value)}
           required
           minLength={3}
           maxLength={8}
@@ -37,7 +37,7 @@ const UserFrom: React.FC<FormProps> = (props) => {
           className={cl.form__input}
           type="text"
           value={props.login}
-          onChange={(e) => props.SetLogin(e.target.value)}
+          onChange={(e) => props.setLogin(e.target.value)}
           required
           minLength={3}
           maxLength={8}
@@ -49,7 +49,7 @@ const UserFrom: React.FC<FormProps> = (props) => {
           className={cl.form__input}
           type="password"
           value={props.password}
-          onChange={(e) => props.SetPassword(e.target.value)}
+          onChange={(e) => props.setPassword(e.target.value)}
           required
           minLength={3}
           maxLength={12}

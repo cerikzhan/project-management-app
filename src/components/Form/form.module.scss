@@ -32,7 +32,8 @@
     }
   }
 
-  &__submit, &__delete {
+  &__submit,
+  &__delete {
     cursor: pointer;
     width: 150px;
     height: 40px;

@@ -10,23 +10,23 @@ const Profile: React.FC = () => {
   const { t } = useTranslation();
 
   const { user } = useAppSelector((state) => state.user);
-  const [name, SetName] = useState(user.name || '');
-  const [password, SetPassword] = useState('');
-  const [login, SetLogin] = useState(user.login || '');
+  const [name, setName] = useState(user.name || '');
+  const [password, setPassword] = useState('');
+  const [login, setLogin] = useState(user.login || '');
 
   const dispatch = useAppDispatch();
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(changeUser({ user: { name, login, password }, userId: user.userId }));
-    SetPassword('');
+    setPassword('');
   };
 
   const clickHandler = () => {
     dispatch(deleteUser(user.userId));
-    SetLogin('');
-    SetPassword('');
-    SetName('');
+    setLogin('');
+    setPassword('');
+    setName('');
   };
 
   const navigate = useNavigate();
@@ -43,9 +43,9 @@ const Profile: React.FC = () => {
         name={name}
         password={password}
         login={login}
-        SetName={SetName}
-        SetPassword={SetPassword}
-        SetLogin={SetLogin}
+        setName={setName}
+        setPassword={setPassword}
+        setLogin={setLogin}
         submitHandler={submitHandler}
         submitValue={'user.user_edit'}
       />

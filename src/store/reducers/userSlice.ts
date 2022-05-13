@@ -69,7 +69,6 @@ export const userSlice = createSlice({
       state.loading = false;
       state.user = {} as User;
       localStorage.removeItem('access_token');
-      console.log('delete ska');
     },
     [deleteUser.rejected.type]: (state, action) => {
       state.loading = false;

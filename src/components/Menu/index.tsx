@@ -33,7 +33,7 @@ const Menu = () => {
   return (
     <div ref={node}>
       <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-        {!user.userId && (
+        {!user.id && (
           <>
             <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
               {t('menu.signup')}
@@ -43,7 +43,7 @@ const Menu = () => {
             </Link>
           </>
         )}
-        {user.userId && (
+        {user.id && (
           <>
             <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
               {t('menu.edit_profile')}

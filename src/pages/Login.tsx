@@ -17,10 +17,11 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
-    if (user.userId) {
+    console.log('user', user);
+    if (user.id) {
       navigate('/boards');
     }
-  }, [user.userId]);
+  }, [user.id]);
 
   return (
     <>

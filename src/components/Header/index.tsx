@@ -35,7 +35,7 @@ const Header: React.FC = () => {
             <Link className={cl.header__navbar_link} to="/">
               {t('menu.home')}
             </Link>
-            {user.user.userId && (
+            {user.user.id && (
               <>
                 <Link className={cl.header__navbar_link} to="/boards">
                   {t('menu.projects')}

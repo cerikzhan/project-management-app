@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../api/auth.api';
+import { login } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 
 const Login: React.FC = () => {

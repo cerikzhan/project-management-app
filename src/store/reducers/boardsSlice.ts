@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchAllBoards, fetchBoard } from '../../api/board.api';
-import { Board, BoardItem } from '../../types/Entities/Board';
+import { fetchAllBoards } from './actionCreators';
+import { Board } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
   boards: Board[];
@@ -14,8 +14,8 @@ const initialState: StateTypeBoard = {
   error: false,
 };
 
-export const boardSlice = createSlice({
-  name: 'boardSLice',
+export const boardsSlice = createSlice({
+  name: 'boardsSLice',
   initialState,
   reducers: {},
   extraReducers: {
@@ -31,20 +31,7 @@ export const boardSlice = createSlice({
       state.error = action.error;
       state.boards = [];
     },
-    [fetchBoard.pending.type]: (state) => {
-      state.loading = true;
-    },
-    [fetchBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem>) => {
-      state.loading = false;
-      state.boards = [];
-      state.boards.push(action.payload);
-    },
-    [fetchBoard.rejected.type]: (state, action) => {
-      state.loading = false;
-      state.error = action.error;
-      state.boards = [];
-    },
   },
 });
 
-export default boardSlice.reducer;
+export default boardsSlice.reducer;

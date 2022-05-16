@@ -17,7 +17,6 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log('user', user);
     if (user.id) {
       navigate('/boards');
     }

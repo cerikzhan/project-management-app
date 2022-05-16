@@ -9,7 +9,7 @@ export const fetchLogin = async (userdata: LoginDTO) => {
   const response = await request.post<{ token: string }>('signin', userdata);
   const date = new Date(Date.now() + MAX_EXPIRED);
   document.cookie = `token=${response.data.token}; expires=` + date.toUTCString();
-  return getUserFromToken() as User;
+  return getUserFromToken();
 };
 
 export const fetchChangeUser = async (userData: UserCreateDTO) => {

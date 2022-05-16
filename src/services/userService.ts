@@ -6,7 +6,7 @@ export const getUserFromToken = () => {
     const { userId, login } = decodeToken(token) as { userId: string; login: string };
     return { id: userId, login };
   }
-  return false;
+  return {};
 };
 
 export const resetToken = () => {

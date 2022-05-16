@@ -1,7 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import cl from './confirmation.module.scss';
+
+type ConfirmationProps = {
+  header: string;
+  runRequest: (val: boolean) => void;
+  show: boolean;
+};
 
 const customStyles = {
   content: {
@@ -14,11 +18,18 @@ const customStyles = {
   },
 };
 
-const Confirmation: React.FC = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const openModal = () => {
+const Confirmation = (props: ConfirmationProps) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  /*const openModal = () => {
     setIsOpen(true);
-  };
+  }; */
+
+  useEffect(() => {
+    if (props.show) {
+      setIsOpen(true);
+    }
+  }, [props.show]);
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -26,6 +37,9 @@ const Confirmation: React.FC = () => {
   const afterOpenModal = () => {
     // references are now sync'd and can be accessed.
   };
+  useEffect(() => {
+    Modal.setAppElement('.container');
+  });
 
   return (
     <>
@@ -36,12 +50,12 @@ const Confirmation: React.FC = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2>Delete?</h2>
+        <h2>{props.header}</h2>
         <button onClick={closeModal}>close</button>
         <div>I am a modal</div>
         <form>
-          <button>Yes</button>
-          <button>No</button>
+          <button onClick={() => props.runRequest(true)}>Yes</button>
+          <button onClick={closeModal}>No</button>
         </form>
       </Modal>
     </>

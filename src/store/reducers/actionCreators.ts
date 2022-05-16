@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchLogin, fetchChangeUser, fetchDeleteUser } from '../../api/auth.api';
+import { fetchLogin, fetchChangeUser, fetchDeleteUser } from '../../api/user.api';
 
 export const login = createAsyncThunk('user/login', fetchLogin);
 

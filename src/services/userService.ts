@@ -2,7 +2,6 @@ import { decodeToken } from 'react-jwt';
 import { User } from '../types/Entities/User';
 
 export const getUserFromToken = () => {
-  console.log(getUserFromToken);
   const token = document.cookie.split('token=')[1];
   if (token) {
     const { userId, login } = decodeToken(token) as { userId: string; login: string };

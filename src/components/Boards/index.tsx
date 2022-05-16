@@ -24,6 +24,7 @@ const Boards: React.FC = () => {
             <h3>
               {i + 1}. {item.title}
             </h3>
+            <button>{t('board.delete')}</button>
           </div>
         ))
       ) : (

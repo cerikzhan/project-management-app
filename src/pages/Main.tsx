@@ -10,8 +10,9 @@ const Main: React.FC = () => {
   const [header, setHeader] = useState('');
   const [text, setText] = useState('');
   const [idBoard, setIdBoard] = useState('');
-  const [runRequest, setRunRequest] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const { boards, loading } = useAppSelector((state: RootState) => state.boards);
+  const { t } = useTranslation();
 
   const handleOpenModal = async (idBoard: string) => {
     setHeader('Удалить доску');
@@ -20,19 +21,18 @@ const Main: React.FC = () => {
     setShowModal(true);
   };
 
-  useEffect(() => {
-    if (runRequest) {
-      dispatch(fetchDeleteBoard(idBoard));
-    }
-  }, [runRequest]);
+  const handleConfirm = () => {
+    dispatch(fetchDeleteBoard(idBoard));
+  };
 
-  const { boards, loading } = useAppSelector((state: RootState) => state.boards);
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   useEffect(() => {
-    setRunRequest(false);
     dispatch(fetchAllBoards());
-  }, [dispatch, runRequest]);
+  }, []);
 
-  const { t } = useTranslation();
   return (
     <div>
       {t('board.boards_page')}
@@ -48,8 +48,8 @@ const Main: React.FC = () => {
         header={header}
         text={text}
         show={showModal}
-        onChange={setRunRequest}
-        onClose={setShowModal}
+        onConfirm={handleConfirm}
+        onClose={handleClose}
       />
     </div>
   );

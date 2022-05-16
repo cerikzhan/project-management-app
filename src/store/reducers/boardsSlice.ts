@@ -47,9 +47,9 @@ export const boardSlice = createSlice({
     [fetchDeleteBoard.pending.type]: (state) => {
       state.loading = true;
     },
-    [fetchDeleteBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<string>) => {
+    [fetchDeleteBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
       state.loading = false;
-      state.boards = state.boards.filter((item: Board) => item.id !== action.payload);
+      state.boards = action.payload;
     },
     [fetchDeleteBoard.rejected.type]: (state, action) => {
       state.loading = false;

@@ -26,21 +26,24 @@ const Main: React.FC = () => {
     }
   }, [runRequest]);
 
-  const { boards } = useAppSelector((state: RootState) => state.boards);
+  const { boards, loading } = useAppSelector((state: RootState) => state.boards);
   useEffect(() => {
+    setRunRequest(false);
     dispatch(fetchAllBoards());
-  }, [dispatch]);
+  }, [dispatch, runRequest]);
 
   const { t } = useTranslation();
   return (
     <div>
       {t('board.boards_page')}
-      {boards.map((item) => (
-        <div key={item.id}>
-          <div>{item.title}</div>
-          <button onClick={() => handleOpenModal(item.id)}>Delete</button>
-        </div>
-      ))}
+      {loading
+        ? 'LOADING'
+        : boards.map((item) => (
+            <div key={item.id}>
+              <div>{item.title}</div>
+              <button onClick={() => handleOpenModal(item.id)}>Delete</button>
+            </div>
+          ))}
       <Confirmation
         header={header}
         text={text}

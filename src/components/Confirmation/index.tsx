@@ -22,9 +22,6 @@ const customStyles = {
 
 const Confirmation = (props: ConfirmationProps) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  /*const openModal = () => {
-    setIsOpen(true);
-  }; */
 
   useEffect(() => {
     if (props.show) {
@@ -34,6 +31,12 @@ const Confirmation = (props: ConfirmationProps) => {
 
   const closeModal = () => {
     setIsOpen(false);
+    props.onClose(false);
+  };
+
+  const clickYes = () => {
+    setIsOpen(false);
+    props.onChange(true);
     props.onClose(false);
   };
 
@@ -56,10 +59,8 @@ const Confirmation = (props: ConfirmationProps) => {
         <h2>{props.header}</h2>
         <button onClick={closeModal}>close</button>
         <p>{props.text}</p>
-        <form>
-          <button onClick={() => props.onChange(true)}>Yes</button>
-          <button onClick={closeModal}>No</button>
-        </form>
+        <button onClick={clickYes}>Yes</button>
+        <button onClick={closeModal}>No</button>
       </Modal>
     </>
   );

@@ -18,12 +18,12 @@ const Profile: React.FC = () => {
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(changeUser({ user: { name, login, password }, userId: user.userId }));
+    dispatch(changeUser({ id: user.id, login, name, password }));
     setPassword('');
   };
 
   const clickHandler = () => {
-    dispatch(deleteUser(user.userId));
+    dispatch(deleteUser(user.id));
     setLogin('');
     setPassword('');
     setName('');
@@ -32,10 +32,10 @@ const Profile: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user.userId) {
+    if (!user.id) {
       navigate('/signup');
     }
-  }, [user.userId]);
+  }, [user.id]);
 
   return (
     <>

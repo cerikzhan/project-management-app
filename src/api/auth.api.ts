@@ -2,6 +2,7 @@ import request from './request';
 import { LoginDTO } from '../types/DTO/LoginDTO';
 import { User } from '../types/Entities/User';
 import { getUserFromToken } from '../services/userService';
+import { UserCreateDTO } from '../types/DTO/UserCreateDTO';
 const MAX_EXPIRED = 60 * 60 * 1000;
 
 export const fetchLogin = async (userdata: LoginDTO) => {
@@ -11,9 +12,12 @@ export const fetchLogin = async (userdata: LoginDTO) => {
   return getUserFromToken() as User;
 };
 
-export const fetchChangeUser = async (userData: User) => {
-  const response = await request.put(`users/${userData.userId}`, userData);
-
+export const fetchChangeUser = async (userData: UserCreateDTO) => {
+  const response = await request.put(`users/${userData.id}`, {
+    name: userData.name,
+    login: userData.login,
+    password: userData.password,
+  });
   return response.data;
 };
 

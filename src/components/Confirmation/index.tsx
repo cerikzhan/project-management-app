@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 
 type ConfirmationProps = {
   header: string;
+  text: string;
   runRequest: (val: boolean) => void;
   show: boolean;
 };
@@ -52,7 +53,7 @@ const Confirmation = (props: ConfirmationProps) => {
       >
         <h2>{props.header}</h2>
         <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
+        <p>{props.text}</p>
         <form>
           <button onClick={() => props.runRequest(true)}>Yes</button>
           <button onClick={closeModal}>No</button>

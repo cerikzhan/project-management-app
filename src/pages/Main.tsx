@@ -8,12 +8,14 @@ import Confirmation from './../components/Confirmation';
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
   const [header, setHeader] = useState('');
+  const [text, setText] = useState('');
   const [idBoard, setIdBoard] = useState('');
   const [runRequest, setRunRequest] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = async (idBoard: string) => {
-    setHeader('Delete board???');
+    setHeader('Удалить доску');
+    setText('Вы действительно хотите удалить доску?');
     setIdBoard(idBoard);
     setShowModal(true);
   };
@@ -39,7 +41,7 @@ const Main: React.FC = () => {
           <button onClick={() => handleOpenModal(item.id)}>Delete</button>
         </div>
       ))}
-      <Confirmation header={header} show={showModal} runRequest={setRunRequest} />
+      <Confirmation header={header} text={text} show={showModal} runRequest={setRunRequest} />
     </div>
   );
 };

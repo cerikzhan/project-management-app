@@ -1,0 +1,13 @@
+.boards {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #cccccc;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  background: #cccccc;
+  padding: 1rem 0;
+  &__item {
+    height: 10em;
+  }
+}

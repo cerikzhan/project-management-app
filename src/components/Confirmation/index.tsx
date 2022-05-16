@@ -4,7 +4,8 @@ import Modal from 'react-modal';
 type ConfirmationProps = {
   header: string;
   text: string;
-  runRequest: (val: boolean) => void;
+  onChange: (val: boolean) => void;
+  onClose: (val: boolean) => void;
   show: boolean;
 };
 
@@ -33,6 +34,7 @@ const Confirmation = (props: ConfirmationProps) => {
 
   const closeModal = () => {
     setIsOpen(false);
+    props.onClose(false);
   };
 
   const afterOpenModal = () => {
@@ -55,7 +57,7 @@ const Confirmation = (props: ConfirmationProps) => {
         <button onClick={closeModal}>close</button>
         <p>{props.text}</p>
         <form>
-          <button onClick={() => props.runRequest(true)}>Yes</button>
+          <button onClick={() => props.onChange(true)}>Yes</button>
           <button onClick={closeModal}>No</button>
         </form>
       </Modal>

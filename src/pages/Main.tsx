@@ -41,7 +41,13 @@ const Main: React.FC = () => {
           <button onClick={() => handleOpenModal(item.id)}>Delete</button>
         </div>
       ))}
-      <Confirmation header={header} text={text} show={showModal} runRequest={setRunRequest} />
+      <Confirmation
+        header={header}
+        text={text}
+        show={showModal}
+        onChange={setRunRequest}
+        onClose={setShowModal}
+      />
     </div>
   );
 };

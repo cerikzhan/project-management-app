@@ -35,7 +35,7 @@ export const userSlice = createSlice({
     },
     authUser: (state: StateTypeUser) => {
       if (getUserFromToken()) {
-        state.user = { ...(getUserFromToken() as User) };
+        state.user = getUserFromToken();
       }
     },
   },

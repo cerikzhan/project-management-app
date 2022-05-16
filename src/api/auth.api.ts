@@ -1,6 +1,5 @@
 import request from './request';
 import { LoginDTO } from '../types/DTO/LoginDTO';
-import { User } from '../types/Entities/User';
 import { getUserFromToken } from '../services/userService';
 import { UserCreateDTO } from '../types/DTO/UserCreateDTO';
 const MAX_EXPIRED = 60 * 60 * 1000;

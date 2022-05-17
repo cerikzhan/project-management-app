@@ -49,11 +49,18 @@ const Boards: React.FC = () => {
       ) : boards.length > 0 ? (
         boards.map((item, i) => (
           <div className={cl.boards__item} key={item.id}>
-            <h3 onClick={() => openBoard(item.id)}>
-              {i + 1}. {item.title}
-            </h3>
-            <div>{item.description}</div>
-            <button onClick={() => handleOpenModal(item)}>{t('user.delete')}</button>
+            <div className={cl.boards__col1}>{i + 1}</div>
+            <div className={cl.boards__col} onClick={() => openBoard(item.id)}>
+              {item.title}
+            </div>
+            <div className={cl.boards__col} onClick={() => openBoard(item.id)}>
+              {item.description}
+            </div>
+            <div className={cl.boards__col1}>
+              <div className={cl.boards__button} onClick={() => handleOpenModal(item)}>
+                <i className="fa fa-trash-o"></i>
+              </div>
+            </div>
           </div>
         ))
       ) : (

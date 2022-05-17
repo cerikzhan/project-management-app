@@ -6,7 +6,7 @@ const Main: React.FC = () => {
   const { t } = useTranslation();
   return (
     <>
-      {t('board.boards_page')}
+      <h1>{t('board.boards_page')}</h1>
       <Boards />
     </>
   );

@@ -3,11 +3,46 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.125rem;
   padding: 1rem 0;
+
+  &__button {
+    cursor: pointer;
+    font-size: 1.3em;
+  }
+
   &__item {
-    border: 1px solid #bbbbbb;
     display: flex;
-    gap: 0.5em;
+    gap: 0.6em;
+    width: 100%;
+    padding: 0.5em;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 1px;
+    border-bottom: 0px;
+    border-color: #d0d0d0;
+    border-style: solid;
+    align-items: center;
+
+    &:nth-child(odd) {
+      background: #9d9d9d2e;
+    }
+
+    &:last-child{
+      border-bottom: 1px solid #d0d0d0;
+    }
+
+    &:hover {
+      background: #fffbc6;
+    }
+  }
+
+  &__col1 {
+    flex: 1;
+    max-width: 60px;
+  }
+
+  &__col {
+    flex: 8;
+    cursor: pointer;
   }
 }

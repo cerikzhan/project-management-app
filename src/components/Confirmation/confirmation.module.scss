@@ -22,6 +22,7 @@
     position: fixed;
     inset: 0px;
   }
+
   &__close {
     position: absolute;
     top: 0;
@@ -31,15 +32,18 @@
     font-size: 1.6em;
     cursor: pointer;
   }
+
   &__header {
     margin: 0;
   }
+
   &__row {
     display: flex;
     justify-content: center;
     gap: 1em;
     margin-top: 2em;
   }
+
   &__button {
     cursor: pointer;
     text-decoration: none;
@@ -56,6 +60,7 @@
     text-transform: uppercase;
     white-space: nowrap;
     min-width: 6em;
+
     &:hover {
       background: #aaaaaa;
     }

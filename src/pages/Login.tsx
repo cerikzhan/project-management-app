@@ -13,8 +13,8 @@ const Login: React.FC = () => {
   const dispatch = useAppDispatch();
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(login({ login: username, password }));
-    dispatch(authUser());
+    await dispatch(login({ login: username, password }));
+    await dispatch(authUser());
   };
 
   useEffect(() => {

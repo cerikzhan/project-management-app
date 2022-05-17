@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchAllBoards, fetchBoard, deleteBoard } from '../../api/board.api';
+import { getAllBoards, getBoard, deleteBoard } from '../reducers/actionCreators';
 import { Board, BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
@@ -19,27 +19,27 @@ export const boardSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchAllBoards.pending.type]: (state) => {
+    [getAllBoards.pending.type]: (state) => {
       state.loading = true;
     },
-    [fetchAllBoards.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
+    [getAllBoards.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
       state.loading = false;
       state.boards = action.payload;
     },
-    [fetchAllBoards.rejected.type]: (state, action) => {
+    [getAllBoards.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
       state.boards = [];
     },
-    [fetchBoard.pending.type]: (state) => {
+    [getBoard.pending.type]: (state) => {
       state.loading = true;
     },
-    [fetchBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem>) => {
+    [getBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem>) => {
       state.loading = false;
       state.boards = [];
       state.boards.push(action.payload);
     },
-    [fetchBoard.rejected.type]: (state, action) => {
+    [getBoard.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
       state.boards = [];

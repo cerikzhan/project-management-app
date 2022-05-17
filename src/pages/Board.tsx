@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { fetchBoard } from '../api/board.api';
+import { getBoard } from '../store/reducers/actionCreators';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -12,7 +12,7 @@ const Board: React.FC = () => {
   useEffect(() => {
     const boardId = params.id;
     if (boardId) {
-      dispatch(fetchBoard(boardId));
+      dispatch(getBoard(boardId));
     }
   }, [dispatch, params.id]);
 

@@ -15,7 +15,7 @@ export const fetchBoard = createAsyncThunk('boards/fetchBoard', async (boardId: 
 });
 
 //удаляет доску по ее id
-export const fetchDeleteBoard = createAsyncThunk('boards/deleteBoard', async (boardId: string) => {
+export const deleteBoard = createAsyncThunk('boards/deleteBoard', async (boardId: string) => {
   await request.delete(`/boards/${boardId}`);
   const response = await request.get<Board[]>('/boards');
   return response.data;

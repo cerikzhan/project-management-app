@@ -8,4 +8,6 @@ export default {
   user_password: 'Password:',
   user_edit: 'Edit profile',
   user_delete: 'Delete profile',
+  confirm: 'Confirm',
+  abort: 'Abort',
 };

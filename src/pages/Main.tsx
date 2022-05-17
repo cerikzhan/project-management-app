@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { fetchAllBoards, fetchDeleteBoard } from '../api/board.api';
+import { fetchAllBoards, deleteBoard } from '../api/board.api';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { RootState } from '../store/store';
 import { useTranslation } from 'react-i18next';
 import Confirmation from './../components/Confirmation';
+import { Board } from '../types/Entities/Board';
 
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -14,15 +15,15 @@ const Main: React.FC = () => {
   const { boards, loading } = useAppSelector((state: RootState) => state.boards);
   const { t } = useTranslation();
 
-  const handleOpenModal = async (idBoard: string) => {
+  const handleOpenModal = async (board: Board) => {
     setHeader('Удалить доску');
-    setText('Вы действительно хотите удалить доску?');
-    setIdBoard(idBoard);
+    setText(`Вы действительно хотите удалить доску ${board.title}?`);
+    setIdBoard(board.id);
     setShowModal(true);
   };
 
   const handleConfirm = () => {
-    dispatch(fetchDeleteBoard(idBoard));
+    dispatch(deleteBoard(idBoard));
   };
 
   const handleClose = () => {
@@ -41,7 +42,7 @@ const Main: React.FC = () => {
         : boards.map((item) => (
             <div key={item.id}>
               <div>{item.title}</div>
-              <button onClick={() => handleOpenModal(item.id)}>Delete</button>
+              <button onClick={() => handleOpenModal(item)}>Delete</button>
             </div>
           ))}
       <Confirmation

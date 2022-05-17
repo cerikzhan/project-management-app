@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import cl from './confirmation.module.scss';
+import { useTranslation } from 'react-i18next';
 
 type ConfirmationProps = {
   header: string;
@@ -9,18 +11,8 @@ type ConfirmationProps = {
   show: boolean;
 };
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
 const Confirmation = (props: ConfirmationProps) => {
+  const { t } = useTranslation();
   const [modalIsOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -53,14 +45,22 @@ const Confirmation = (props: ConfirmationProps) => {
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
+        className={cl.modal}
         contentLabel="Example Modal"
       >
-        <h2>{props.header}</h2>
-        <button onClick={closeModal}>close</button>
+        <h2 className={cl.modal__header}>{props.header}</h2>
+        <button onClick={closeModal} className={cl.modal__close}>
+          x
+        </button>
         <p>{props.text}</p>
-        <button onClick={clickYes}>Yes</button>
-        <button onClick={closeModal}>No</button>
+        <div className={cl.modal__row}>
+          <button className={cl.modal__button} onClick={clickYes}>
+            {t('user.confirm')}
+          </button>
+          <button className={cl.modal__button} onClick={closeModal}>
+            {t('user.abort')}
+          </button>
+        </div>
       </Modal>
     </>
   );

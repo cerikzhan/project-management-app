@@ -8,4 +8,6 @@ export default {
   user_password: 'Пароль:',
   user_edit: 'Изменить профиль',
   user_delete: 'Удалить профиль',
+  confirm: 'Да',
+  abort: 'Отмена',
 };

@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 import './../../assets/library/fontawesome.css';
 
 const Boards: React.FC = () => {
-  const [header, setHeader] = useState('');
   const [text, setText] = useState('');
   const [idBoard, setIdBoard] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -25,7 +24,6 @@ const Boards: React.FC = () => {
   }, [dispatch]);
 
   const handleOpenModal = async (item: Board) => {
-    setHeader(t('board.delete'));
     setText(`${t('board.delete_text')} ${item.title}?`);
     setIdBoard(item.id);
     setShowModal(true);
@@ -68,7 +66,7 @@ const Boards: React.FC = () => {
         <div className="message-box">{t('board.no_results')}</div>
       )}
       <Confirmation
-        header={header}
+        header={t('board.delete')}
         text={text}
         show={showModal}
         onConfirm={handleConfirm}

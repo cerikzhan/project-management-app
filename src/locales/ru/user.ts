@@ -12,4 +12,5 @@ export default {
   abort: 'Отмена',
   profile_delete: 'Удалить профиль',
   profile_delete_text: 'Вы действительно хотите удалить свой профиль?',
+  delete: 'Удалить',
 };

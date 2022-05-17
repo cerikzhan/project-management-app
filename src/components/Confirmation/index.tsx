@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
 import cl from './confirmation.module.scss';
@@ -13,21 +13,12 @@ type ConfirmationProps = {
 
 const Confirmation = (props: ConfirmationProps) => {
   const { t } = useTranslation();
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (props.show) {
-      setIsOpen(true);
-    }
-  }, [props.show]);
 
   const closeModal = () => {
-    setIsOpen(false);
     props.onClose();
   };
 
   const clickYes = () => {
-    setIsOpen(false);
     props.onConfirm();
     props.onClose();
   };
@@ -42,7 +33,7 @@ const Confirmation = (props: ConfirmationProps) => {
   return (
     <>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={props.show}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         className={cl.modal}

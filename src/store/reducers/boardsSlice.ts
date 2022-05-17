@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchAllBoards, fetchBoard } from '../../api/board.api';
+import { fetchAllBoards, fetchBoard, deleteBoard } from '../../api/board.api';
 import { Board, BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
@@ -43,6 +43,17 @@ export const boardSlice = createSlice({
       state.loading = false;
       state.error = action.error;
       state.boards = [];
+    },
+    [deleteBoard.pending.type]: (state) => {
+      state.loading = true;
+    },
+    [deleteBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
+      state.loading = false;
+      state.boards = action.payload;
+    },
+    [deleteBoard.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
     },
   },
 });

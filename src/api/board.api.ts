@@ -13,3 +13,10 @@ export const fetchBoard = createAsyncThunk('boards/fetchBoard', async (boardId: 
   const response = await request.get<BoardItem>(`/boards/${boardId}`);
   return response.data;
 });
+
+//удаляет доску по ее id
+export const deleteBoard = createAsyncThunk('boards/deleteBoard', async (boardId: string) => {
+  await request.delete(`/boards/${boardId}`);
+  const response = await request.get<Board[]>('/boards');
+  return response.data;
+});

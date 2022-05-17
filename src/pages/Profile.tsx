@@ -58,6 +58,7 @@ const Profile: React.FC = () => {
         setLogin={setLogin}
         submitHandler={submitHandler}
         submitValue={'user.user_edit'}
+        title={'user.profile_page'}
       />
       <button className={cl.form__delete} type="button" onClick={() => handleOpenModal()}>
         {t('user.user_delete')}

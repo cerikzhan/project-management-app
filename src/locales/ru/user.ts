@@ -13,4 +13,7 @@ export default {
   profile_delete: 'Удалить профиль',
   profile_delete_text: 'Вы действительно хотите удалить свой профиль?',
   delete: 'Удалить',
+  user_signUp: 'Зарегистрироваться',
+  user_signUp_error: 'Имя пользователя занято',
+  user_login_error: 'Неправильный логин или пароль',
 };

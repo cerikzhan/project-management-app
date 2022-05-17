@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAllBoards, fetchBoard } from './../../api/board.api';
+import { fetchAllBoards, fetchBoard, removeBoard } from './../../api/board.api';
 import {
   fetchLogin,
   fetchChangeUser,
@@ -18,3 +18,5 @@ export const authUser = createAsyncThunk('user/auth', fetchUserAfterLogin);
 export const getAllBoards = createAsyncThunk('boards/fetchAllBoards', fetchAllBoards);
 
 export const getBoard = createAsyncThunk('boards/fetchBoard', fetchBoard);
+
+export const deleteBoard = createAsyncThunk('boards/deleteBoard', removeBoard);

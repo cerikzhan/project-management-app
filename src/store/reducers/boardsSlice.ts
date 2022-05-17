@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { deleteBoard } from '../../api/board.api';
-import { getAllBoards, getBoard } from '../reducers/actionCreators';
+import { getAllBoards, getBoard, deleteBoard } from '../reducers/actionCreators';
 import { Board, BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {

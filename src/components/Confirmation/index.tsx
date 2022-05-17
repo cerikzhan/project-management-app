@@ -18,7 +18,7 @@ const Confirmation = (props: ConfirmationProps) => {
     props.onClose();
   };
 
-  const clickYes = () => {
+  const clickConfirm = () => {
     props.onConfirm();
     props.onClose();
   };
@@ -46,7 +46,7 @@ const Confirmation = (props: ConfirmationProps) => {
         </button>
         <p>{props.text}</p>
         <div className={cl.modal__row}>
-          <button className={cl.modal__button} onClick={clickYes}>
+          <button className={cl.modal__button} onClick={clickConfirm}>
             {t('user.confirm')}
           </button>
           <button className={cl.modal__button} onClick={closeModal}>

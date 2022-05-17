@@ -13,4 +13,7 @@ export default {
   profile_delete: 'Delete profile',
   profile_delete_text: 'Are you sure you want to delete your profile?',
   delete: 'Delete',
+  user_signUp: 'Sign up',
+  user_signUp_error: 'login already exists',
+  user_login_error: 'Incorrect login or password',
 };

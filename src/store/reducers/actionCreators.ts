@@ -5,6 +5,7 @@ import {
   fetchChangeUser,
   fetchDeleteUser,
   fetchUserAfterLogin,
+  fetchSignUpUser,
 } from '../../api/user.api';
 
 export const login = createAsyncThunk('user/login', fetchLogin);
@@ -20,3 +21,5 @@ export const getAllBoards = createAsyncThunk('boards/fetchAllBoards', fetchAllBo
 export const getBoard = createAsyncThunk('boards/fetchBoard', fetchBoard);
 
 export const deleteBoard = createAsyncThunk('boards/deleteBoard', removeBoard);
+
+export const signUpUser = createAsyncThunk('user/SignUp', fetchSignUpUser);

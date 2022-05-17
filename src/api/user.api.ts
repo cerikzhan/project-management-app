@@ -33,3 +33,16 @@ export const fetchDeleteUser = async (userId: string) => {
   await request.delete(`users/${userId}`);
   resetToken();
 };
+
+export const fetchSignUpUser = async (userData: UserCreateDTO) => {
+  const response = await request.post('signup', {
+    name: userData.name,
+    login: userData.login,
+    password: userData.password,
+  });
+
+  await fetchLogin({ login: userData.login, password: userData.password });
+  await fetchUserAfterLogin();
+
+  return response.data;
+};

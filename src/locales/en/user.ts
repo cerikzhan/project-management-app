@@ -10,4 +10,6 @@ export default {
   user_delete: 'Delete profile',
   confirm: 'Confirm',
   abort: 'Abort',
+  profile_delete: 'Delete profile',
+  profile_delete_text: 'Are you sure you want to delete your profile?',
 };

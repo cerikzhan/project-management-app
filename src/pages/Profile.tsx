@@ -5,6 +5,7 @@ import { changeUser, deleteUser } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Confirmation from '../components/Confirmation';
 
 const Profile: React.FC = () => {
   const { t } = useTranslation();
@@ -13,6 +14,9 @@ const Profile: React.FC = () => {
   const [name, setName] = useState(user.name || '');
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState(user.login || '');
+  const [header, setHeader] = useState('');
+  const [text, setText] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -22,11 +26,21 @@ const Profile: React.FC = () => {
     setPassword('');
   };
 
-  const clickHandler = () => {
+  const handleOpenModal = async () => {
+    setHeader(t('user.profile_delete'));
+    setText(t('user.profile_delete_text'));
+    setShowModal(true);
+  };
+
+  const handleConfirm = () => {
     dispatch(deleteUser(user.id));
     setLogin('');
     setPassword('');
     setName('');
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
   };
 
   const navigate = useNavigate();
@@ -49,9 +63,16 @@ const Profile: React.FC = () => {
         submitHandler={submitHandler}
         submitValue={'user.user_edit'}
       />
-      <button className={cl.form__delete} type="button" onClick={clickHandler}>
+      <button className={cl.form__delete} type="button" onClick={() => handleOpenModal()}>
         {t('user.user_delete')}
       </button>
+      <Confirmation
+        header={header}
+        text={text}
+        show={showModal}
+        onConfirm={handleConfirm}
+        onClose={handleClose}
+      />
     </>
   );
 };

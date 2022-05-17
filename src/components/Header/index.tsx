@@ -5,14 +5,13 @@ import './../../assets/library/toggle.css';
 import UserMenu from './../Menu';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { userSlice } from '../../store/reducers/userSlice';
+import { authUser } from '../../store/reducers/actionCreators';
 
 const Header: React.FC = () => {
   const { user } = useAppSelector((state) => state);
   const { t } = useTranslation();
   const [isSticky, setSticky] = useState(false);
   const dispatch = useAppDispatch();
-  const { authUser } = userSlice.actions;
 
   useEffect(() => {
     dispatch(authUser());

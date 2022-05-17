@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react';
-import { fetchAllBoards } from '../store/reducers/actionCreators';
-import { useAppSelector, useAppDispatch } from '../hooks/redux';
-import { RootState } from '../store/store';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Boards from '../components/Boards';
 
 const Main: React.FC = () => {
-  const { boards } = useAppSelector((state: RootState) => state);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchAllBoards());
-  }, [dispatch]);
   const { t } = useTranslation();
   return (
-    <div>
-      {t('board.boards_page')}
-      {JSON.stringify(boards)}
-    </div>
+    <>
+      <h1>{t('board.boards_page')}</h1>
+      <Boards />
+    </>
   );
 };
 

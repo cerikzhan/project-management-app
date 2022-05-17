@@ -1,6 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchLogin, fetchChangeUser, fetchDeleteUser } from '../../api/auth.api';
-import { getSingleBoard, getAllBoards } from '../../api/board.api';
+import { getSingleBoard, getAllBoards, removeBoard } from '../../api/board.api';
+import {
+  fetchLogin,
+  fetchChangeUser,
+  fetchDeleteUser,
+  fetchUserAfterLogin,
+} from '../../api/user.api';
 
 export const login = createAsyncThunk('user/login', fetchLogin);
 
@@ -8,6 +13,10 @@ export const changeUser = createAsyncThunk('user/change', fetchChangeUser);
 
 export const deleteUser = createAsyncThunk('user/delete', fetchDeleteUser);
 
+export const authUser = createAsyncThunk('user/auth', fetchUserAfterLogin);
+
 export const fetchAllBoards = createAsyncThunk('boards/fetchAllBoards', getAllBoards);
 
 export const fetchSingleBoard = createAsyncThunk('boards/fetchSingleBoard', getSingleBoard);
+
+export const deleteBoard = createAsyncThunk('boards/deleteBoard', removeBoard);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../store/reducers/actionCreators';
+import { authUser, login } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 
 const Login: React.FC = () => {
@@ -13,14 +13,15 @@ const Login: React.FC = () => {
   const dispatch = useAppDispatch();
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(login({ login: username, password }));
+    await dispatch(login({ login: username, password }));
+    await dispatch(authUser());
   };
 
   useEffect(() => {
-    if (user.userId) {
+    if (user.id) {
       navigate('/boards');
     }
-  }, [user.userId]);
+  }, [user.id]);
 
   return (
     <>

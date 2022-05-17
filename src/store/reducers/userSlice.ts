@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { login, changeUser, deleteUser } from './actionCreators';
+import { login, changeUser, deleteUser, authUser } from './actionCreators';
 import { User } from '../../types/Entities/User';
+import { resetToken } from './../../services/userService';
 
 interface StateTypeUser {
   user: User;
@@ -29,7 +30,7 @@ export const userSlice = createSlice({
       state.lang = action.payload;
     },
     logoutUser: (state: StateTypeUser) => {
-      localStorage.removeItem('access_token');
+      resetToken();
       state.user = {} as User;
     },
   },
@@ -38,11 +39,20 @@ export const userSlice = createSlice({
       state.loading = true;
       state.error = '';
     },
-    [login.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
+    [login.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+      state.user = {} as User;
+    },
+    [authUser.pending.type]: (state) => {
+      state.loading = true;
+      state.error = '';
+    },
+    [authUser.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
       state.loading = false;
       state.user = action.payload;
     },
-    [login.rejected.type]: (state, action) => {
+    [authUser.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
       state.user = {} as User;

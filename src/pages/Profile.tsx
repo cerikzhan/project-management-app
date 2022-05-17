@@ -5,6 +5,7 @@ import { changeUser, deleteUser } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Confirmation from '../components/Confirmation';
 
 const Profile: React.FC = () => {
   const { t } = useTranslation();
@@ -13,29 +14,38 @@ const Profile: React.FC = () => {
   const [name, setName] = useState(user.name || '');
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState(user.login || '');
+  const [showModal, setShowModal] = useState(false);
 
   const dispatch = useAppDispatch();
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(changeUser({ user: { name, login, password }, userId: user.userId }));
+    dispatch(changeUser({ id: user.id, login, name, password }));
     setPassword('');
   };
 
-  const clickHandler = () => {
-    dispatch(deleteUser(user.userId));
+  const handleOpenModal = async () => {
+    setShowModal(true);
+  };
+
+  const handleConfirm = () => {
+    dispatch(deleteUser(user.id));
     setLogin('');
     setPassword('');
     setName('');
   };
 
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user.userId) {
+    if (!user.id) {
       navigate('/signup');
     }
-  }, [user.userId]);
+  }, [user.id]);
 
   return (
     <>
@@ -49,9 +59,16 @@ const Profile: React.FC = () => {
         submitHandler={submitHandler}
         submitValue={'user.user_edit'}
       />
-      <button className={cl.form__delete} type="button" onClick={clickHandler}>
+      <button className={cl.form__delete} type="button" onClick={() => handleOpenModal()}>
         {t('user.user_delete')}
       </button>
+      <Confirmation
+        header={t('user.profile_delete')}
+        text={t('user.profile_delete_text')}
+        show={showModal}
+        onConfirm={handleConfirm}
+        onClose={handleClose}
+      />
     </>
   );
 };

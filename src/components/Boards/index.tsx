@@ -38,7 +38,7 @@ const Boards: React.FC = () => {
   };
 
   const openBoard = (id: string) => {
-    navigate(`/board/${id}`);
+    navigate(`/boards/${id}`);
   };
 
   return (

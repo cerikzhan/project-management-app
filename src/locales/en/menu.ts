@@ -5,7 +5,6 @@ export default {
   new_board: 'New board',
   welcome_page: 'Welcome Page',
   home: 'Home',
-  projects: 'Projects',
-  project: 'Project',
+  boards: 'Доски',
   logout: 'Logout',
 };

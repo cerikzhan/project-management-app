@@ -4,7 +4,6 @@ export default {
   edit_profile: 'Редактировать профиль',
   new_board: 'Новая доска',
   home: 'Главная',
-  projects: 'Проекты',
-  project: 'Проект',
+  boards: 'Доски',
   logout: 'Выход',
 };

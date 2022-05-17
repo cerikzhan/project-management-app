@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import UserFrom from '../components/Form';
 import cl from '../components/Form/form.module.scss';
 import { userSlice } from '../store/reducers/userSlice';
+import { getUserFromToken } from '../services/userService';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,8 @@ const Login: React.FC = () => {
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     await dispatch(login({ login: username, password }));
-    if (user.id) {
+    const { id } = getUserFromToken();
+    if (id) {
       await dispatch(authUser());
     }
   };

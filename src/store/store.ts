@@ -1,4 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import boardReducer from './reducers/boardSlice';
 import boardsReducer from './reducers/boardsSlice';
 import userReducer from './reducers/userSlice';
 
@@ -8,6 +9,7 @@ const customizedMiddleware = getDefaultMiddleware({
 
 export const store = configureStore({
   reducer: {
+    board: boardReducer,
     boards: boardsReducer,
     user: userReducer,
   },

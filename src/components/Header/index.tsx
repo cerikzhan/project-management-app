@@ -37,10 +37,7 @@ const Header: React.FC = () => {
             {user.user.id && (
               <>
                 <Link className={cl.header__navbar_link} to="/boards">
-                  {t('menu.projects')}
-                </Link>
-                <Link className={cl.header__navbar_link} to="/boards/1">
-                  {t('menu.project')}
+                  {t('menu.boards')}
                 </Link>
               </>
             )}

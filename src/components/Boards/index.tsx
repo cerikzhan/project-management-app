@@ -3,7 +3,7 @@ import cl from './boards.module.scss';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import loader from './../../assets/images/loader.gif';
 import { RootState } from '../../store/store';
-import { deleteBoard, getAllBoards } from '../../store/reducers/actionCreators';
+import { deleteBoard, fetchAllBoards } from '../../store/reducers/actionCreators';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../Confirmation';
 import { Board } from '../../types/Entities/Board';
@@ -20,7 +20,7 @@ const Boards: React.FC = () => {
   const { boards, loading } = useAppSelector((state: RootState) => state.boards);
 
   useEffect(() => {
-    dispatch(getAllBoards());
+    dispatch(fetchAllBoards());
   }, [dispatch]);
 
   const handleOpenModal = async (item: Board) => {

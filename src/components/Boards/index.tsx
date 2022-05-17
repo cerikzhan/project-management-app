@@ -8,6 +8,7 @@ import { deleteBoard, getAllBoards } from '../../store/reducers/actionCreators';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../Confirmation';
 import { Board } from '../../types/Entities/Board';
+import { useNavigate } from 'react-router-dom';
 
 const Boards: React.FC = () => {
   const [header, setHeader] = useState('');
@@ -16,6 +17,7 @@ const Boards: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
@@ -36,6 +38,10 @@ const Boards: React.FC = () => {
     setShowModal(false);
   };
 
+  const openBoard = (id: string) => {
+    navigate(`/boards/${id}`);
+  };
+
   return (
     <div className={cl.boards}>
       {loading ? (
@@ -43,7 +49,7 @@ const Boards: React.FC = () => {
       ) : boards.length > 0 ? (
         boards.map((item, i) => (
           <div className={cl.boards__item} key={item.id}>
-            <h3>
+            <h3 onClick={() => openBoard(item.id)}>
               {i + 1}. {item.title}
             </h3>
             <div>{item.description}</div>

@@ -16,6 +16,12 @@
   width: 50vw;
   min-width: 320px;
   max-width: 500px;
+
+  &__overlay {
+    background-color: rgb(93 93 93 / 58%) !important;
+    position: fixed;
+    inset: 0px;
+  }
   &__close {
     position: absolute;
     top: 0;

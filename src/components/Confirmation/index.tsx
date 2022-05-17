@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import cl from './confirmation.module.scss';
 import { useTranslation } from 'react-i18next';
+import cl from './confirmation.module.scss';
 
 type ConfirmationProps = {
   header: string;
@@ -47,6 +47,7 @@ const Confirmation = (props: ConfirmationProps) => {
         onRequestClose={closeModal}
         className={cl.modal}
         contentLabel="Example Modal"
+        overlayClassName={cl.modal__overlay}
       >
         <h2 className={cl.modal__header}>{props.header}</h2>
         <button onClick={closeModal} className={cl.modal__close}>

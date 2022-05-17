@@ -7,7 +7,7 @@ export interface Task {
   files: string[];
 }
 
-export interface TaskItem {
+export interface TaskItem extends Task {
   boardId: string | null;
   columnId: string | null;
 }

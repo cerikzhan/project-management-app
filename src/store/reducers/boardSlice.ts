@@ -3,13 +3,13 @@ import { fetchSingleBoard } from './actionCreators';
 import { BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
-  board: BoardItem | null;
+  item: BoardItem | null;
   loading: boolean;
   error: boolean;
 }
 
 const initialState: StateTypeBoard = {
-  board: null,
+  item: null,
   loading: true,
   error: false,
 };
@@ -27,12 +27,12 @@ export const boardSlice = createSlice({
       action: PayloadAction<BoardItem>
     ) => {
       state.loading = false;
-      state.board = action.payload;
+      state.item = action.payload;
     },
     [fetchSingleBoard.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
-      state.board = null;
+      state.item = null;
     },
   },
 });

@@ -46,6 +46,7 @@ const Boards: React.FC = () => {
             <h3>
               {i + 1}. {item.title}
             </h3>
+            <div>{item.description}</div>
             <button onClick={() => handleOpenModal(item)}>{t('user.delete')}</button>
           </div>
         ))

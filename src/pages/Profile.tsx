@@ -14,8 +14,6 @@ const Profile: React.FC = () => {
   const [name, setName] = useState(user.name || '');
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState(user.login || '');
-  const [header, setHeader] = useState('');
-  const [text, setText] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   const dispatch = useAppDispatch();
@@ -27,8 +25,6 @@ const Profile: React.FC = () => {
   };
 
   const handleOpenModal = async () => {
-    setHeader(t('user.profile_delete'));
-    setText(t('user.profile_delete_text'));
     setShowModal(true);
   };
 
@@ -67,8 +63,8 @@ const Profile: React.FC = () => {
         {t('user.user_delete')}
       </button>
       <Confirmation
-        header={header}
-        text={text}
+        header={t('user.profile_delete')}
+        text={t('user.profile_delete_text')}
         show={showModal}
         onConfirm={handleConfirm}
         onClose={handleClose}

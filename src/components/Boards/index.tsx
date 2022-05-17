@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import cl from './boards.module.scss';
-import './../../assets/library/toggle.css';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import loader from './../../assets/images/loader.gif';
 import { RootState } from '../../store/store';
@@ -9,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import Confirmation from '../Confirmation';
 import { Board } from '../../types/Entities/Board';
 import { useNavigate } from 'react-router-dom';
+import './../../assets/library/fontawesome.css';
 
 const Boards: React.FC = () => {
   const [header, setHeader] = useState('');
@@ -18,10 +18,11 @@ const Boards: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { boards, loading } = useAppSelector((state: RootState) => state.boards);
+
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
-  const { boards, loading } = useAppSelector((state: RootState) => state.boards);
 
   const handleOpenModal = async (item: Board) => {
     setHeader(t('board.delete'));
@@ -39,7 +40,7 @@ const Boards: React.FC = () => {
   };
 
   const openBoard = (id: string) => {
-    navigate(`/boards/${id}`);
+    navigate(`/board/${id}`);
   };
 
   return (
@@ -49,14 +50,14 @@ const Boards: React.FC = () => {
       ) : boards.length > 0 ? (
         boards.map((item, i) => (
           <div className={cl.boards__item} key={item.id}>
-            <div className={cl.boards__col1}>{i + 1}</div>
+            <div className={cl['boards__col-narrow']}>{i + 1}</div>
             <div className={cl.boards__col} onClick={() => openBoard(item.id)}>
               {item.title}
             </div>
             <div className={cl.boards__col} onClick={() => openBoard(item.id)}>
               {item.description}
             </div>
-            <div className={cl.boards__col1}>
+            <div className={cl['boards__col-narrow']}>
               <div className={cl.boards__button} onClick={() => handleOpenModal(item)}>
                 <i className="fa fa-trash-o"></i>
               </div>

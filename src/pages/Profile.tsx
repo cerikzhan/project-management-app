@@ -41,12 +41,6 @@ const Profile: React.FC = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user.id) {
-      navigate('/signup');
-    }
-  }, [user.id]);
-
   return (
     <>
       <UserFrom

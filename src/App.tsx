@@ -24,11 +24,15 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/boards" element={<PrivateRoute />}>
+          <Route path="/boards" element={<PrivateRoute redirectTo="/" />}>
             <Route path="/boards" element={<Main />} />
           </Route>
-          <Route path="/boards/:id" element={<Board />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/boards/:id" element={<PrivateRoute redirectTo="/" />}>
+            <Route path="/boards/:id" element={<Board />} />
+          </Route>
+          <Route path="/profile" element={<PrivateRoute redirectTo="/" />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
         </Routes>
       </div>
       <Footer />

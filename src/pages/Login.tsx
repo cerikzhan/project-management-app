@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { authUser, login } from '../store/reducers/actionCreators';
+import { login } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import UserFrom from '../components/Form';
 import cl from '../components/Form/form.module.scss';
@@ -9,20 +9,15 @@ import { userSlice } from '../store/reducers/userSlice';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const { error } = useAppSelector((state) => state.user);
-  const { user } = useAppSelector((state) => state.user);
+  const { user, error } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
-  const { setError } = userSlice.actions;
-
+  const { resetError } = userSlice.actions;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     await dispatch(login({ login: username, password }));
-    if (user.id) {
-      await dispatch(authUser());
-    }
   };
 
   useEffect(() => {
@@ -32,7 +27,7 @@ const Login: React.FC = () => {
   }, [user.id]);
 
   useEffect(() => {
-    dispatch(setError());
+    dispatch(resetError());
   }, []);
 
   return (

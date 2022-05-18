@@ -33,6 +33,9 @@ export const userSlice = createSlice({
       resetToken();
       state.user = {} as User;
     },
+    resetError: (state: StateTypeUser) => {
+      state.error = '';
+    },
   },
   extraReducers: {
     [login.pending.type]: (state) => {

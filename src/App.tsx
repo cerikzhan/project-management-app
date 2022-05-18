@@ -12,6 +12,7 @@ import './assets/scss/app.scss';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import initTranslation from './translation';
+import PrivateRoute from './components/PrivateRoute';
 
 const App: React.FC = () => {
   initTranslation('ru');
@@ -23,7 +24,9 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/boards" element={<Main />} />
+          <Route path="/boards" element={<PrivateRoute />}>
+            <Route path="/boards" element={<Main />} />
+          </Route>
           <Route path="/boards/:id" element={<Board />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

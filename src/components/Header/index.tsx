@@ -8,14 +8,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { authUser } from '../../store/reducers/actionCreators';
 
 const Header: React.FC = () => {
-  const { user } = useAppSelector((state) => state);
+  const { user } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [isSticky, setSticky] = useState(false);
-  const dispatch = useAppDispatch();
+  //const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(authUser());
-  }, []);
+  }, []);*/
 
   useEffect(() => {
     const onScroll = (e: Event) => {
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
             <Link className={cl.header__navbar_link} to="/">
               {t('menu.home')}
             </Link>
-            {user.user.id && (
+            {user.id && (
               <>
                 <Link className={cl.header__navbar_link} to="/boards">
                   {t('menu.boards')}

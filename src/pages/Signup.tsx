@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import UserFrom from '../components/Form';
 import { signUpUser } from '../store/reducers/actionCreators';
-import { userSlice } from '../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import cl from '../components/Form/form.module.scss';
+import { userSlice } from '../store/reducers/userSlice';
 
 const Signup: React.FC = () => {
   const { t } = useTranslation();
-  const { user, error } = useAppSelector((state) => state.user);
+  const { resetError } = userSlice.actions;
+
+  const { user } = useAppSelector((state) => state.user);
+  const { error } = useAppSelector((state) => state.user);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState('');
-  const { resetError } = userSlice.actions;
 
   const dispatch = useAppDispatch();
 

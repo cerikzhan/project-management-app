@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RouteProps } from 'react-router';
 import { Outlet, Navigate } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { authUser } from '../../store/reducers/actionCreators';
 
 type TPrivateRoute = RouteProps & {
   redirectTo: string;
@@ -9,7 +10,7 @@ type TPrivateRoute = RouteProps & {
 
 const PrivateRoute: React.FC<TPrivateRoute> = ({ ...props }) => {
   const { user } = useAppSelector((state) => state.user);
-  const auth = user.id; // determine if authorized, from context or however you're doing it
+  const auth = user.id;
   return auth ? <Outlet /> : <Navigate to={props.redirectTo} />;
 };
 

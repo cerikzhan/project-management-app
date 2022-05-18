@@ -5,14 +5,10 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import cl from '../components/Form/form.module.scss';
-import { userSlice } from '../store/reducers/userSlice';
 
 const Signup: React.FC = () => {
   const { t } = useTranslation();
-  const { setError } = userSlice.actions;
-
-  const { user } = useAppSelector((state) => state.user);
-  const { error } = useAppSelector((state) => state.user);
+  const { user, error } = useAppSelector((state) => state.user);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [login, setLogin] = useState('');
@@ -31,10 +27,6 @@ const Signup: React.FC = () => {
       navigate('/boards');
     }
   }, [user.id]);
-
-  useEffect(() => {
-    dispatch(setError());
-  }, []);
 
   return (
     <>

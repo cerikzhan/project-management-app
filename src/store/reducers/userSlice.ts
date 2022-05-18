@@ -33,14 +33,15 @@ export const userSlice = createSlice({
       resetToken();
       state.user = {} as User;
     },
-    setError: (state: StateTypeUser) => {
-      state.error = '';
-    },
   },
   extraReducers: {
     [login.pending.type]: (state) => {
       state.loading = true;
       state.error = '';
+    },
+    [login.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
+      state.loading = false;
+      state.user = action.payload;
     },
     [login.rejected.type]: (state, action) => {
       state.loading = false;
@@ -49,7 +50,6 @@ export const userSlice = createSlice({
     },
     [authUser.pending.type]: (state) => {
       state.loading = true;
-      state.error = '';
     },
     [authUser.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
       state.loading = false;

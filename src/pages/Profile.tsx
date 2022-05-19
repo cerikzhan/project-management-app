@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import UserFrom from '../components/Form';
 import cl from '../components/Form/form.module.scss';
 import { changeUser, deleteUser } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../components/Confirmation';
 
@@ -38,8 +37,6 @@ const Profile: React.FC = () => {
   const handleClose = () => {
     setShowModal(false);
   };
-
-  const navigate = useNavigate();
 
   return (
     <>

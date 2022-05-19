@@ -5,25 +5,26 @@ import './../../assets/library/toggle.css';
 import UserMenu from './../Menu';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { authUser } from '../../store/reducers/actionCreators';
+import { authUser } from './../../store/reducers/actionCreators';
 
 const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [isSticky, setSticky] = useState(false);
-  //const dispatch = useAppDispatch();
-
-  /*useEffect(() => {
-    dispatch(authUser());
-  }, []);*/
 
   useEffect(() => {
     const onScroll = (e: Event) => {
       const doc = e.target as HTMLDocument;
       setSticky(doc.documentElement.scrollTop > 50);
     };
+
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    dispatch(authUser());
   }, []);
 
   return (

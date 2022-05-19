@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { userSlice } from './../../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
-const Menu = () => {
+const Menu: React.FC = () => {
   const { user, lang } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);

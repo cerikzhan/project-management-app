@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { RouteProps } from 'react-router';
 import { Outlet, Navigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { authUser } from '../../store/reducers/actionCreators';
+import { useAppSelector } from '../../hooks/redux';
 
 type TPrivateRoute = RouteProps & {
   redirectTo: string;

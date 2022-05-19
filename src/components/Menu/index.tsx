@@ -39,7 +39,7 @@ const Menu: React.FC = () => {
             <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
               {t('menu.signup')}
             </Link>
-            <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/signin">
               {t('menu.login')}
             </Link>
           </>

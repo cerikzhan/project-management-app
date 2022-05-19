@@ -8,9 +8,9 @@ type TPrivateRoute = RouteProps & {
 };
 
 const PrivateRoute: React.FC<TPrivateRoute> = ({ ...props }) => {
-  const { user } = useAppSelector((state) => state.user);
+  const { loading, user } = useAppSelector((state) => state.user);
   const auth = user.id;
-  return auth ? <Outlet /> : <Navigate to={props.redirectTo} />;
+  return loading ? <Outlet /> : auth ? <Outlet /> : <Navigate to={props.redirectTo} />;
 };
 
 export default PrivateRoute;

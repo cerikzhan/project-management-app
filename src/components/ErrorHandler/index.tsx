@@ -1,6 +1,7 @@
 import React from 'react';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
+import cl from './errorhandler.module.scss';
 
 type BoxProps = {
   children: React.ReactNode;
@@ -10,11 +11,17 @@ const ErrorFallback: React.ComponentType<FallbackProps> = ({ error, resetErrorBo
   const { t } = useTranslation();
   return (
     <div className="container">
-      <h2>{t('errors.text')}</h2>
-      <pre>
-        {t('errors.head')}: {error.message}
-      </pre>
-      <button onClick={resetErrorBoundary}>{t('errors.again')}</button>
+      <div className={cl.alert}>
+        <h2>{t('errors.text')}</h2>
+        <p>
+          <pre>
+            {t('errors.head')}: {error.message}
+          </pre>
+        </p>
+        <button className="button" onClick={resetErrorBoundary}>
+          {t('errors.again')}
+        </button>
+      </div>
     </div>
   );
 };

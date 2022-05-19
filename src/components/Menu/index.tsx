@@ -7,7 +7,6 @@ import cl from './menu.module.scss';
 import { useTranslation } from 'react-i18next';
 import { userSlice } from './../../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import ErrorHandler from '../ErrorHandler';
 
 const Menu: React.FC = () => {
   const { user, lang } = useAppSelector((state) => state.user);
@@ -28,7 +27,7 @@ const Menu: React.FC = () => {
   };
 
   useEffect(() => {
-    throw new Error('Division by zero!');
+    //throw new Error('Division by zero!');
     i18n.changeLanguage(lang);
   }, [lang]);
 

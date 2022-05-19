@@ -46,6 +46,9 @@ const Menu: React.FC = () => {
         )}
         {user.id && (
           <>
+            <Link className={cl.usermenu_button} to="/boards">
+              {t('menu.boards')}
+            </Link>
             <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
               {t('menu.edit_profile')}
             </Link>

@@ -3,6 +3,7 @@ import menu from './menu';
 import board from './board';
 import user from './user';
 import errors from './errors';
+import column from './column';
 
 export default {
   translation: {
@@ -11,5 +12,6 @@ export default {
     board,
     user,
     errors,
+    column,
   },
 };

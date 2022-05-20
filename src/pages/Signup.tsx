@@ -31,11 +31,11 @@ const Signup: React.FC = () => {
     if (user.id) {
       navigate('/boards');
     }
-  }, [user.id]);
+  }, [user.id, navigate]);
 
   useEffect(() => {
     dispatch(resetError());
-  }, []);
+  }, [dispatch, resetError]);
 
   return (
     <Spinner>

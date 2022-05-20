@@ -71,6 +71,9 @@ li {
 }
 
 .board-page {
+  width: 100%;
+  height: calc(100vh - 14rem);
+
   &__header {
     display: flex;
     align-items: center;

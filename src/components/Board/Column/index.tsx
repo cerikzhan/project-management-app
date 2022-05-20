@@ -7,7 +7,6 @@ import Confirmation from '../../Confirmation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { deleteColumn, updateColumn } from '../../../store/reducers/actionCreators';
 import { ColumnHeader } from './Header';
-import { Column } from '../../../types/Entities/Column';
 
 type ColumnProps = {
   column: ColumnItem;
@@ -28,7 +27,6 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column }) => {
     setShowModal(false);
   };
   const confirmHeader = async (val: string) => {
-    //Обновить заголовок колонки
     const { order } = column;
     await dispatch(
       updateColumn({
@@ -37,7 +35,6 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column }) => {
         putColumn: { order, title: val },
       })
     );
-    console.log('new header ', val);
   };
 
   return (

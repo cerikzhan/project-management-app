@@ -8,6 +8,7 @@ type ColumnHeaderProps = {
 };
 
 export const ColumnHeader: React.FC<ColumnHeaderProps> = (props: ColumnHeaderProps) => {
+  const { t } = useTranslation();
   const [columnHeader, setColumnHeader] = useState(props.header);
   const [edit, setEdit] = useState(false);
   const handleConfirm = () => {
@@ -25,8 +26,12 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = (props: ColumnHeaderPro
     <>
       {edit ? (
         <>
-          <div className="button-mini fa fa-times" title="Cancel" onClick={handleAbort} />
-          <div className="button-mini fa fa-check" title="Apply" onClick={handleConfirm} />
+          <div className="button-mini fa fa-times" title={t('user.abort')} onClick={handleAbort} />
+          <div
+            className="button-mini fa fa-check"
+            title={t('user.apply')}
+            onClick={handleConfirm}
+          />
           <input
             className="column__header"
             value={columnHeader}

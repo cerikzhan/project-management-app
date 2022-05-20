@@ -16,7 +16,6 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = (props: ColumnHeaderPro
   };
   const handleAbort = () => {
     setEdit(false);
-    //props.onConfirm(props.header);
   };
   const handleChange = (changedHeader: string) => {
     setColumnHeader(changedHeader);

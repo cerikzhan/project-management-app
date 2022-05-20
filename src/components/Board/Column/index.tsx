@@ -5,14 +5,15 @@ import cl from './column.module.scss';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { deleteColumn } from '../../../store/reducers/actionCreators';
+import { deleteColumn, updateColumn } from '../../../store/reducers/actionCreators';
 import { ColumnHeader } from './Header';
+import { Column } from '../../../types/Entities/Column';
 
 type ColumnProps = {
   column: ColumnItem;
 };
 
-export const Column: React.FC<ColumnProps> = ({ column }) => {
+export const ColumnBoard: React.FC<ColumnProps> = ({ column }) => {
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const dispatch = useAppDispatch();
@@ -26,7 +27,16 @@ export const Column: React.FC<ColumnProps> = ({ column }) => {
   const handleClose = () => {
     setShowModal(false);
   };
-  const confirmHeader = (val: string) => {
+  const confirmHeader = async (val: string) => {
+    //Обновить заголовок колонки
+    const { order } = column;
+    await dispatch(
+      updateColumn({
+        boardId: item.id,
+        columnId: column.id,
+        putColumn: { order, title: val },
+      })
+    );
     console.log('new header ', val);
   };
 

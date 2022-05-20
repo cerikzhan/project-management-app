@@ -4,6 +4,8 @@ import { ColumnItem } from '../../../types/Entities/Column';
 import cl from './column.module.scss';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { deleteColumn } from '../../../store/reducers/actionCreators';
 
 type ColumnProps = {
   column: ColumnItem;
@@ -12,11 +14,13 @@ type ColumnProps = {
 export const Column: React.FC<ColumnProps> = ({ column }) => {
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
-  const handleOpenModal = async (item: ColumnItem) => {
+  const dispatch = useAppDispatch();
+  const { item } = useAppSelector((state) => state.board);
+  const handleOpenModal = async () => {
     setShowModal(true);
   };
-  const handleConfirm = (idColumn: string) => {
-    //dispatch(deleteColumn(idColumn));
+  const handleConfirm = async (boardId: string, columnId: string) => {
+    await dispatch(deleteColumn({ boardId, columnId }));
   };
   const handleClose = () => {
     setShowModal(false);
@@ -30,7 +34,7 @@ export const Column: React.FC<ColumnProps> = ({ column }) => {
         <div
           className="button-mini fa fa-trash-o"
           title={t('column.delete')}
-          onClick={() => handleOpenModal(column)}
+          onClick={handleOpenModal}
         />
       </div>
       {column.tasks.map((task) => (
@@ -40,7 +44,7 @@ export const Column: React.FC<ColumnProps> = ({ column }) => {
         header={t('column.delete')}
         text={`${t('column.delete_text')} ${column.title}?`}
         show={showModal}
-        onConfirm={() => handleConfirm(column.id)}
+        onConfirm={() => handleConfirm(item.id, column.id)}
         onClose={handleClose}
       />
     </div>

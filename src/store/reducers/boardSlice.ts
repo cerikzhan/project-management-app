@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchSingleBoard } from './actionCreators';
+import { fetchSingleBoard, deleteColumn } from './actionCreators';
 import { BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
-  item: BoardItem | null;
+  item: BoardItem;
   loading: boolean;
   error: boolean;
 }
 
 const initialState: StateTypeBoard = {
-  item: null,
+  item: {} as BoardItem,
   loading: false,
   error: false,
 };
@@ -32,7 +32,20 @@ export const boardSlice = createSlice({
     [fetchSingleBoard.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
-      state.item = null;
+      state.item = {} as BoardItem;
+    },
+    [deleteColumn.pending.type]: (state) => {
+      state.loading = true;
+    },
+    [deleteColumn.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem>) => {
+      state.loading = false;
+      if (state.item) {
+        state.item = action.payload;
+      }
+    },
+    [deleteColumn.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
     },
   },
 });

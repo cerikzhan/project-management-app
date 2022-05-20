@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { deleteColumn } from '../../../store/reducers/actionCreators';
+import { ColumnHeader } from './Header';
 
 type ColumnProps = {
   column: ColumnItem;
@@ -25,11 +26,14 @@ export const Column: React.FC<ColumnProps> = ({ column }) => {
   const handleClose = () => {
     setShowModal(false);
   };
+  const confirmHeader = (val: string) => {
+    console.log('new header ', val);
+  };
 
   return (
     <div className={cl.column}>
       <div className={cl.column__header}>
-        <h2 className={cl.column__title}>{column.title}</h2>
+        <ColumnHeader header={column.title} onConfirm={confirmHeader} />
         <div className="button-mini fa fa-plus-square-o" title="Add task" />
         <div
           className="button-mini fa fa-trash-o"

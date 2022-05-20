@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ColumnItem } from '../../../types/Entities/Column';
 import cl from './column.module.scss';
 import { useDrop } from 'react-dnd';
 import { TASK_DRAG } from '../../../types/Constants/drag-types';
+import { TaskItem } from '../../../types/Entities/Task';
 
 type ColumnProps = {
   column: ColumnItem;
+  onDropTask: (task: TaskItem, columnId: string) => void;
   children: React.ReactNode[];
 };
 
-export const Column: React.FC<ColumnProps> = ({ column, children }) => {
+export const Column: React.FC<ColumnProps> = ({ column, onDropTask, children }) => {
   const [{ isOver }, drop] = useDrop(() => ({
     accept: TASK_DRAG,
     drop: (item) => changeColumnOrder(item),
@@ -19,11 +21,9 @@ export const Column: React.FC<ColumnProps> = ({ column, children }) => {
   }));
 
   const changeColumnOrder = (item: unknown) => {
-    console.log(item);
-    console.log(column.title);
+    const { task } = item as { task: TaskItem };
+    onDropTask(task, column.id);
   };
-
-  if (!column.tasks.length) return <div>No tasks</div>;
 
   return (
     <div ref={drop} className={cl.column}>
@@ -34,6 +34,7 @@ export const Column: React.FC<ColumnProps> = ({ column, children }) => {
             +
           </button>
         </div>
+        {!column.tasks.length && <div>No tasks</div>}
         {children}
       </div>
     </div>

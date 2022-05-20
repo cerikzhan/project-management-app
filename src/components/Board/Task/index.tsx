@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task as TaskItem } from '../../../types/Entities/Task';
+import { TaskItem } from '../../../types/Entities/Task';
 import cl from './task.module.scss';
 import { useDrag } from 'react-dnd';
 import { TASK_DRAG } from '../../../types/Constants/drag-types';

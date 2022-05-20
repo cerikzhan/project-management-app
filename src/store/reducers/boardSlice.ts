@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchSingleBoard } from './actionCreators';
+import { fetchSingleBoard, updateTask } from './actionCreators';
 import { BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
@@ -30,6 +30,17 @@ export const boardSlice = createSlice({
       state.item = action.payload;
     },
     [fetchSingleBoard.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+      state.item = null;
+    },
+    [updateTask.pending.type]: (state) => {
+      state.loading = true;
+    },
+    [updateTask.fulfilled.type]: (state: StateTypeBoard) => {
+      state.loading = false;
+    },
+    [updateTask.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
       state.item = null;

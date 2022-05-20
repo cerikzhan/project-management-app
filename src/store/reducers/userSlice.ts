@@ -13,7 +13,7 @@ interface StateTypeUser {
 
 const initialState: StateTypeUser = {
   user: {} as User,
-  loading: false,
+  loading: true,
   error: '',
   lang: 'ru',
   search: 'testboard',

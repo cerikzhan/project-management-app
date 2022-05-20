@@ -8,8 +8,6 @@ type ColumnProps = {
 };
 
 export const Column: React.FC<ColumnProps> = ({ column }) => {
-  if (!column.tasks.length) return <div>No tasks</div>;
-
   return (
     <div className={cl.column}>
       <div className={cl.column__header}>
@@ -17,6 +15,7 @@ export const Column: React.FC<ColumnProps> = ({ column }) => {
         <button className={cl.column__add_task} title="Add task">
           +
         </button>
+        <button className="button_trash fa fa-trash-o"></button>
       </div>
       {column.tasks.map((task) => (
         <Task task={task} key={task.id} />

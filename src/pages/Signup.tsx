@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import cl from '../components/Form/form.module.scss';
 import { userSlice } from '../store/reducers/userSlice';
+import Spinner from '../components/Spinner';
 
 const Signup: React.FC = () => {
   const { t } = useTranslation();
@@ -37,7 +38,7 @@ const Signup: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Spinner>
       <UserFrom
         name={name}
         password={password}
@@ -50,7 +51,7 @@ const Signup: React.FC = () => {
         title={'user.signup_page'}
       />
       {error ? <p className={cl.form__error}>{t('user.user_signUp_error')}</p> : null}
-    </>
+    </Spinner>
   );
 };
 

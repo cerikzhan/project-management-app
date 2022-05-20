@@ -5,6 +5,7 @@ import { changeUser, deleteUser } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../components/Confirmation';
+import Spinner from '../components/Spinner';
 
 const Profile: React.FC = () => {
   const { t } = useTranslation();
@@ -39,7 +40,7 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <>
+    <Spinner>
       <UserFrom
         name={name}
         password={password}
@@ -61,7 +62,7 @@ const Profile: React.FC = () => {
         onConfirm={handleConfirm}
         onClose={handleClose}
       />
-    </>
+    </Spinner>
   );
 };
 

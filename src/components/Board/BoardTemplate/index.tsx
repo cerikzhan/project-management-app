@@ -2,15 +2,12 @@ import React from 'react';
 import { Column } from '../Column';
 import { useAppSelector } from '../../../hooks/redux';
 import cl from './board.module.scss';
+import Spinner from './../../Spinner';
 
 export const BoardTemplate: React.FC = () => {
   const { board } = useAppSelector((state) => state);
 
-  const { item, loading, error } = board;
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const { item, error } = board;
 
   if (error) {
     return <div>{error}</div>;
@@ -21,10 +18,12 @@ export const BoardTemplate: React.FC = () => {
   }
 
   return (
-    <div className={cl.board}>
-      {item.columns.map((column) => (
-        <Column column={column} key={column.id} />
-      ))}
-    </div>
+    <Spinner>
+      <div className={cl.board}>
+        {item.columns.map((column) => (
+          <Column column={column} key={column.id} />
+        ))}
+      </div>
+    </Spinner>
   );
 };

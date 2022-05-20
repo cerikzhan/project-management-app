@@ -11,7 +11,7 @@ const Spinner = (props: ChildrenProps) => {
   const { loading: loadingUser } = useAppSelector((state) => state.user);
   const { loading: loadingBoard } = useAppSelector((state) => state.board);
   const { loading: loadingBoards } = useAppSelector((state) => state.boards);
-  return loadingUser || loadingBoards || loadingBoard ? (
+  return loadingUser || loadingBoard || loadingBoards ? (
     <div className={cl.spinner}>
       <img className={cl.spinner__loader} src={loader} alt="Load results" />
     </div>

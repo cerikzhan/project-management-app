@@ -3,7 +3,7 @@ import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
 import cl from './errorhandler.module.scss';
 
-type BoxProps = {
+type ErrorProps = {
   children: React.ReactNode;
 };
 
@@ -26,7 +26,7 @@ const ErrorFallback: React.ComponentType<FallbackProps> = ({ error, resetErrorBo
   );
 };
 
-const ErrorHandler = (props: BoxProps) => (
+const ErrorHandler = (props: ErrorProps) => (
   <ErrorBoundary FallbackComponent={ErrorFallback}>{props.children}</ErrorBoundary>
 );
 

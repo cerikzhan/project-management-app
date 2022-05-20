@@ -56,7 +56,7 @@ const Boards: React.FC = () => {
               </div>
               <div className={cl['boards__col-narrow']}>
                 <div
-                  className="button_trash fa fa-trash-o"
+                  className="button_trash fa fa-trash-o button-mini"
                   onClick={() => handleOpenModal(item)}
                 ></div>
               </div>

@@ -33,13 +33,13 @@ export const ColumnHeader: React.FC<ColumnHeaderProps> = (props: ColumnHeaderPro
             onClick={handleConfirm}
           />
           <input
-            className="column__header"
+            className={cl.column__header__input}
             value={columnHeader}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e.target.value)}
           />
         </>
       ) : (
-        <h2 className={cl.column__title} onClick={() => setEdit(true)}>
+        <h2 className={cl.column__header__title} onClick={() => setEdit(true)}>
           {props.header}
         </h2>
       )}

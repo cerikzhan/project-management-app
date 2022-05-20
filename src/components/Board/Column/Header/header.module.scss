@@ -14,32 +14,17 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-  }
 
-  &__title {
-    width: 100%;
-    margin: 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+    &__title {
+      flex: 1;
+      margin: 0;
+      font-size: 1.1em;
+    }
 
-  &__add_task {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background-color: #345DEE;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: rgba(52, 93, 238, 0.8);
+    &__input {
+      width: 130px;
+      font-size: 1.1em;
+      font-weight: bold;
     }
   }
 }

@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { userSlice } from './../../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
-const Menu = () => {
+const Menu: React.FC = () => {
   const { user, lang } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
@@ -27,6 +27,7 @@ const Menu = () => {
   };
 
   useEffect(() => {
+    //throw new Error('Division by zero!');
     i18n.changeLanguage(lang);
   }, [lang]);
 
@@ -38,13 +39,16 @@ const Menu = () => {
             <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
               {t('menu.signup')}
             </Link>
-            <Link onClick={() => close()} className={cl.usermenu_button} to="/login">
+            <Link onClick={() => close()} className={cl.usermenu_button} to="/signin">
               {t('menu.login')}
             </Link>
           </>
         )}
         {user.id && (
           <>
+            <Link className={cl.usermenu_button} to="/boards">
+              {t('menu.boards')}
+            </Link>
             <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
               {t('menu.edit_profile')}
             </Link>

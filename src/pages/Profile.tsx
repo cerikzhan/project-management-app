@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import UserFrom from '../components/Form';
 import cl from '../components/Form/form.module.scss';
 import { changeUser, deleteUser } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../components/Confirmation';
+import Spinner from '../components/Spinner';
 
 const Profile: React.FC = () => {
   const { t } = useTranslation();
@@ -39,16 +39,8 @@ const Profile: React.FC = () => {
     setShowModal(false);
   };
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user.id) {
-      navigate('/signup');
-    }
-  }, [user.id]);
-
   return (
-    <>
+    <Spinner>
       <UserFrom
         name={name}
         password={password}
@@ -70,7 +62,7 @@ const Profile: React.FC = () => {
         onConfirm={handleConfirm}
         onClose={handleClose}
       />
-    </>
+    </Spinner>
   );
 };
 

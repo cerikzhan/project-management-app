@@ -2,6 +2,7 @@ import welcome from './welcome';
 import menu from './menu';
 import board from './board';
 import user from './user';
+import errors from './errors';
 
 export default {
   translation: {
@@ -9,5 +10,6 @@ export default {
     menu,
     board,
     user,
+    errors,
   },
 };

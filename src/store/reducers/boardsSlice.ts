@@ -10,7 +10,7 @@ interface StateTypeBoard {
 
 const initialState: StateTypeBoard = {
   boards: [] as Board[],
-  loading: true,
+  loading: false,
   error: false,
 };
 

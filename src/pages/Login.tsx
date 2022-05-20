@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import UserFrom from '../components/Form';
 import cl from '../components/Form/form.module.scss';
 import { userSlice } from '../store/reducers/userSlice';
+import Spinner from './../components/Spinner';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Login: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Spinner>
       <UserFrom
         password={password}
         login={username}
@@ -42,7 +43,7 @@ const Login: React.FC = () => {
         title={'user.login_page'}
       />
       {error ? <p className={cl.form__error}>{t('user.user_login_error')}</p> : null}
-    </>
+    </Spinner>
   );
 };
 

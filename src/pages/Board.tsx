@@ -28,7 +28,6 @@ const Board: React.FC = () => {
         <h1 className={'board-page__title'}>{item.title}</h1>
         <button className={'board-page__add-column'}>Add column</button>
       </div>
-
       <BoardTemplate />
     </div>
   );

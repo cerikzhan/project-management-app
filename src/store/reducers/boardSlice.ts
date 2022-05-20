@@ -10,7 +10,7 @@ interface StateTypeBoard {
 
 const initialState: StateTypeBoard = {
   item: null,
-  loading: true,
+  loading: false,
   error: false,
 };
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getSingleBoard, getAllBoards, removeBoard } from '../../api/board.api';
+import { getSingleBoard, getAllBoards, removeBoard, changeTask } from '../../api/board.api';
 import { removeColumn, putColumn } from '../../api/column.api';
 import {
   fetchLogin,
@@ -28,3 +28,5 @@ export const deleteBoard = createAsyncThunk('boards/deleteBoard', removeBoard);
 export const deleteColumn = createAsyncThunk('boards/deleteBoard', removeColumn);
 
 export const updateColumn = createAsyncThunk('boards/deleteBoard', putColumn);
+
+export const updateTask = createAsyncThunk('tasks/updateTask', changeTask);

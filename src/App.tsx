@@ -15,6 +15,8 @@ import PrivateRoute from './components/PrivateRoute';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import ErrorHandler from './components/ErrorHandler';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const App: React.FC = () => {
   initTranslation('ru');
@@ -22,27 +24,29 @@ const App: React.FC = () => {
   return (
     <ErrorHandler>
       <Provider store={store}>
-        <BrowserRouter>
-          <Header />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signin" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/boards" element={<PrivateRoute redirectTo="/" />}>
-                <Route path="/boards" element={<Main />} />
-              </Route>
-              <Route path="/boards/:id" element={<PrivateRoute redirectTo="/" />}>
-                <Route path="/boards/:id" element={<Board />} />
-              </Route>
-              <Route path="/profile" element={<PrivateRoute redirectTo="/" />}>
-                <Route path="/profile" element={<Profile />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
-          <Footer />
-        </BrowserRouter>
+        <DndProvider backend={HTML5Backend}>
+          <BrowserRouter>
+            <Header />
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/signin" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/boards" element={<PrivateRoute redirectTo="/" />}>
+                  <Route path="/boards" element={<Main />} />
+                </Route>
+                <Route path="/boards/:id" element={<PrivateRoute redirectTo="/" />}>
+                  <Route path="/boards/:id" element={<Board />} />
+                </Route>
+                <Route path="/profile" element={<PrivateRoute redirectTo="/" />}>
+                  <Route path="/profile" element={<Profile />} />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+            <Footer />
+          </BrowserRouter>
+        </DndProvider>
       </Provider>
     </ErrorHandler>
   );

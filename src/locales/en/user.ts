@@ -16,4 +16,5 @@ export default {
   user_signUp: 'Sign up',
   user_signUp_error: 'login already exists',
   user_login_error: 'Incorrect login or password',
+  apply: 'Apply',
 };

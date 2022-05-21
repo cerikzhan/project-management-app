@@ -16,4 +16,5 @@ export default {
   user_signUp: 'Зарегистрироваться',
   user_signUp_error: 'Имя пользователя занято',
   user_login_error: 'Неправильный логин или пароль',
+  apply: 'Применить',
 };

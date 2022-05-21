@@ -50,8 +50,9 @@ export const boardSlice = createSlice({
     [updateTask.pending.type]: (state) => {
       state.loading = true;
     },
-    [updateTask.fulfilled.type]: (state: StateTypeBoard) => {
+    [updateTask.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem>) => {
       state.loading = false;
+      state.item = action.payload;
     },
     [updateTask.rejected.type]: (state, action) => {
       state.loading = false;

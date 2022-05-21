@@ -32,6 +32,8 @@ export const changeTask = async ({
     columnId: newColumnId,
   };
   await request.put(`/boards/${task.boardId}/columns/${task.columnId}/tasks/${task.id}`, data);
+
+  return await getSingleBoard(task.boardId || '');
 };
 
 //удаляет доску по ее id

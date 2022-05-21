@@ -54,6 +54,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
 
   const changeTaskColumn = (item: unknown) => {
     const { task } = item as { task: TaskItem };
+    if (task.columnId === column.id) return;
     dispatch(updateTask({ task, newColumnId: column.id }));
   };
 

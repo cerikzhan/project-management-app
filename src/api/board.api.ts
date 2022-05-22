@@ -26,7 +26,6 @@ export const changeTask = async ({
     title: task.title,
     order: task.order,
     description: task.description,
-    done: task.done,
     userId: task.userId,
     boardId: task.boardId,
     columnId: newColumnId,

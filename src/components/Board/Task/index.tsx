@@ -11,7 +11,7 @@ type TaskProps = {
 export const Task: React.FC<TaskProps> = ({ task }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: TASK_DRAG,
-    item: { task: task },
+    item: { task },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),

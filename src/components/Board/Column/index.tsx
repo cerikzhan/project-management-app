@@ -6,8 +6,8 @@ import Confirmation from '../../Confirmation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { deleteColumn, updateColumn, updateTask } from '../../../store/reducers/actionCreators';
 import { ColumnHeader } from './Header';
-import { useDrop } from 'react-dnd';
-import { TASK_DRAG } from '../../../types/Constants/drag-types';
+import { useDrag, useDrop } from 'react-dnd';
+import { COLUMN_DRAG, TASK_DRAG } from '../../../types/Constants/drag-types';
 import { TaskItem } from '../../../types/Entities/Task';
 
 type ColumnProps = {
@@ -44,23 +44,57 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
     );
   };
 
-  const [{ isOver }, drop] = useDrop(() => ({
+  const [{ isOverOnTask }, dropTask] = useDrop(() => ({
     accept: TASK_DRAG,
     drop: (item) => changeTaskColumn(item),
     collect: (monitor) => ({
-      isOver: monitor.isOver(),
+      isOverOnTask: monitor.isOver(),
     }),
   }));
 
   const changeTaskColumn = (item: unknown) => {
     const { task } = item as { task: TaskItem };
     if (task.columnId === column.id) return;
-    dispatch(updateTask({ task, newColumnId: column.id }));
+    dispatch(updateTask({ task: { ...task, order: 1 }, newColumnId: column.id }));
+  };
+
+  const [{ isDragging }, dragColumn] = useDrag(() => ({
+    type: COLUMN_DRAG,
+    item: { column },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  }));
+
+  const [{ isOverOnColumn }, dropColumn] = useDrop(() => ({
+    accept: COLUMN_DRAG,
+    drop: (item) => changeColumnOrder(item),
+    collect: (monitor) => ({
+      isOverOnColumn: monitor.isOver(),
+    }),
+  }));
+
+  const changeColumnOrder = async (col: unknown) => {
+    const { column: columnItem } = col as { column: ColumnItem };
+
+    await dispatch(
+      updateColumn({
+        boardId: boardItem.id,
+        columnId: columnItem.id,
+        putColumn: {
+          order: column.order,
+          title: columnItem.title,
+        },
+      })
+    );
   };
 
   return (
-    <div className={cl.column} ref={drop}>
-      <div className={`${cl.column__inner} ${isOver ? cl.column__over : ''}`}>
+    <div ref={dropColumn} className={`${cl.column} ${isOverOnColumn ? cl.column__something : ''}`}>
+      <div
+        ref={dragColumn}
+        className={`${cl.column__inner} ${isDragging ? cl.column__dragging : ''}`}
+      >
         <div className={cl.column__header}>
           <ColumnHeader header={column.title} onConfirm={confirmHeader} />
           <div className="button-mini fa fa-plus-square-o" title="Add task" />
@@ -73,7 +107,9 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
 
         {!column.tasks.length && <div>No tasks</div>}
 
-        {children}
+        <div ref={dropTask} className={`${cl.column__body} ${isOverOnTask ? cl.column__over : ''}`}>
+          {children}
+        </div>
       </div>
 
       <Confirmation

@@ -4,7 +4,11 @@ import cl from './column.module.scss';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { deleteColumn, updateColumn, updateTask } from '../../../store/reducers/actionCreators';
+import {
+  deleteColumn,
+  updateColumn,
+  updateTaskColumn,
+} from '../../../store/reducers/actionCreators';
 import { ColumnHeader } from './Header';
 import { useDrag, useDrop } from 'react-dnd';
 import { COLUMN_DRAG, TASK_DRAG } from '../../../types/Constants/drag-types';
@@ -55,7 +59,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
   const changeTaskColumn = (item: unknown) => {
     const { task } = item as { task: TaskItem };
     if (task.columnId === column.id) return;
-    dispatch(updateTask({ task: { ...task, order: 1 }, newColumnId: column.id }));
+    dispatch(updateTaskColumn({ task: { ...task, order: 1 }, newColumnId: column.id }));
   };
 
   const [{ isDragging }, dragColumn] = useDrag(() => ({

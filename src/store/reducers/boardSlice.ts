@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchSingleBoard, deleteColumn, updateTask } from './actionCreators';
+import { fetchSingleBoard, deleteColumn, updateTaskColumn } from './actionCreators';
 import { BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
@@ -47,14 +47,17 @@ export const boardSlice = createSlice({
       state.loading = false;
       state.error = action.error;
     },
-    [updateTask.pending.type]: (state) => {
+    [updateTaskColumn.pending.type]: (state) => {
       state.loading = true;
     },
-    [updateTask.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem>) => {
+    [updateTaskColumn.fulfilled.type]: (
+      state: StateTypeBoard,
+      action: PayloadAction<BoardItem>
+    ) => {
       state.loading = false;
       state.item = action.payload;
     },
-    [updateTask.rejected.type]: (state, action) => {
+    [updateTaskColumn.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
     },

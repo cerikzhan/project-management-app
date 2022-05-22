@@ -1,6 +1,7 @@
 .column {
   width: 250px;
   padding: 5px;
+  flex-shrink: 0;
 
   &__inner {
     display: flex;
@@ -59,7 +60,7 @@
     background-color: rgba(204, 204, 204, 0.04);
   }
 
-  &__something {
+  &.column_over {
     opacity: 0;
   }
 

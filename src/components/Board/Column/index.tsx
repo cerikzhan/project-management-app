@@ -76,6 +76,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
 
   const changeColumnOrder = async (col: unknown) => {
     const { column: columnItem } = col as { column: ColumnItem };
+    if (columnItem.id === column.id) return;
 
     await dispatch(
       updateColumn({
@@ -90,7 +91,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
   };
 
   return (
-    <div ref={dropColumn} className={`${cl.column} ${isOverOnColumn ? cl.column__something : ''}`}>
+    <div ref={dropColumn} className={`${cl.column} ${isOverOnColumn ? cl.column_over : ''}`}>
       <div
         ref={dragColumn}
         className={`${cl.column__inner} ${isDragging ? cl.column__dragging : ''}`}

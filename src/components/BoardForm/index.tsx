@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
 import cl from './boardForm.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/redux';
 
 type FormProps = {
   header: string;
@@ -16,6 +18,8 @@ type FormProps = {
 
 const BoardForm: React.FC<FormProps> = (props) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { currentId } = useAppSelector((state) => state.board);
 
   const closeModal = () => {
     props.onClose();
@@ -36,6 +40,10 @@ const BoardForm: React.FC<FormProps> = (props) => {
   useEffect(() => {
     Modal.setAppElement('.container');
   });
+
+  useEffect(() => {
+    navigate(`/boards/${currentId}`);
+  }, [currentId]);
 
   return (
     <>

@@ -1,35 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useTranslation } from 'react-i18next';
-import cl from './boardForm.module.scss';
+import cl from './addBoardForm.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { addNewBoard, fetchAllBoards } from '../../store/reducers/actionCreators';
 
 type FormProps = {
-  header: string;
-  title: string;
-  description?: string;
-  setTitle: (title: string) => void;
-  setDescription?: (description: string) => void;
-  onForm: () => void;
   onClose: () => void;
   show: boolean;
 };
 
-const BoardForm: React.FC<FormProps> = (props) => {
+const AddBoardForm: React.FC<FormProps> = (props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { currentId } = useAppSelector((state) => state.board);
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
 
   const closeModal = () => {
     props.onClose();
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    props.onForm();
-    props.setTitle('');
-    props.setDescription ? props.setDescription('') : null;
+    await dispatch(addNewBoard({ title, description }));
+    await dispatch(fetchAllBoards());
+    setTitle('');
+    setDescription('');
     props.onClose();
   };
 
@@ -59,32 +58,28 @@ const BoardForm: React.FC<FormProps> = (props) => {
           x
         </button>
         <form onSubmit={handleSubmit} className={cl.boardForm__container}>
-          <legend className={cl.boardForm__legend}>{props.header}</legend>
+          <legend className={cl.boardForm__legend}>{t('menu.new_board')}</legend>
           <label className={cl.boardForm__label}>
             {t('board.board_title')}
             <input
               required
               className={cl.boardForm__input}
               type="text"
-              value={props.title}
-              onChange={(e) => props.setTitle(e.target.value)}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </label>
-          {typeof props.description !== 'undefined' ? (
-            <label className={cl.boardForm__label}>
-              {t('board.board_description')}
-              <textarea
-                required
-                rows={5}
-                maxLength={300}
-                className={cl.boardForm__textarea}
-                value={props.description}
-                onChange={(e) =>
-                  props.setDescription ? props.setDescription(e.target.value) : null
-                }
-              />
-            </label>
-          ) : null}
+          <label className={cl.boardForm__label}>
+            {t('board.board_description')}
+            <textarea
+              required
+              rows={5}
+              maxLength={300}
+              className={cl.boardForm__textarea}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
           <fieldset className={cl.boardForm__buttons}>
             <input className={cl.boardForm__button} type="submit" value={t('board.create')} />
             <button className={cl.boardForm__button} onClick={closeModal}>
@@ -97,4 +92,4 @@ const BoardForm: React.FC<FormProps> = (props) => {
   );
 };
 
-export default BoardForm;
+export default AddBoardForm;

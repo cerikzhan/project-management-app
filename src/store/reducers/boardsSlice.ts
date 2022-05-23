@@ -5,13 +5,13 @@ import { Board } from '../../types/Entities/Board';
 interface StateTypeBoard {
   boards: Board[];
   loading: boolean;
-  error: boolean;
+  error: Error | null;
 }
 
 const initialState: StateTypeBoard = {
   boards: [] as Board[],
   loading: false,
-  error: false,
+  error: null,
 };
 
 export const boardsSlice = createSlice({
@@ -20,6 +20,7 @@ export const boardsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchAllBoards.pending.type]: (state) => {
+      state.error = null;
       state.loading = true;
     },
     [fetchAllBoards.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
@@ -32,6 +33,7 @@ export const boardsSlice = createSlice({
       state.boards = [];
     },
     [deleteBoard.pending.type]: (state) => {
+      state.error = null;
       state.loading = true;
     },
     [deleteBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {

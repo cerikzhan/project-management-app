@@ -12,14 +12,14 @@ import { BoardItem, Board } from '../../types/Entities/Board';
 interface StateTypeBoard {
   item: BoardItem;
   loading: boolean;
-  error: boolean;
+  error: Error | null;
   currentId: string;
 }
 
 const initialState: StateTypeBoard = {
   item: {} as BoardItem,
   loading: false,
-  error: false,
+  error: null,
   currentId: '',
 };
 
@@ -55,6 +55,7 @@ export const boardSlice = createSlice({
     [updateColumn.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
+      state.item = {} as BoardItem;
     },
     [deleteColumn.pending.type]: (state) => {
       state.loading = true;

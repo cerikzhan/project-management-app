@@ -5,15 +5,10 @@ import cl from './board.module.scss';
 import { Task } from '../Task';
 
 export const BoardTemplate: React.FC = () => {
-  const { board } = useAppSelector((state) => state);
+  const { item: boardItem } = useAppSelector((state) => state.board);
 
-  const { item: boardItem, error } = board;
-  if (!boardItem.columns || !boardItem.columns.length) {
+  if (!boardItem || !boardItem.columns || !boardItem.columns.length) {
     return <div>No columns</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
   }
 
   const boardColumns = [...boardItem.columns].sort((a, b) => a.order - b.order);

@@ -9,8 +9,6 @@ const Board: React.FC = () => {
   const params = useParams();
 
   const dispatch = useAppDispatch();
-  const { board } = useAppSelector((state) => state);
-  const { item } = board;
 
   useEffect(() => {
     const boardId = params.id;
@@ -19,20 +17,28 @@ const Board: React.FC = () => {
     }
   }, [dispatch, params.id]);
 
+  const { item, error } = useAppSelector((state) => state.board);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
   if (!item) {
     return <div>Some thing wrong</div>; // redirect to boards list page
   }
 
   return (
-    <Spinner>
-      <div className="board-page">
-        <div className={'board-page__header'}>
-          <h1 className={'board-page__title'}>{item.title}</h1>
-          <button className={'board-page__add-column'}>Add column</button>
+    <>
+      <Spinner>
+        <div className="board-page">
+          <div className={'board-page__header'}>
+            <h1 className={'board-page__title'}>{item.title}</h1>
+            <button className={'board-page__add-column'}>Add column</button>
+          </div>
+          <BoardTemplate />
         </div>
-        <BoardTemplate />
-      </div>
-    </Spinner>
+      </Spinner>
+    </>
   );
 };
 

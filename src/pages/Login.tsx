@@ -42,7 +42,7 @@ const Login: React.FC = () => {
         submitValue={'user.login'}
         title={'user.login_page'}
       />
-      {error ? <p className={cl.form__error}>{t('user.user_login_error')}</p> : null}
+      {error ? <p className={cl.form__error}>{t(`user.user_login_error`)}</p> : null}
     </Spinner>
   );
 };

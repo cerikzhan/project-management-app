@@ -50,6 +50,14 @@ li {
   margin: 0.3em 0;
 }
 
+.error {
+  width: 80%;
+  border: 2px dashed#cc0000;
+  padding: 2em;
+  margin: 2em auto;
+  text-align: center;
+}
+
 .button {
   cursor: pointer;
   text-decoration: none;

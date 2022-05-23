@@ -7,27 +7,25 @@ type ErrorProps = {
   children: React.ReactNode;
 };
 
-const ErrorFallback: React.ComponentType<FallbackProps> = ({ error, resetErrorBoundary }) => {
-  const { t } = useTranslation();
-  return (
-    <div className="container">
-      <div className={cl.alert}>
-        <h2>{t('errors.text')}</h2>
-        <p>
-          <pre>
+const ErrorHandler = (props: ErrorProps) => {
+  const ErrorFallback: React.ComponentType<FallbackProps> = ({ error, resetErrorBoundary }) => {
+    const { t } = useTranslation();
+    return (
+      <div className="container">
+        <div className={cl.alert}>
+          <h2>{t('errors.text')}</h2>
+          <p>
             {t('errors.head')}: {error.message}
-          </pre>
-        </p>
-        <button className="button" onClick={resetErrorBoundary}>
-          {t('errors.again')}
-        </button>
+          </p>
+          <button className="button" onClick={resetErrorBoundary}>
+            {t('errors.again')}
+          </button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
-const ErrorHandler = (props: ErrorProps) => (
-  <ErrorBoundary FallbackComponent={ErrorFallback}>{props.children}</ErrorBoundary>
-);
+  return <ErrorBoundary FallbackComponent={ErrorFallback}>{props.children}</ErrorBoundary>;
+};
 
 export default ErrorHandler;

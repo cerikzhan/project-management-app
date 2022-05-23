@@ -2,7 +2,6 @@ import request from './request';
 import { TaskItem } from '../types/Entities/Task';
 import { getSingleBoard } from './board.api';
 
-//обнавить column у Task
 export const changeTaskColumn = async ({
   task,
   newColumnId,
@@ -21,4 +20,12 @@ export const changeTaskColumn = async ({
   await request.put(`/boards/${task.boardId}/columns/${task.columnId}/tasks/${task.id}`, data);
 
   return await getSingleBoard(task.boardId || '');
+};
+
+export const removeTask = async (taskData: TaskItem) => {
+  await request.delete(
+    `/boards/${taskData.boardId}/columns/${taskData.columnId}/tasks/${taskData.id}`
+  );
+  const response = await request.get(`/boards/${taskData.boardId}`);
+  return response.data;
 };

@@ -1,13 +1,6 @@
 import request from './request';
-import { Column } from '../types/Entities/Column';
 
-export const removeColumn = async (columnData: { boardId: string; columnId: string }) => {
-  await request.delete(`/boards/${columnData.boardId}/columns/${columnData.columnId}`);
-  const response = await request.get<Column[]>(`/boards/${columnData.boardId}`);
-  return response.data;
-};
-
-export const putColumn = async (columnData: {
+export const changeColumn = async (columnData: {
   boardId: string;
   columnId: string;
   putColumn: { order: number; title: string };
@@ -16,6 +9,12 @@ export const putColumn = async (columnData: {
     `/boards/${columnData.boardId}/columns/${columnData.columnId}`,
     columnData.putColumn
   );
-  const response = await request.get<Column[]>(`/boards/${columnData.boardId}`);
+  const response = await request.get(`/boards/${columnData.boardId}`);
+  return response.data;
+};
+
+export const removeColumn = async (columnData: { boardId: string; columnId: string }) => {
+  await request.delete(`/boards/${columnData.boardId}/columns/${columnData.columnId}`);
+  const response = await request.get(`/boards/${columnData.boardId}`);
   return response.data;
 };

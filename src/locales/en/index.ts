@@ -4,6 +4,7 @@ import board from './board';
 import user from './user';
 import errors from './errors';
 import column from './column';
+import task from './task';
 
 export default {
   translation: {
@@ -13,5 +14,6 @@ export default {
     user,
     errors,
     column,
+    task,
   },
 };

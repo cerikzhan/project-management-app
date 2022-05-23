@@ -21,4 +21,13 @@
   &__dragging {
     opacity: 0.3;
   }
+
+  &__emerging {
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  &:hover &__emerging {
+      opacity: 1;
+    }
 }

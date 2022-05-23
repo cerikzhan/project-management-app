@@ -42,7 +42,7 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
       <h3 className={cl.task__title}>{task.title}</h3>
       <p className={cl.task__description}>{task.description}</p>
       <div
-        className="button-mini fa fa-trash-o"
+        className={`${cl.task__emerging} button-mini emerging fa fa-trash-o`}
         title={t('task.delete')}
         onClick={handleOpenModal}
       />

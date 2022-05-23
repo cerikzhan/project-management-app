@@ -10,7 +10,6 @@ type TPrivateRoute = RouteProps & {
 const PrivateRoute: React.FC<TPrivateRoute> = ({ ...props }) => {
   const { loading, user } = useAppSelector((state) => state.user);
   const auth = user.id;
-  //return <Outlet />;
   return loading ? <Outlet /> : auth ? <Outlet /> : <Navigate to={props.redirectTo} />;
 };
 

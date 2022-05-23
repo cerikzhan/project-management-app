@@ -6,6 +6,7 @@ import { TASK_DRAG } from '../../../types/Constants/drag-types';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
 import { useAppDispatch } from '../../../hooks/redux';
+import { deleteTask } from '../../../store/reducers/actionCreators';
 
 type TaskProps = {
   task: TaskItem;
@@ -29,7 +30,7 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
   };
 
   const handleConfirm = async (task: TaskItem) => {
-    //await dispatch(deleteTask({ boardId, columnId, taskId }));
+    await dispatch(deleteTask(task));
   };
 
   const handleClose = () => {

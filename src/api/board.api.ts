@@ -19,3 +19,16 @@ export const removeBoard = async (boardId: string) => {
   const response = await request.get<Board[]>('/boards');
   return response.data;
 };
+
+//create new board
+export const createNewBoard = async ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => {
+  const response = await request.post<BoardItem>('/boards', { title, description });
+
+  return response.data;
+};

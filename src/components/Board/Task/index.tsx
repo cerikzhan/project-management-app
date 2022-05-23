@@ -42,7 +42,7 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
       <p className={cl.task__description}>{task.description}</p>
       <div
         className="button-mini fa fa-trash-o"
-        title={t('column.delete')}
+        title={t('task.delete')}
         onClick={handleOpenModal}
       />
       <Confirmation

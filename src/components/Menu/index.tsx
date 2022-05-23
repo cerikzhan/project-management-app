@@ -7,6 +7,8 @@ import cl from './menu.module.scss';
 import { useTranslation } from 'react-i18next';
 import { userSlice } from './../../store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import BoardForm from '../BoardForm';
+import { addNewBoard, fetchAllBoards } from '../../store/reducers/actionCreators';
 
 const Menu: React.FC = () => {
   const { user, lang } = useAppSelector((state) => state.user);
@@ -16,6 +18,9 @@ const Menu: React.FC = () => {
   const dispatch = useAppDispatch();
   const close = () => setOpen(false);
   const { setLang, logoutUser } = userSlice.actions;
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [showModal, setShowModal] = useState(false);
 
   const logout = async () => {
     await dispatch(logoutUser());
@@ -26,51 +31,76 @@ const Menu: React.FC = () => {
     await dispatch(setLang(e.target.checked ? 'en' : 'ru'));
   };
 
+  const handleOpenModal = async () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const createNewBoard = async () => {
+    await dispatch(addNewBoard({ title, description }));
+    await dispatch(fetchAllBoards());
+  };
+
   useEffect(() => {
     //throw new Error('Division by zero!');
     i18n.changeLanguage(lang);
   }, [lang]);
 
   return (
-    <div ref={node}>
-      <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-        {!user.id && (
-          <>
-            <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
-              {t('menu.signup')}
-            </Link>
-            <Link onClick={() => close()} className={cl.usermenu_button} to="/signin">
-              {t('menu.login')}
-            </Link>
-          </>
-        )}
-        {user.id && (
-          <>
-            <Link className={cl.usermenu_button} to="/boards">
-              {t('menu.boards')}
-            </Link>
-            <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
-              {t('menu.edit_profile')}
-            </Link>
-            <Link onClick={() => close()} className={cl.usermenu_button} to="">
-              {t('menu.new_board')}
-            </Link>
-            <div className={cl.usermenu_username}>{user.login}</div>
-            <Link onClick={() => logout()} className={cl.usermenu_button} to="/">
-              {t('menu.logout')}
-            </Link>
-          </>
-        )}
-        <label className="react-toggle-label">
-          <Toggle
-            defaultChecked={lang === 'en'}
-            icons={{ checked: 'en', unchecked: 'ru' }}
-            onChange={chooseLang}
-          />
-        </label>
-      </nav>
-      <Hamburger open={open} setOpen={setOpen} />
-    </div>
+    <>
+      <div ref={node}>
+        <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
+          {!user.id && (
+            <>
+              <Link onClick={() => close()} className={cl.usermenu_button} to="/signup">
+                {t('menu.signup')}
+              </Link>
+              <Link onClick={() => close()} className={cl.usermenu_button} to="/signin">
+                {t('menu.login')}
+              </Link>
+            </>
+          )}
+          {user.id && (
+            <>
+              <Link className={cl.usermenu_button} to="/boards">
+                {t('menu.boards')}
+              </Link>
+              <Link onClick={() => close()} className={cl.usermenu_button} to="/profile">
+                {t('menu.edit_profile')}
+              </Link>
+              <button onClick={handleOpenModal} className={cl.usermenu_button}>
+                {t('menu.new_board')}
+              </button>
+              <div className={cl.usermenu_username}>{user.login}</div>
+              <Link onClick={() => logout()} className={cl.usermenu_button} to="/">
+                {t('menu.logout')}
+              </Link>
+            </>
+          )}
+          <label className="react-toggle-label">
+            <Toggle
+              defaultChecked={lang === 'en'}
+              icons={{ checked: 'en', unchecked: 'ru' }}
+              onChange={chooseLang}
+            />
+          </label>
+        </nav>
+        <Hamburger open={open} setOpen={setOpen} />
+      </div>
+      <BoardForm
+        header={t('menu.new_board')}
+        title={title}
+        description={description}
+        setTitle={setTitle}
+        setDescription={setDescription}
+        onForm={createNewBoard}
+        onClose={handleClose}
+        show={showModal}
+      />
+    </>
   );
 };
 

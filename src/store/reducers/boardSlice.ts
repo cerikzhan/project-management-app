@@ -5,6 +5,7 @@ import {
   updateTaskColumn,
   updateColumn,
   deleteTask,
+  addNewBoard,
 } from './actionCreators';
 import { BoardItem } from '../../types/Entities/Board';
 
@@ -88,6 +89,16 @@ export const boardSlice = createSlice({
       state.item = action.payload;
     },
     [deleteTask.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    },
+    [addNewBoard.pending.type]: (state) => {
+      state.loading = true;
+    },
+    [addNewBoard.fulfilled.type]: (state) => {
+      state.loading = false;
+    },
+    [addNewBoard.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
     },

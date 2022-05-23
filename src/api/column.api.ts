@@ -7,7 +7,7 @@ export const removeColumn = async (columnData: { boardId: string; columnId: stri
   return response.data;
 };
 
-export const putColumn = async (columnData: {
+export const changeColumn = async (columnData: {
   boardId: string;
   columnId: string;
   putColumn: { order: number; title: string };

@@ -28,21 +28,23 @@ const App: React.FC = () => {
           <BrowserRouter>
             <Header />
             <div className="container">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/signin" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/boards" element={<PrivateRoute redirectTo="/" />}>
-                  <Route path="/boards" element={<Main />} />
-                </Route>
-                <Route path="/boards/:id" element={<PrivateRoute redirectTo="/" />}>
-                  <Route path="/boards/:id" element={<Board />} />
-                </Route>
-                <Route path="/profile" element={<PrivateRoute redirectTo="/" />}>
-                  <Route path="/profile" element={<Profile />} />
-                </Route>
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <div className="page">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/signin" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/boards" element={<PrivateRoute redirectTo="/" />}>
+                    <Route path="/boards" element={<Main />} />
+                  </Route>
+                  <Route path="/boards/:id" element={<PrivateRoute redirectTo="/" />}>
+                    <Route path="/boards/:id" element={<Board />} />
+                  </Route>
+                  <Route path="/profile" element={<PrivateRoute redirectTo="/" />}>
+                    <Route path="/profile" element={<Profile />} />
+                  </Route>
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </div>
             </div>
             <Footer />
           </BrowserRouter>

@@ -47,27 +47,27 @@ const Menu: React.FC = () => {
         <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
           {!user.id && (
             <>
-              <Link onClick={close} className={cl.usermenu_button} to="/signup">
-                {t('menu.signup')}
-              </Link>
-              <Link onClick={close} className={cl.usermenu_button} to="/signin">
+              <Link onClick={close} className="button" to="/signin">
                 {t('menu.login')}
+              </Link>
+              <Link className={`blue-button`} to="/signup">
+                {t('menu.signup')}
               </Link>
             </>
           )}
           {user.id && (
             <>
-              <Link className={cl.usermenu_button} to="/boards">
+              <Link className="button" to="/boards">
                 {t('menu.boards')}
               </Link>
-              <Link onClick={close} className={cl.usermenu_button} to="/profile">
+              <Link onClick={close} className="button" to="/profile">
                 {t('menu.edit_profile')}
               </Link>
-              <button onClick={handleOpenModal} className={cl.usermenu_button}>
+              <Link onClick={handleOpenModal} className="button" to="#">
                 {t('menu.new_board')}
-              </button>
+              </Link>
               <div className={cl.usermenu_username}>{user.login}</div>
-              <Link onClick={logout} className={cl.usermenu_button} to="/">
+              <Link onClick={logout} className="button" to="/">
                 {t('menu.logout')}
               </Link>
             </>

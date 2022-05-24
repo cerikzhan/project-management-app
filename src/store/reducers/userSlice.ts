@@ -15,7 +15,7 @@ const initialState: StateTypeUser = {
   user: {} as User,
   loading: true,
   error: null,
-  lang: 'ru',
+  lang: 'en',
   search: 'testboard',
 };
 

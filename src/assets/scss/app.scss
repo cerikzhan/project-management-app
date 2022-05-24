@@ -19,7 +19,8 @@ html {
 }
 
 body {
-  background: url("./../images/bg.webp");
+  background: url("./../images/bg.webp"), rgba(255, 255, 255, 0.25);
+  background-blend-mode: color;
   background-size: cover;
 }
 
@@ -33,6 +34,11 @@ p {
   margin: 0 auto;
   padding: 0 20px;
   text-align: justify;
+}
+
+.page {
+  background: #ffffffd6;
+  padding: 2em;
 }
 
 .link {
@@ -61,36 +67,6 @@ li {
   margin: 0.3em 0;
 }
 
-.error {
-  width: 80%;
-  border: 2px dashed#cc0000;
-  padding: 2em;
-  margin: 2em auto;
-  text-align: center;
-}
-
-.button {
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  padding: 0.5em 1em;
-  position: relative;
-  color: #585858;
-  font-size: 0.85em;
-  border: 1px solid rgb(138, 138, 138);
-  background: #cccccc;
-  letter-spacing: 1px;
-  font-weight: 300;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  white-space: nowrap;
-  min-width: 6em;
-
-  &:hover {
-    background: #aaaaaa;
-  }
-}
-
 .board-page {
   width: 100%;
   height: calc(100vh - 14rem);
@@ -114,4 +90,11 @@ li {
       background-color: rgba(52, 93, 238, 0.8);
     }
   }
+
+.error {
+  width: 80%;
+  border: 2px dashed#cc0000;
+  padding: 2em;
+  margin: 2em auto;
+  text-align: center;
 }

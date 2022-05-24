@@ -2,14 +2,15 @@
   width: 100%;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #cccccc;
   font-size: 1.125rem;
-  text-transform: uppercase;
-  background: #cccccc;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
+  background: rgb(0 0 0 / 63%);
+  border-bottom: 1px solid #3f3f3f;
+
   @media (max-width: 768px) {
     min-height: 55px;
   }
+
   &-sticky {
     position: fixed;
     top: 0;
@@ -23,6 +24,7 @@
     padding-bottom: 0px;
     font-size: 1rem;
   }
+
   &__navbar {
     height: 100%;
     display: flex;

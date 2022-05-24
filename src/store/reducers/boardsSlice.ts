@@ -5,7 +5,7 @@ import { Board } from '../../types/Entities/Board';
 interface StateTypeBoard {
   boards: Board[];
   loading: boolean;
-  error: Error | null;
+  error: { message: string; code: string } | null;
 }
 
 const initialState: StateTypeBoard = {

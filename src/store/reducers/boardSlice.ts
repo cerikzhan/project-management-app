@@ -7,12 +7,12 @@ import {
   deleteTask,
   addNewBoard,
 } from './actionCreators';
-import { BoardItem, Board } from '../../types/Entities/Board';
+import { BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
   item: BoardItem;
   loading: boolean;
-  error: Error | null;
+  error: { message: string; code: string } | null;
   currentId: string;
 }
 

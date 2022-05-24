@@ -5,7 +5,10 @@ export const changeColumn = async (columnData: {
   columnId: string;
   putColumn: { order: number; title: string };
 }) => {
-  await request.put(`/boards/${columnData.boardId}/columns/12`, columnData.putColumn);
+  await request.put(
+    `/boards/${columnData.boardId}/columns/${columnData.columnId}`,
+    columnData.putColumn
+  );
   const response = await request.get(`/boards/${columnData.boardId}`);
   return response.data;
 };

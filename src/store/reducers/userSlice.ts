@@ -6,7 +6,7 @@ import { resetToken } from './../../services/userService';
 interface StateTypeUser {
   user: User;
   loading: boolean;
-  error: Error | null;
+  error: { message: string; code: string } | null;
   lang: string;
   search: string;
 }

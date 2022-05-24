@@ -7,6 +7,7 @@ import UserFrom from '../components/Form';
 import cl from '../components/Form/form.module.scss';
 import { userSlice } from '../store/reducers/userSlice';
 import Spinner from './../components/Spinner';
+import { StatusCodes } from 'http-status-codes';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -22,14 +23,21 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
+    dispatch(resetError());
+  }, [user.id, navigate, dispatch, resetError]);
+
+  useEffect(() => {
     if (user.id) {
       navigate('/boards');
     }
-  }, [user.id, navigate]);
-
-  useEffect(() => {
-    dispatch(resetError());
-  }, [dispatch, resetError]);
+    if (
+      error &&
+      Number(error.code) !== StatusCodes.FORBIDDEN &&
+      Number(error.code) !== StatusCodes.CONFLICT
+    ) {
+      throw new Error(error.message);
+    }
+  }, [user.id, navigate, error]);
 
   return (
     <Spinner>

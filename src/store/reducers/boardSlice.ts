@@ -7,7 +7,7 @@ import {
   deleteTask,
   addNewBoard,
 } from './actionCreators';
-import { BoardItem } from '../../types/Entities/Board';
+import { BoardItem, Board } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
   item: BoardItem;

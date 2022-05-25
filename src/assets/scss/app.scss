@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background: url("./../images/bg.webp"), rgba(255, 255, 255, 0.25);
+  background: url("./../images/bg.webp"), rgba(255, 255, 255, 0.15);
   background-blend-mode: color;
   background-size: cover;
 }
@@ -36,9 +36,13 @@ p {
   text-align: justify;
 }
 
-.page {
+.paper {
   background: #ffffffd6;
-  padding: 2em;
+  padding: 2em 3em;
+}
+
+.page {
+  margin: 2em 0;
 }
 
 .link {

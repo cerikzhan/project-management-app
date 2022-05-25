@@ -7,7 +7,9 @@ const Main: React.FC = () => {
   return (
     <>
       <h1>{t('board.boards_page')}</h1>
-      <Boards />
+      <div className="paper">
+        <Boards />
+      </div>
     </>
   );
 };

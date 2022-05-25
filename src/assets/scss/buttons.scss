@@ -64,7 +64,7 @@
   }
 }
 
-.blue-button {
+.color-button {
   text-decoration: none;
   display: inline-block;
   padding: 0.5em 1em;
@@ -76,11 +76,12 @@
   font-family: sans-serif;
   cursor: pointer;
   white-space: nowrap;
-  background: #56c5ec;
-  transition: all 0.5s ease-out;
+  height: 2.2em;
   letter-spacing: 0.5px;
+  background: #efbb2a;
+  transition: all 0.5s ease-out;
 
   &:hover {
-    background: #80cce6;
+    background: #dda60e;
   }
 }

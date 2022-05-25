@@ -41,7 +41,9 @@ const AddBoardForm: React.FC<FormProps> = (props) => {
   });
 
   useEffect(() => {
-    navigate(`/boards/${currentId}`);
+    if (currentId) {
+      navigate(`/boards/${currentId}`);
+    }
   }, [currentId]);
 
   return (

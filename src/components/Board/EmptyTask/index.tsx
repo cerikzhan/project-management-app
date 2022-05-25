@@ -16,7 +16,6 @@ const style = {
 
 const overStyle = {
   ...style,
-  background: 'blue',
 };
 
 export const EmptyTask: React.FC<EmptyTaskProps> = ({ column, changeTaskColumn }) => {
@@ -29,9 +28,18 @@ export const EmptyTask: React.FC<EmptyTaskProps> = ({ column, changeTaskColumn }
         .sort((a, b) => a - b)
         .reverse();
 
-      const sameTaskOrder = task.columnId === column.id && task.order === taskOrders[0];
+      let lastOrder = taskOrders[0];
+      const taskCount = column.tasks.length;
 
-      const data = { task, columnId: column.id, order: taskOrders[0] + 1 };
+      if (task.columnId === column.id) {
+        lastOrder = taskCount;
+      } else {
+        lastOrder += 1;
+      }
+
+      const sameTaskOrder = task.columnId === column.id && task.order === lastOrder;
+
+      const data = { task, columnId: column.id, order: lastOrder || 1 };
 
       changeTaskColumn(sameTaskOrder ? null : data);
     },

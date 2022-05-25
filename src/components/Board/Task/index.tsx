@@ -52,8 +52,8 @@ export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
   };
 
   return (
-    <div ref={drag} className={`${cl.task} ${isDragging ? cl.task__dragging : ''}`}>
-      <div ref={dropTask} className={`${cl.task__inner} ${isOverOnTask ? cl.task__over : ''}`}>
+    <div ref={dropTask} className={`${cl.task} ${isOverOnTask ? cl.task__over : ''}`}>
+      <div ref={drag} className={`${cl.task__inner} ${isDragging ? cl.task__dragging : ''}`}>
         <h3 className={cl.task__title}>{task.title}</h3>
         <p className={cl.task__description}>{task.description}</p>
         <div

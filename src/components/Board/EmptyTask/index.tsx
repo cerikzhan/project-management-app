@@ -3,19 +3,11 @@ import { ColumnItem } from '../../../types/Entities/Column';
 import { useDrop } from 'react-dnd';
 import { TASK_DRAG } from '../../../types/Constants/drag-types';
 import { TaskItem } from '../../../types/Entities/Task';
+import cl from './empty-task.module.scss';
 
 type EmptyTaskProps = {
   column: ColumnItem;
   changeTaskColumn: (item: unknown) => void;
-};
-
-const style = {
-  width: '100%',
-  height: '100%',
-};
-
-const overStyle = {
-  ...style,
 };
 
 export const EmptyTask: React.FC<EmptyTaskProps> = ({ column, changeTaskColumn }) => {
@@ -48,5 +40,9 @@ export const EmptyTask: React.FC<EmptyTaskProps> = ({ column, changeTaskColumn }
     }),
   }));
 
-  return <div ref={dropTask} style={isOverOnTask ? overStyle : style} />;
+  return (
+    <div ref={dropTask} className={`${cl.empty_task} ${isOverOnTask ? cl.over : ''}`}>
+      <div className={cl.placeholder} />
+    </div>
+  );
 };

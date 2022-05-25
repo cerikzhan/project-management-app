@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import UserFrom from '../components/Form';
-import cl from '../components/Form/form.module.scss';
 import { changeUser, deleteUser } from '../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useTranslation } from 'react-i18next';
@@ -41,27 +40,33 @@ const Profile: React.FC = () => {
 
   return (
     <Spinner>
-      <UserFrom
-        name={name}
-        password={password}
-        login={login}
-        setName={setName}
-        setPassword={setPassword}
-        setLogin={setLogin}
-        submitHandler={submitHandler}
-        submitValue={'user.user_edit'}
-        title={'user.profile_page'}
-      />
-      <button className={cl.form__delete} type="button" onClick={() => handleOpenModal()}>
-        {t('user.user_delete')}
-      </button>
-      <Confirmation
-        header={t('user.profile_delete')}
-        text={t('user.profile_delete_text')}
-        show={showModal}
-        onConfirm={handleConfirm}
-        onClose={handleClose}
-      />
+      <div className="paper width-fit">
+        <UserFrom
+          name={name}
+          password={password}
+          login={login}
+          setName={setName}
+          setPassword={setPassword}
+          setLogin={setLogin}
+          submitHandler={submitHandler}
+          submitValue={'user.user_edit'}
+          title={'user.profile_page'}
+        />
+        <button
+          className="white-button btn big-button"
+          type="button"
+          onClick={() => handleOpenModal()}
+        >
+          {t('user.user_delete')}
+        </button>
+        <Confirmation
+          header={t('user.profile_delete')}
+          text={t('user.profile_delete_text')}
+          show={showModal}
+          onConfirm={handleConfirm}
+          onClose={handleClose}
+        />
+      </div>
     </Spinner>
   );
 };

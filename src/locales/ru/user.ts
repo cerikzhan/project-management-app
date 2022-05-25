@@ -6,7 +6,7 @@ export default {
   user_name: 'Имя:',
   user_login: 'Логин:',
   user_password: 'Пароль:',
-  user_edit: 'Изменить профиль',
+  user_edit: 'Сохранить',
   user_delete: 'Удалить профиль',
   confirm: 'Да',
   abort: 'Отмена',

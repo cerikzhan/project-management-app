@@ -1,34 +1,27 @@
 .form {
   display: flex;
-  padding-top: 40px;
   flex-direction: column;
-  row-gap: 40px;
-
-  &__legend {
-    font-size: 2rem;
-  }
+  row-gap: 2em;
 
   &__label {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: 1.3rem;
   }
 
   &__input {
     outline: none;
-    border: none;
-    border-bottom: solid #363636;
-    border-width: 0;
     width: 400px;
-    height: 35px;
-    font-size: medium;
-    background-color: #DCD7D4;
+    padding: 0.5em;
+    border: 1px solid #aaaaaa;
+    background-color: rgb(255 255 255);
     transition: 0.1 s;
     font-size: 1.3rem;
     
-    &:focus {
+    &:focus, &:active {
       border-width: 1px;
+      border-color: #868686;
+      background: #fffcce;
     }
   }
 

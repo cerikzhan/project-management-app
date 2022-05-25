@@ -6,7 +6,7 @@ export default {
   user_name: 'Name:',
   user_login: 'Login:',
   user_password: 'Password:',
-  user_edit: 'Edit profile',
+  user_edit: 'Submit',
   user_delete: 'Delete profile',
   confirm: 'Confirm',
   abort: 'Abort',

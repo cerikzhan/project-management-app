@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import i18n from 'i18next';
 import { Link } from 'react-router-dom';
 import Hamburger from '../Hamburger';
@@ -51,7 +51,7 @@ const Menu: React.FC = () => {
             <Link onClick={close} className={cl.usermenu_button} to="/profile">
               {t('menu.edit_profile')}
             </Link>
-            <Link onClick={handleOpenModal} className="color-button" to="#">
+            <Link onClick={handleOpenModal} className="btn color-button" to="#">
               {t('menu.new_board')}
             </Link>
           </nav>
@@ -60,10 +60,10 @@ const Menu: React.FC = () => {
       <nav className={cl['usermenu-right']}>
         {!user.id && (
           <>
-            <Link onClick={close} className="button" to="/signin">
+            <Link onClick={close} className="btn button" to="/signin">
               {t('menu.login')}
             </Link>
-            <Link className="color-button" to="/signup">
+            <Link className="btn color-button" to="/signup">
               {t('menu.signup')}
             </Link>
           </>
@@ -73,7 +73,7 @@ const Menu: React.FC = () => {
             <Link className={cl.usermenu_username} title={user.login} to="#">
               {user.login[0]}
             </Link>
-            <Link onClick={logout} className="button" to="/">
+            <Link onClick={logout} className="btn button" to="/">
               {t('menu.logout')}
             </Link>
           </>

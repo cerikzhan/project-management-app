@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
 
   &__item {
     display: flex;
@@ -14,20 +13,20 @@
     border-right: 1px;
     border-top: 1px;
     border-bottom: 0px;
-    border-color: #d0d0d0;
+    border-color: #aaaaaa;
     border-style: solid;
     align-items: center;
 
     &:nth-child(odd) {
-      background: #9d9d9d2e;
+      background: rgb(126 124 124 / 30%);
     }
 
     &:last-child{
-      border-bottom: 1px solid #d0d0d0;
+      border-bottom: 1px solid #aaaaaa;
     }
 
     &:hover {
-      background: #fffbc6;
+      background: #fffcce;
     }
 
     @media (max-width: 460px) {

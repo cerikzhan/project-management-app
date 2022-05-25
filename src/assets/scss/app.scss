@@ -22,10 +22,15 @@ body {
   background: url("./../images/bg.webp"), rgba(255, 255, 255, 0.15);
   background-blend-mode: color;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 p {
   margin: 0.6rem 0;
+}
+
+input:-internal-autofill-selected {
+  background-color: #ffffff !important;
 }
 
 .container {
@@ -38,7 +43,12 @@ p {
 
 .paper {
   background: #ffffffd6;
-  padding: 2em 3em;
+  padding: 2em 3em 3em;
+  margin: 0 auto;
+}
+
+.width-fit {
+  width: fit-content;
 }
 
 .page {
@@ -53,7 +63,7 @@ p {
 
 h1 {
   font-size: 1.8em;
-  margin: 0.7em 0;
+  margin: 0.7em 0 1em 0;
 }
 
 h2 {
@@ -95,10 +105,11 @@ li {
     }
   }
 
-.error {
-  width: 80%;
-  border: 2px dashed#cc0000;
-  padding: 2em;
-  margin: 2em auto;
-  text-align: center;
+  .error {
+    width: 80%;
+    border: 2px dashed #cc0000;
+    padding: 2em;
+    margin: 2em auto;
+    text-align: center;
+  }
 }

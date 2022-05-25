@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import cl from '../components/Form/form.module.scss';
 import { userSlice } from '../store/reducers/userSlice';
 import Spinner from '../components/Spinner';
-import { StatusCodes } from 'http-status-codes';
+import { checkCodeResponse } from '../services/userService';
 
 const Signup: React.FC = () => {
   const { t } = useTranslation();
@@ -36,11 +36,7 @@ const Signup: React.FC = () => {
     if (user.id) {
       navigate('/boards');
     }
-    if (
-      error &&
-      Number(error.code) !== StatusCodes.CONFLICT &&
-      Number(error.code) !== StatusCodes.FORBIDDEN
-    ) {
+    if (error && error && checkCodeResponse(error.code)) {
       throw new Error(error.message);
     }
   }, [user.id, navigate, error]);

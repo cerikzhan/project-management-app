@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchSingleBoard } from '../store/reducers/actionCreators';
 import { useParams } from 'react-router-dom';
 import { BoardTemplate } from '../components/Board/BoardTemplate';
 import Spinner from '../components/Spinner';
 import { useTranslation } from 'react-i18next';
+import AddColumnForm from '../components/AddColumnForm';
 
 const Board: React.FC = () => {
   const { t } = useTranslation();
@@ -20,6 +21,15 @@ const Board: React.FC = () => {
   }, [dispatch, params.id]);
 
   const { item, error } = useAppSelector((state) => state.board);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = async () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   if (error) {
     throw new Error(error.message);
@@ -35,11 +45,14 @@ const Board: React.FC = () => {
         <div className="board-page">
           <div className={'board-page__header'}>
             <h1 className={'board-page__title'}>{item.title}</h1>
-            <button className={'board-page__add-column'}>{t('column.add')}</button>
+            <button onClick={handleOpenModal} className={'board-page__add-column'}>
+              {t('column.add')}
+            </button>
           </div>
           <BoardTemplate />
         </div>
       </Spinner>
+      <AddColumnForm onClose={handleClose} show={showModal} boardId={params.id} />
     </>
   );
 };

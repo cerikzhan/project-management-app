@@ -32,3 +32,10 @@ export const createNewBoard = async ({
 
   return response.data;
 };
+
+// create new column
+export const createNewColumn = async ({ title, boardId }: { title: string; boardId: string }) => {
+  const response = await request.post<BoardItem>(`/boards/${boardId}/columns`, { title });
+
+  return response.data;
+};

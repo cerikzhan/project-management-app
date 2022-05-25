@@ -1,6 +1,6 @@
 .usermenu {
   display: flex;
-  gap: 0.6em;
+  gap: 1.5em;
 
   &-right {
     display: flex;
@@ -38,8 +38,8 @@
      color: #ffffff;
      background: #67b980;
      border-radius: 2em;
-     width: 30px;
-     height: 30px;
+     height: 1.8em;
+     width: 1.8em;
      font-size: 1em;
      justify-content: center;
      text-transform: uppercase;
@@ -59,7 +59,6 @@
     cursor: pointer;
     white-space: nowrap;
     letter-spacing: 0.5px;
-    margin: 0 1em;
 
     &:hover {
       &:before {

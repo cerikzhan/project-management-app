@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import cl from '../components/Form/form.module.scss';
 import { userSlice } from '../store/reducers/userSlice';
 import Spinner from '../components/Spinner';
+import { checkCodeResponse } from '../services/userService';
 
 const Signup: React.FC = () => {
   const { t } = useTranslation();
@@ -28,14 +29,17 @@ const Signup: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch(resetError());
+  }, [user.id, navigate, dispatch, resetError]);
+
+  useEffect(() => {
     if (user.id) {
       navigate('/boards');
     }
-  }, [user.id, navigate]);
-
-  useEffect(() => {
-    dispatch(resetError());
-  }, [dispatch, resetError]);
+    if (error && error && checkCodeResponse(error.code)) {
+      throw new Error(error.message);
+    }
+  }, [user.id, navigate, error]);
 
   return (
     <Spinner>
@@ -50,7 +54,7 @@ const Signup: React.FC = () => {
         submitValue={'user.user_signUp'}
         title={'user.signup_page'}
       />
-      {error ? <p className={cl.form__error}>{t('user.user_signUp_error')}</p> : null}
+      {error && <p className={cl.form__error}>{t('user.user_signUp_error')}</p>}
     </Spinner>
   );
 };

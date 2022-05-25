@@ -6,7 +6,7 @@ import { resetToken } from './../../services/userService';
 interface StateTypeUser {
   user: User;
   loading: boolean;
-  error: string;
+  error: { message: string; code: string } | null;
   lang: string;
   search: string;
 }
@@ -14,7 +14,7 @@ interface StateTypeUser {
 const initialState: StateTypeUser = {
   user: {} as User,
   loading: true,
-  error: '',
+  error: null,
   lang: 'ru',
   search: 'testboard',
 };
@@ -34,13 +34,13 @@ export const userSlice = createSlice({
       state.user = {} as User;
     },
     resetError: (state: StateTypeUser) => {
-      state.error = '';
+      state.error = null;
     },
   },
   extraReducers: {
     [login.pending.type]: (state) => {
       state.loading = true;
-      state.error = '';
+      state.error = null;
     },
     [login.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
       state.loading = false;
@@ -65,7 +65,7 @@ export const userSlice = createSlice({
     },
     [changeUser.pending.type]: (state) => {
       state.loading = true;
-      state.error = '';
+      state.error = null;
     },
     [changeUser.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
       state.loading = false;
@@ -79,7 +79,7 @@ export const userSlice = createSlice({
     },
     [deleteUser.pending.type]: (state) => {
       state.loading = true;
-      state.error = '';
+      state.error = null;
     },
     [deleteUser.fulfilled.type]: (state: StateTypeUser) => {
       state.loading = false;
@@ -93,7 +93,7 @@ export const userSlice = createSlice({
     },
     [signUpUser.pending.type]: (state) => {
       state.loading = true;
-      state.error = '';
+      state.error = null;
     },
     [signUpUser.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User>) => {
       state.loading = false;

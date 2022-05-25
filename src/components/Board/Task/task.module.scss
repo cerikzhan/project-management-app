@@ -1,13 +1,17 @@
 .task {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #345DEE;
-  border-radius: 5px;
-  background: white;
-  cursor: pointer;
+  padding-bottom: 10px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #345DEE;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+  }
 
   &__title {
     margin: 0 0 10px 0;
@@ -29,5 +33,9 @@
 
   &:hover &__emerging {
       opacity: 1;
-    }
+  }
+
+  &__over {
+    opacity: 0.3;
+  }
 }

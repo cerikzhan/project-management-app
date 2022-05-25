@@ -48,20 +48,6 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
     );
   };
 
-  const [{ isOverOnTask }, dropTask] = useDrop(() => ({
-    accept: TASK_DRAG,
-    drop: (item) => changeTaskColumn(item),
-    collect: (monitor) => ({
-      isOverOnTask: monitor.isOver(),
-    }),
-  }));
-
-  const changeTaskColumn = (item: unknown) => {
-    const { task } = item as { task: TaskItem };
-    if (task.columnId === column.id) return;
-    dispatch(updateTaskColumn({ task: { ...task, order: 1 }, newColumnId: column.id }));
-  };
-
   const [{ isDragging }, dragColumn] = useDrag(() => ({
     type: COLUMN_DRAG,
     item: { column },
@@ -112,9 +98,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
 
         {!column.tasks.length && <div>No tasks</div>}
 
-        <div ref={dropTask} className={`${cl.column__body} ${isOverOnTask ? cl.column__over : ''}`}>
-          {children}
-        </div>
+        <div className={cl.column__body}>{children}</div>
       </div>
 
       <Confirmation

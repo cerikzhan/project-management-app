@@ -2,6 +2,7 @@
   width: 250px;
   padding: 5px;
   flex-shrink: 0;
+  overflow: hidden;
 
   &__inner {
     display: flex;
@@ -13,6 +14,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: rgba(204, 204, 204, 0.25);
+    overflow-y: scroll;
     z-index: 1;
   }
 

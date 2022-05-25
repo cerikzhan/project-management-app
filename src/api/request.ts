@@ -17,4 +17,11 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+instance.interceptors.response.use(undefined, (error) => {
+  return Promise.reject({
+    message: error.response.data.message,
+    code: error.response.data.statusCode.toString(),
+  });
+});
+
 export default instance;

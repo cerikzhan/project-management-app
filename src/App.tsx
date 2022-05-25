@@ -22,8 +22,8 @@ const App: React.FC = () => {
   initTranslation('ru');
 
   return (
-    <ErrorHandler>
-      <Provider store={store}>
+    <Provider store={store}>
+      <ErrorHandler>
         <DndProvider backend={HTML5Backend}>
           <BrowserRouter>
             <Header />
@@ -47,8 +47,8 @@ const App: React.FC = () => {
             <Footer />
           </BrowserRouter>
         </DndProvider>
-      </Provider>
-    </ErrorHandler>
+      </ErrorHandler>
+    </Provider>
   );
 };
 

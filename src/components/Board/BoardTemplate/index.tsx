@@ -8,11 +8,9 @@ import { updateTaskColumn } from '../../../store/reducers/actionCreators';
 import { EmptyTask } from '../EmptyTask';
 
 export const BoardTemplate: React.FC = () => {
-  const { board } = useAppSelector((state) => state);
+  const { item: boardItem } = useAppSelector((state) => state.board);
 
   const dispatch = useAppDispatch();
-
-  const { item: boardItem, error } = board;
 
   const changeTaskColumn = (payload?: unknown) => {
     if (!payload) return;
@@ -24,12 +22,8 @@ export const BoardTemplate: React.FC = () => {
     dispatch(updateTaskColumn({ task: { ...task, order }, newColumnId: columnId }));
   };
 
-  if (!boardItem.columns || !boardItem.columns.length) {
+  if (!boardItem || !boardItem.columns || !boardItem.columns.length) {
     return <div>No columns</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
   }
 
   const boardColumns = [...boardItem.columns].sort((a, b) => a.order - b.order);

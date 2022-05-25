@@ -6,20 +6,21 @@ import {
   updateColumn,
   deleteTask,
   addNewBoard,
+  addNewColumns,
 } from './actionCreators';
 import { BoardItem, Board } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
   item: BoardItem;
   loading: boolean;
-  error: boolean;
+  error: { message: string; code: string } | null;
   currentId: string;
 }
 
 const initialState: StateTypeBoard = {
   item: {} as BoardItem,
   loading: false,
-  error: false,
+  error: null,
   currentId: '',
 };
 
@@ -55,6 +56,7 @@ export const boardSlice = createSlice({
     [updateColumn.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
+      state.item = {} as BoardItem;
     },
     [deleteColumn.pending.type]: (state) => {
       state.loading = true;
@@ -102,6 +104,16 @@ export const boardSlice = createSlice({
       state.currentId = action.payload.id;
     },
     [addNewBoard.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    },
+    [addNewColumns.pending.type]: (state) => {
+      state.loading = true;
+    },
+    [addNewColumns.fulfilled.type]: (state: StateTypeBoard) => {
+      state.loading = false;
+    },
+    [addNewColumns.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
     },

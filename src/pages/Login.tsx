@@ -7,6 +7,7 @@ import UserFrom from '../components/Form';
 import cl from '../components/Form/form.module.scss';
 import { userSlice } from '../store/reducers/userSlice';
 import Spinner from './../components/Spinner';
+import { checkCodeResponse } from './../services/userService';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -22,14 +23,17 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
+    dispatch(resetError());
+  }, [user.id, navigate, dispatch, resetError]);
+
+  useEffect(() => {
     if (user.id) {
       navigate('/boards');
     }
-  }, [user.id, navigate]);
-
-  useEffect(() => {
-    dispatch(resetError());
-  }, [dispatch, resetError]);
+    if (error && checkCodeResponse(error.code)) {
+      throw new Error(error.message);
+    }
+  }, [user.id, navigate, error]);
 
   return (
     <Spinner>
@@ -42,7 +46,7 @@ const Login: React.FC = () => {
         submitValue={'user.login'}
         title={'user.login_page'}
       />
-      {error ? <p className={cl.form__error}>{t('user.user_login_error')}</p> : null}
+      {error ? <p className={cl.form__error}>{t(`user.user_login_error`)}</p> : null}
     </Spinner>
   );
 };

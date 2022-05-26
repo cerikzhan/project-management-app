@@ -37,13 +37,7 @@ export const createNewTask = async ({
   title,
   description,
   userId,
-}: {
-  boardId: string;
-  columnId: string;
-  title: string;
-  description: string;
-  userId: string;
-}) => {
+}: Partial<TaskItem>) => {
   const url = `/boards/${boardId}/columns/${columnId}/tasks`;
   const response = await request.post(url, { title, description, userId });
 

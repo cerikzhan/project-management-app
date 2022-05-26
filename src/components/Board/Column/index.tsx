@@ -101,7 +101,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
           <div
             onClick={handleOpenTaskModal}
             className="button-mini fa fa-plus-square-o"
-            title="Add task"
+            title={t('task.task_add')}
           />
           <div
             className="button-mini fa fa-trash-o"

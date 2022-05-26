@@ -25,18 +25,19 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (props.boardId) {
-      await dispatch(
-        addNewTask({
-          boardId: props.boardId,
-          columnId: props.columnId,
-          title,
-          description,
-          userId: id,
-        })
-      );
-      await dispatch(fetchSingleBoard(props.boardId));
+    if (!props.boardId) {
+      return;
     }
+    await dispatch(
+      addNewTask({
+        boardId: props.boardId,
+        columnId: props.columnId,
+        title,
+        description,
+        userId: id,
+      })
+    );
+    await dispatch(fetchSingleBoard(props.boardId));
     setTitle('');
     props.onClose();
   };

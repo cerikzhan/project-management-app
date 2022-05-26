@@ -53,7 +53,7 @@ const Profile: React.FC = () => {
           title={'user.profile_page'}
         />
         <button
-          className="white-button btn big-button"
+          className="space-top white-button btn big-button"
           type="button"
           onClick={() => handleOpenModal()}
         >

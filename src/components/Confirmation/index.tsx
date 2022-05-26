@@ -46,10 +46,10 @@ const Confirmation = (props: ConfirmationProps) => {
         </button>
         <p>{props.text}</p>
         <div className={cl.modal__row}>
-          <button className={cl.modal__button} onClick={clickConfirm}>
+          <button className="btn green-button" onClick={clickConfirm}>
             {t('user.confirm')}
           </button>
-          <button className={cl.modal__button} onClick={closeModal}>
+          <button className="btn color-button" onClick={closeModal}>
             {t('user.abort')}
           </button>
         </div>

@@ -14,16 +14,16 @@
     border-right: 1px;
     border-top: 1px;
     border-bottom: 0px;
-    border-color: #ebebeb;
+    border-color: #d0d0d0;
     border-style: solid;
     align-items: center;
 
     &:nth-child(odd) {
-      background: rgb(245 245 245);
+      background: rgb(229 229 229);
     }
 
     &:last-child{
-      border-bottom: 1px solid #ebebeb;
+      border-bottom: 1px solid #d0d0d0;
     }
 
     &:hover {

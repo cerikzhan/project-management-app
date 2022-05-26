@@ -1,3 +1,4 @@
+@import 'vars.scss';
 @import 'buttons.scss';
 
 * {
@@ -41,7 +42,7 @@ input:-internal-autofill-selected {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1em;
   text-align: justify;
 }
 
@@ -122,3 +123,8 @@ li {
     text-align: center;
   }
 }
+
+.space-top {
+  margin-top: 0.5em;
+}
+

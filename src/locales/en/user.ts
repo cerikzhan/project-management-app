@@ -6,7 +6,7 @@ export default {
   user_name: 'Name:',
   user_login: 'Login:',
   user_password: 'Password:',
-  user_edit: 'Edit profile',
+  user_edit: 'Submit',
   user_delete: 'Delete profile',
   confirm: 'Confirm',
   abort: 'Abort',
@@ -14,7 +14,7 @@ export default {
   profile_delete_text: 'Are you sure you want to delete your profile?',
   delete: 'Delete',
   user_signUp: 'Sign up',
-  user_signUp_error: 'login already exists',
-  user_login_error: 'Incorrect login or password',
+  user_signUp_error: 'Login already exists!',
+  user_login_error: 'Incorrect login or password!',
   apply: 'Apply',
 };

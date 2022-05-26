@@ -43,18 +43,21 @@ const Signup: React.FC = () => {
 
   return (
     <Spinner>
-      <UserFrom
-        name={name}
-        password={password}
-        login={login}
-        setName={setName}
-        setPassword={setPassword}
-        setLogin={setLogin}
-        submitHandler={submitHandler}
-        submitValue={'user.user_signUp'}
-        title={'user.signup_page'}
-      />
-      {error && <p className={cl.form__error}>{t('user.user_signUp_error')}</p>}
+      <div className="paper width-fit">
+        {error && <p className={cl.form__error}>{t('user.user_signUp_error')}</p>}
+        <UserFrom
+          name={name}
+          password={password}
+          login={login}
+          setName={setName}
+          setPassword={setPassword}
+          setLogin={setLogin}
+          submitHandler={submitHandler}
+          submitValue={'user.user_signUp'}
+          title={'user.signup_page'}
+          error={error ? error.code : ''}
+        />
+      </div>
     </Spinner>
   );
 };

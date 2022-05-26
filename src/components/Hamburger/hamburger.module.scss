@@ -1,7 +1,7 @@
 .hamburger {
   position: fixed;
   right: 3vw;
-  top: 2vw;
+  top: 1em;
   width: 2rem;
   height: 2rem;
   padding: 0;
@@ -20,7 +20,7 @@
   }
 
   &-open {
-    right: 33vw;
+    right: calc(40vw - 3rem);;
     display: block;
   }
 
@@ -38,7 +38,7 @@
     border-radius: 10px;
     transition: all 0.3s linear;
     transform-origin: 1px;
-    background-color: #6c6c6c;
+    background-color: #ffffff;
 
     &:first-child {
       transform: rotate(0);
@@ -54,8 +54,8 @@
     }
 
     &-open {
-      background-color: #444444;
-      margin: 0.5em;
+      background-color: #c6c5c5;;
+      margin: 0.45em;
 
       &:first-child {
         transform: rotate(45deg);

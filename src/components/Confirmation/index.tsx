@@ -36,20 +36,20 @@ const Confirmation = (props: ConfirmationProps) => {
         isOpen={props.show}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        className={cl.modal}
+        className="modal"
         contentLabel="Example Modal"
         overlayClassName={cl.modal__overlay}
       >
-        <h2 className={cl.modal__header}>{props.header}</h2>
+        <h2 className="modal-header">{props.header}</h2>
         <button onClick={closeModal} className={cl.modal__close}>
           x
         </button>
         <p>{props.text}</p>
-        <div className={cl.modal__row}>
-          <button className={cl.modal__button} onClick={clickConfirm}>
+        <div className="modal-row">
+          <button className="btn green-button stretched" onClick={clickConfirm}>
             {t('user.confirm')}
           </button>
-          <button className={cl.modal__button} onClick={closeModal}>
+          <button className="btn color-button stretched" onClick={closeModal}>
             {t('user.abort')}
           </button>
         </div>

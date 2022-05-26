@@ -18,3 +18,11 @@ export const resetToken = () => {
 export const checkCodeResponse = (code: string) => {
   return Number(code) !== StatusCodes.FORBIDDEN && Number(code) !== StatusCodes.CONFLICT;
 };
+
+export const isLoginError = (code: string) => {
+  return Number(code) === StatusCodes.FORBIDDEN;
+};
+
+export const isSignUpError = (code: string) => {
+  return Number(code) === StatusCodes.CONFLICT;
+};

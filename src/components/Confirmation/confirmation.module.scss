@@ -4,7 +4,7 @@
   right: auto;
   bottom: auto;
   margin-right: -50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
   position: absolute;
   inset: 50% auto auto 50%;
   border: 1px solid rgb(134 132 132);
@@ -12,13 +12,13 @@
   overflow: auto;
   border-radius: 4px;
   outline: none;
-  padding: 1em 1.5em 1.5em;
+  padding: 1.5em;
   width: 50vw;
   min-width: 320px;
   max-width: 500px;
 
   &__overlay {
-    background-color: rgb(93 93 93 / 58%) !important;
+    background-color: rgb(48 48 48 / 58%) !important;
     position: fixed;
     inset: 0px;
   }
@@ -31,17 +31,6 @@
     border: 0;
     font-size: 1.6em;
     cursor: pointer;
-  }
-
-  &__header {
-    margin: 0;
-  }
-
-  &__row {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 2em;
   }
 
   &__button {

@@ -37,16 +37,19 @@ const Login: React.FC = () => {
 
   return (
     <Spinner>
-      <UserFrom
-        password={password}
-        login={username}
-        setPassword={setPassword}
-        setLogin={setUsername}
-        submitHandler={handleLogin}
-        submitValue={'user.login'}
-        title={'user.login_page'}
-      />
-      {error ? <p className={cl.form__error}>{t(`user.user_login_error`)}</p> : null}
+      <div className="paper width-fit">
+        {error ? <p className={cl.form__error}>{t(`user.user_login_error`)}</p> : null}
+        <UserFrom
+          password={password}
+          login={username}
+          setPassword={setPassword}
+          setLogin={setUsername}
+          submitHandler={handleLogin}
+          submitValue={'user.login'}
+          title={'user.login'}
+          error={error ? error.code : ''}
+        />
+      </div>
     </Spinner>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import i18n from 'i18next';
 import { Link } from 'react-router-dom';
 import Hamburger from '../Hamburger';
@@ -13,7 +13,6 @@ const Menu: React.FC = () => {
   const { user, lang } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
-  const node = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
   const close = () => setOpen(false);
   const { setLang, logoutUser } = userSlice.actions;
@@ -43,45 +42,52 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <div ref={node}>
-        <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-          {!user.id && (
-            <>
-              <Link onClick={close} className={cl.usermenu_button} to="/signup">
-                {t('menu.signup')}
-              </Link>
-              <Link onClick={close} className={cl.usermenu_button} to="/signin">
-                {t('menu.login')}
-              </Link>
-            </>
-          )}
-          {user.id && (
-            <>
-              <Link className={cl.usermenu_button} to="/boards">
-                {t('menu.boards')}
-              </Link>
-              <Link onClick={close} className={cl.usermenu_button} to="/profile">
-                {t('menu.edit_profile')}
-              </Link>
-              <button onClick={handleOpenModal} className={cl.usermenu_button}>
-                {t('menu.new_board')}
-              </button>
-              <div className={cl.usermenu_username}>{user.login}</div>
-              <Link onClick={logout} className={cl.usermenu_button} to="/">
-                {t('menu.logout')}
-              </Link>
-            </>
-          )}
-          <label className="react-toggle-label">
-            <Toggle
-              defaultChecked={lang === 'en'}
-              icons={{ checked: 'en', unchecked: 'ru' }}
-              onChange={chooseLang}
-            />
-          </label>
-        </nav>
-        <Hamburger open={open} setOpen={setOpen} />
+      <div>
+        {user.id && (
+          <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
+            <Link className={cl.usermenu_button} to="/boards">
+              {t('menu.boards')}
+            </Link>
+            <Link onClick={close} className={cl.usermenu_button} to="/profile">
+              {t('menu.edit_profile')}
+            </Link>
+            <Link onClick={handleOpenModal} className="btn color-button" to="#">
+              {t('menu.new_board')}
+            </Link>
+          </nav>
+        )}
       </div>
+      <nav className={cl['usermenu-right']}>
+        {!user.id && (
+          <>
+            <Link onClick={close} className="btn button" to="/signin">
+              {t('menu.login')}
+            </Link>
+            <Link className="btn color-button" to="/signup">
+              {t('menu.signup')}
+            </Link>
+          </>
+        )}
+        {user.id && (
+          <>
+            <Link className={cl.usermenu_username} title={user.login} to="#">
+              {user.login[0]}
+            </Link>
+            <Link onClick={logout} className="btn button" to="/">
+              {t('menu.logout')}
+            </Link>
+          </>
+        )}
+
+        <label className="react-toggle-label">
+          <Toggle
+            defaultChecked={lang === 'en'}
+            icons={{ checked: 'en', unchecked: 'ru' }}
+            onChange={chooseLang}
+          />
+        </label>
+      </nav>
+      {user.id && <Hamburger open={open} setOpen={setOpen} />}
       <BoardForm onClose={handleClose} show={showModal} />
     </>
   );

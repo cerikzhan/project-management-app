@@ -1,11 +1,13 @@
+@import '../../assets/library/rubik.css';
 @import 'vars.scss';
+@import '../../assets/library/fontawesome.css';
 @import 'buttons.scss';
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
+  font-family: 'Rubik', sans-serif;
 }
 
 html, body {
@@ -16,7 +18,7 @@ html, body {
 
 html {
   font-size: 15px;
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
   
   @media (max-width: 600px) {
     font-size: 14px;
@@ -25,13 +27,13 @@ html {
 
 body {
   background: url("./../images/bg.webp"), rgba(255, 255, 255, 0.05);
-  background-blend-mode: color;
+  background-blend-mode: overlay;
   background-size: cover;
   background-attachment: fixed;
 }
 
 p {
-  margin: 0.6rem 0;
+  margin: 1rem 0;
 }
 
 input:-internal-autofill-selected {
@@ -55,10 +57,11 @@ input:-internal-autofill-selected {
 
 .width-fit {
   width: fit-content;
+  margin: 0 auto;
 }
 
 .page {
-  margin: 2em 0;
+  margin: 0;
 }
 
 .link {
@@ -72,13 +75,27 @@ svg use {
 }
 
 h1 {
-  font-size: 1.8em;
+  font-size: 3em;
   margin: 0.7em 0 1em 0;
+  color: #fff;
+  text-shadow: 0px 0px 2px black;
+  line-height: 1em;
+  color: #2e2e2e;
+  background: linear-gradient(to right, #ffffffde, #ffffff00);
+  margin: 0.7em 0;
+  padding: 0.5em 1em;
+  text-shadow: none;
+  width: 100%;
+  border-radius: 2px;
 }
 
 h2 {
   font-size: 1.2em;
   margin: 1em 0 0.5em;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
 }
 
 ul {
@@ -93,7 +110,9 @@ li {
 
 .board-page {
   width: 100%;
-  height: calc(100vh - 14rem);
+  height: calc(100vh - 10rem);
+  display: flex;
+  flex-direction: column;
 
   &__header {
     display: flex;

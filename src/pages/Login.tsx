@@ -37,7 +37,7 @@ const Login: React.FC = () => {
 
   return (
     <Spinner>
-      <div className="paper width-fit">
+      <div className="width-fit">
         {error ? <p className={cl.form__error}>{t(`user.user_login_error`)}</p> : null}
         <UserFrom
           password={password}

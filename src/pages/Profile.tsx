@@ -40,7 +40,7 @@ const Profile: React.FC = () => {
 
   return (
     <Spinner>
-      <div className="paper width-fit">
+      <div className="width-fit">
         <UserFrom
           name={name}
           password={password}
@@ -51,14 +51,8 @@ const Profile: React.FC = () => {
           submitHandler={submitHandler}
           submitValue={'user.user_edit'}
           title={'user.profile_page'}
+          secondButtonHandler={handleOpenModal}
         />
-        <button
-          className="space-top white-button btn big-button"
-          type="button"
-          onClick={() => handleOpenModal()}
-        >
-          {t('user.user_delete')}
-        </button>
         <Confirmation
           header={t('user.profile_delete')}
           text={t('user.profile_delete_text')}

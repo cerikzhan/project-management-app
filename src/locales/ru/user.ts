@@ -1,6 +1,6 @@
 export default {
   login_page: 'Страница пользователя',
-  profile_page: 'Профиль пользователя',
+  profile_page: 'Профиль',
   signup_page: 'Страница регистрации',
   login: 'Авторизация',
   user_name: 'Имя:',
@@ -13,7 +13,7 @@ export default {
   profile_delete: 'Удалить профиль',
   profile_delete_text: 'Вы действительно хотите удалить свой профиль?',
   delete: 'Удалить',
-  user_signUp: 'Зарегистрироваться',
+  user_signUp: 'Регистрация',
   user_signUp_error: 'Этот логин уже занят!',
   user_login_error: 'Неправильный логин или пароль!',
   apply: 'Применить',

@@ -62,8 +62,12 @@ input:-internal-autofill-selected {
 
 .link {
   text-decoration: none;
-  color: #fff;
+  color: #c6c5c5;
   cursor: pointer;
+}
+
+svg use {
+  fill: currentColor;
 }
 
 h1 {

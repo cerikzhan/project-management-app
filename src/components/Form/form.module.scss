@@ -25,10 +25,15 @@
       border-color: #868686;
       background: #fffcce;
     }
+
+    &-error {
+      background: #ffcece;
+      border-color: #e51515;
+    }
   }
 
   &__error {
-    color: #FF0000;
+    color: #ff2b2b;
   }
 }
 

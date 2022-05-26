@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import cl from './form.module.scss';
+import { isLoginError, isSignUpError } from './../../services/userService';
 
 type FormProps = {
   name?: string;
@@ -12,6 +13,7 @@ type FormProps = {
   submitHandler: (e: React.FormEvent) => void;
   submitValue: string;
   title: string;
+  error?: string;
 };
 
 const UserFrom: React.FC<FormProps> = (props) => {
@@ -31,26 +33,35 @@ const UserFrom: React.FC<FormProps> = (props) => {
               onChange={(e) => (props.setName ? props.setName(e.target.value) : null)}
               required
               minLength={3}
-              maxLength={8}
+              maxLength={15}
             />
           </label>
         ) : null}
         <label className={cl.form__label}>
           {t('user.user_login')}
           <input
-            className={cl.form__input}
+            className={
+              typeof props.error !== 'undefined' &&
+              (isLoginError(props.error) || isSignUpError(props.error))
+                ? `${cl['form__input-error']} ${cl.form__input}`
+                : cl.form__input
+            }
             type="text"
             value={props.login}
             onChange={(e) => props.setLogin(e.target.value)}
             required
             minLength={3}
-            maxLength={8}
+            maxLength={12}
           />
         </label>
         <label className={cl.form__label}>
           {t('user.user_password')}
           <input
-            className={cl.form__input}
+            className={
+              typeof props.error !== 'undefined' && isLoginError(props.error)
+                ? `${cl['form__input-error']} ${cl.form__input}`
+                : cl.form__input
+            }
             type="password"
             value={props.password}
             onChange={(e) => props.setPassword(e.target.value)}

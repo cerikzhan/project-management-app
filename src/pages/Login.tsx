@@ -38,6 +38,7 @@ const Login: React.FC = () => {
   return (
     <Spinner>
       <div className="paper width-fit">
+        {error ? <p className={cl.form__error}>{t(`user.user_login_error`)}</p> : null}
         <UserFrom
           password={password}
           login={username}
@@ -46,8 +47,8 @@ const Login: React.FC = () => {
           submitHandler={handleLogin}
           submitValue={'user.login'}
           title={'user.login'}
+          error={error ? error.code : ''}
         />
-        {error ? <p className={cl.form__error}>{t(`user.user_login_error`)}</p> : null}
       </div>
     </Spinner>
   );

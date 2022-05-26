@@ -28,6 +28,7 @@ const Menu: React.FC = () => {
   };
 
   const handleOpenModal = async () => {
+    close();
     setShowModal(true);
   };
 
@@ -45,7 +46,7 @@ const Menu: React.FC = () => {
       <div>
         {user.id && (
           <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-            <Link className={cl.usermenu_button} to="/boards">
+            <Link onClick={close} className={cl.usermenu_button} to="/boards">
               {t('menu.boards')}
             </Link>
             <Link onClick={close} className={cl.usermenu_button} to="/profile">

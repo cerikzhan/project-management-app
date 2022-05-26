@@ -30,10 +30,17 @@ body {
   background-blend-mode: overlay;
   background-size: cover;
   background-attachment: fixed;
+
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 p {
-  margin: 1rem 0;
+  margin: 1em 0;
 }
 
 input:-internal-autofill-selected {
@@ -46,6 +53,7 @@ input:-internal-autofill-selected {
   margin: 0 auto;
   padding: 0 1em;
   text-align: justify;
+  flex: 1;
 }
 
 .paper {
@@ -53,6 +61,10 @@ input:-internal-autofill-selected {
   padding: 3em;
   margin: 0 auto;
   border-radius: 2px;
+
+  @media (max-width: 468px) {
+    padding: 2em;
+  }
 }
 
 .width-fit {
@@ -61,8 +73,7 @@ input:-internal-autofill-selected {
 }
 
 .page {
-  margin: 0;
-  padding-bottom: 66px;
+  margin: 0 0 1.2em;
 }
 
 .link {
@@ -85,6 +96,10 @@ h1 {
   text-shadow: none;
   width: 100%;
   border-radius: 2px;
+
+  @media (max-width: 600px) {
+    font-size: 1.8em;
+  }
 }
 
 h2 {
@@ -161,7 +176,7 @@ li {
   outline: none;
   padding: 1.5em;
   width: 50vw;
-  min-width: 320px;
+  min-width: 300px;
   max-width: 500px;
 }
 

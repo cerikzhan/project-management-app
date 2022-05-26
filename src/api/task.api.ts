@@ -29,3 +29,17 @@ export const removeTask = async (taskData: TaskItem) => {
   const response = await request.get(`/boards/${taskData.boardId}`);
   return response.data;
 };
+
+// create new task
+export const createNewTask = async ({
+  boardId,
+  columnId,
+  title,
+  description,
+  userId,
+}: Partial<TaskItem>) => {
+  const url = `/boards/${boardId}/columns/${columnId}/tasks`;
+  const response = await request.post(url, { title, description, userId });
+
+  return response.data;
+};

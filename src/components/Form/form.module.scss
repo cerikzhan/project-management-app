@@ -6,6 +6,12 @@
   min-width: 200px;
   max-width: 400px;
 
+  &-little {
+    row-gap: 1em;
+    width: 100%;
+    max-width: none;
+  }
+
   &__label {
     display: flex;
     flex-direction: column;

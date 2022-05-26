@@ -33,17 +33,6 @@
     cursor: pointer;
   }
 
-  &__header {
-    margin: 0;
-  }
-
-  &__row {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 2em;
-  }
-
   &__button {
     cursor: pointer;
     text-decoration: none;

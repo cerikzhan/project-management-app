@@ -50,7 +50,7 @@ input:-internal-autofill-selected {
 
 .paper {
   background: #ffffffd6;
-  padding: 2em 3em 3em;
+  padding: 3em;
   margin: 0 auto;
   border-radius: 2px;
 }
@@ -62,6 +62,7 @@ input:-internal-autofill-selected {
 
 .page {
   margin: 0;
+  padding-bottom: 66px;
 }
 
 .link {
@@ -75,10 +76,7 @@ svg use {
 }
 
 h1 {
-  font-size: 3em;
-  margin: 0.7em 0 1em 0;
-  color: #fff;
-  text-shadow: 0px 0px 2px black;
+  font-size: 2.6em;
   line-height: 1em;
   color: #2e2e2e;
   background: linear-gradient(to right, #ffffffde, #ffffff00);

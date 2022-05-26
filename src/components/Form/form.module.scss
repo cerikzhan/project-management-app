@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   row-gap: 2em;
+  width: 60vw;
+  min-width: 200px;
+  max-width: 400px;
 
   &__label {
     display: flex;
@@ -11,7 +14,6 @@
 
   &__input {
     outline: none;
-    width: 400px;
     padding: 0.5em;
     border: 1px solid #aaaaaa;
     background-color: rgb(255 255 255);
@@ -25,26 +27,6 @@
     }
   }
 
-  &__submit,
-  &__delete {
-    cursor: pointer;
-    width: 150px;
-    height: 40px;
-    background-color: #6667ab;
-    color: #cccccc;
-    border: none;
-    border-radius: 15px;
-    transition: 0.3s;
-
-    &:hover {
-      background-color: adjust-hue(#6667ab, 110deg);
-    }
-  }
-
-  &__delete {
-    margin-top: 1rem;
-  }
-
   &__error {
     color: #FF0000;
   }
@@ -52,26 +34,10 @@
 
 @media only screen and (max-width: 600px) {
   .form {
-    row-gap: 30px;
+    row-gap: 1rem;
 
-    &__legend {
-      font-size: 1.5rem;
-    }
-
-    &__label {
-      font-size: 1rem;
-    }
-  
-    &__input {
-      width: 300px;
-      height: 25px;
-      font-size: 1rem;
-    }
-
-    &__submit {
-      font-size: 0.7rem;
-      width: 120px;
-      height: 30px;
+    &__label, &__input {
+      font-size: 1.2rem;
     }
   }
 }

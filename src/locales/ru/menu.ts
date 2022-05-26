@@ -1,5 +1,5 @@
 export default {
-  login: 'Авторизация',
+  login: 'Войти',
   signup: 'Регистрация',
   edit_profile: 'Редактировать профиль',
   new_board: 'Новая доска',

@@ -87,8 +87,7 @@ const Menu: React.FC = () => {
           />
         </label>
       </nav>
-
-      <Hamburger open={open} setOpen={setOpen} />
+      {user.id && <Hamburger open={open} setOpen={setOpen} />}
       <BoardForm onClose={handleClose} show={showModal} />
     </>
   );

@@ -16,6 +16,10 @@ html, body {
 html {
   font-size: 15px;
   font-family: sans-serif;
+  
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 
 body {
@@ -45,6 +49,7 @@ input:-internal-autofill-selected {
   background: #ffffffd6;
   padding: 2em 3em 3em;
   margin: 0 auto;
+  border-radius: 2px;
 }
 
 .width-fit {

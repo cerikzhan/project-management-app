@@ -13,6 +13,7 @@ import { ColumnHeader } from './Header';
 import { useDrag, useDrop } from 'react-dnd';
 import { COLUMN_DRAG, TASK_DRAG } from '../../../types/Constants/drag-types';
 import { TaskItem } from '../../../types/Entities/Task';
+import AddTaskForm from '../../AddTaskForm/index';
 
 type ColumnProps = {
   column: ColumnItem;
@@ -24,6 +25,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useAppDispatch();
   const { item: boardItem } = useAppSelector((state) => state.board);
+  const [showTaskModal, setShowTaskModal] = useState(false);
 
   const handleOpenModal = async () => {
     setShowModal(true);
@@ -80,6 +82,14 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
     );
   };
 
+  const handleOpenTaskModal = async () => {
+    setShowTaskModal(true);
+  };
+
+  const handleTaskClose = () => {
+    setShowTaskModal(false);
+  };
+
   return (
     <div ref={dropColumn} className={`${cl.column} ${isOverOnColumn ? cl.column_over : ''}`}>
       <div
@@ -88,7 +98,11 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
       >
         <div className={cl.column__header}>
           <ColumnHeader header={column.title} onConfirm={confirmHeader} />
-          <div className="button-mini fa fa-plus-square-o" title="Add task" />
+          <div
+            onClick={handleOpenTaskModal}
+            className="button-mini fa fa-plus-square-o"
+            title="Add task"
+          />
           <div
             className="button-mini fa fa-trash-o"
             title={t('column.delete')}
@@ -107,6 +121,12 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
         show={showModal}
         onConfirm={() => handleConfirm(boardItem.id, column.id)}
         onClose={handleClose}
+      />
+      <AddTaskForm
+        onClose={handleTaskClose}
+        show={showTaskModal}
+        boardId={boardItem.id}
+        columnId={column.id}
       />
     </div>
   );

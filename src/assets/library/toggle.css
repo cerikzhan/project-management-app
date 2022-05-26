@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     color: #ffffff;
-    margin-left: 1em;
+    margin-left: 2em;
 }
 .react-toggle {
     touch-action: pan-x;

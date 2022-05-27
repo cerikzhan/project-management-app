@@ -4,21 +4,22 @@ import { useTranslation } from 'react-i18next';
 import cl from './../Confirmation/confirmation.module.scss';
 import fm from './../Form/form.module.scss';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { addNewTask, fetchSingleBoard } from '../../store/reducers/actionCreators';
+import { updateTaskColumn } from '../../store/reducers/actionCreators';
+import { TaskItem } from '../../types/Entities/Task';
 
 type FormProps = {
+  task: TaskItem;
   onClose: () => void;
   show: boolean;
-  boardId: string | undefined;
-  columnId: string;
 };
 
-const AddTaskForm: React.FC<FormProps> = (props) => {
+const UpdateTaskForm: React.FC<FormProps> = (props) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  const [title, setTitle] = useState<string>(props.task.title);
+  const [description, setDescription] = useState<string>(props.task.description);
   const { id } = useAppSelector((state) => state.user.user);
+  const [isChange, setIsChange] = useState(true);
 
   const closeModal = () => {
     props.onClose();
@@ -26,22 +27,26 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!props.boardId) {
+    if (!props.task.boardId || !props.task.columnId) {
       return;
     }
     await dispatch(
-      addNewTask({
-        boardId: props.boardId,
-        columnId: props.columnId,
-        title,
-        description,
-        userId: id,
+      updateTaskColumn({
+        task: {
+          ...props.task,
+          title: title,
+          description,
+          userId: id,
+        },
+        newColumnId: props.task.columnId,
       })
     );
-    await dispatch(fetchSingleBoard(props.boardId));
-    setTitle('');
     props.onClose();
   };
+
+  useEffect(() => {
+    setIsChange(title === props.task.title && description === props.task.description);
+  }, [title, description]);
 
   useEffect(() => {
     Modal.setAppElement('.container');
@@ -58,7 +63,7 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
         x
       </button>
       <form onSubmit={handleSubmit} className={`${fm.form} ${fm['form-little']}`}>
-        <h2 className="modal-header">{t('task.new_task')}</h2>
+        <h2 className="modal-header">{t('task.task_change')}</h2>
         <label className={fm.form__label}>
           {t('board.board_title')}
           <input
@@ -81,7 +86,12 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
           />
         </label>
         <div className="modal-row">
-          <input className="btn green-button stretched" type="submit" value={t('board.create')} />
+          <input
+            disabled={isChange}
+            className="btn green-button stretched"
+            type="submit"
+            value={t('task.change_button')}
+          />
           <button className="btn color-button stretched" onClick={closeModal}>
             {t('user.abort')}
           </button>
@@ -91,4 +101,4 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
   );
 };
 
-export default AddTaskForm;
+export default UpdateTaskForm;

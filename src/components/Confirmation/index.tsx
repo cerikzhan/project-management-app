@@ -23,9 +23,6 @@ const Confirmation = (props: ConfirmationProps) => {
     props.onClose();
   };
 
-  const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-  };
   useEffect(() => {
     Modal.setAppElement('.container');
   });
@@ -34,7 +31,6 @@ const Confirmation = (props: ConfirmationProps) => {
     <>
       <Modal
         isOpen={props.show}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         className="modal"
         contentLabel="Example Modal"

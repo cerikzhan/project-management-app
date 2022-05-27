@@ -41,7 +41,8 @@ export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
   const [showModal, setShowModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
 
-  const handleOpenModal = async () => {
+  const handleOpenModal = async (e: React.MouseEvent) => {
+    e.stopPropagation();
     setShowModal(true);
   };
 

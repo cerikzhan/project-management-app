@@ -31,10 +31,6 @@ const AddColumnForm: React.FC<FormProps> = (props) => {
     props.onClose();
   };
 
-  const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-  };
-
   useEffect(() => {
     Modal.setAppElement('.container');
   });
@@ -42,7 +38,6 @@ const AddColumnForm: React.FC<FormProps> = (props) => {
   return (
     <Modal
       isOpen={props.show}
-      onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       className="modal"
       overlayClassName={cl.modal__overlay}

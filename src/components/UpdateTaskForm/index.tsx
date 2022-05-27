@@ -45,16 +45,8 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
   };
 
   useEffect(() => {
-    if (title !== props.task.title || description !== props.task.description) {
-      setIsChange(false);
-    } else {
-      setIsChange(true);
-    }
+    setIsChange(title === props.task.title && description === props.task.description);
   }, [title, description]);
-
-  const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-  };
 
   useEffect(() => {
     Modal.setAppElement('.container');
@@ -63,7 +55,6 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
   return (
     <Modal
       isOpen={props.show}
-      onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       className="modal"
       overlayClassName={cl.modal__overlay}

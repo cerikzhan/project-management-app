@@ -27,7 +27,7 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
   const { item: boardItem } = useAppSelector((state) => state.board);
   const [showTaskModal, setShowTaskModal] = useState(false);
 
-  const handleOpenModal = async () => {
+  const handleOpenDeleteColumnModal = async () => {
     setShowModal(true);
   };
 
@@ -97,16 +97,11 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
         className={`${cl.column__inner} ${isDragging ? cl.column__dragging : ''}`}
       >
         <div className={cl.column__header}>
-          <ColumnHeader header={column.title} onConfirm={confirmHeader} />
-          <div
-            onClick={handleOpenTaskModal}
-            className="button-mini fa fa-plus-square-o"
-            title={t('task.task_add')}
-          />
-          <div
-            className="button-mini fa fa-trash-o"
-            title={t('column.delete')}
-            onClick={handleOpenModal}
+          <ColumnHeader
+            header={column.title}
+            onConfirm={confirmHeader}
+            addTask={handleOpenTaskModal}
+            deleteColumn={handleOpenDeleteColumnModal}
           />
         </div>
 

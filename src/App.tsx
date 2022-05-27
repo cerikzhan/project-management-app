@@ -19,7 +19,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const App: React.FC = () => {
-  initTranslation('ru');
+  initTranslation('en');
 
   return (
     <Provider store={store}>

@@ -12,7 +12,7 @@ import BoardForm from '../AddBoardForm';
 const Menu: React.FC = () => {
   const { user, lang } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
   const closeHamburgerMenu = () => setOpen(false);
   const { setLang, logoutUser } = userSlice.actions;

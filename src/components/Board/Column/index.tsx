@@ -106,7 +106,6 @@ export const ColumnBoard: React.FC<ColumnProps> = ({ column, children }) => {
         </div>
 
         {!column.tasks.length && <div>No tasks</div>}
-
         <div className={cl.column__body}>{children}</div>
       </div>
 

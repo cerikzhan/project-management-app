@@ -64,6 +64,17 @@
     flex: 1;
     min-height: 30px;
     overflow-y: scroll;
+    padding-right: 4px;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      background-color: rgba(237, 237, 237, 0.9);
+      border: rgb(207 207 207);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(171, 171, 171);
+   }
   }
 
   &__over {

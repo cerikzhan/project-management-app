@@ -1,6 +1,6 @@
 .empty_task {
   width: 100%;
-  height: 100%;
+  flex: 1;
 }
 
 .over .placeholder {
@@ -9,7 +9,6 @@
 
 .placeholder {
   width: 100%;
-  height: 100px;
   background-color: #dcdcdc;
   border-radius: 5px;
   opacity: 0;

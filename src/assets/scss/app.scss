@@ -147,6 +147,10 @@ li {
   display: flex;
   flex-direction: column;
 
+  @media (max-width: 468px) {
+    height: auto;
+  }
+
   &__header {
     display: flex;
     align-items: center;

@@ -6,6 +6,11 @@
   gap: 1.1em;
   flex: 1;
 
+  @media (max-width: 468px) {
+    flex-direction: column;
+    overflow: visible;
+  }
+
   &__left {
     width: 10px;
     background-color: red;

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
 import { useAppDispatch } from '../../../hooks/redux';
 import { deleteTask } from '../../../store/reducers/actionCreators';
+import UpdateTaskForm from '../../UpdateTaskForm';
 
 type TaskProps = {
   task: TaskItem;
@@ -38,6 +39,7 @@ export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
   }));
 
   const [showModal, setShowModal] = useState(false);
+  const [showTaskModal, setShowTaskModal] = useState(false);
 
   const handleOpenModal = async () => {
     setShowModal(true);
@@ -51,9 +53,22 @@ export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
     setShowModal(false);
   };
 
+  const handleOpenTask = () => {
+    setShowTaskModal(true);
+  };
+
+  const handleCloseTask = () => {
+    setShowTaskModal(false);
+  };
+
   return (
     <div ref={dropTask} className={`${cl.task} ${isOverOnTask ? cl.task__over : ''}`}>
-      <div ref={drag} className={`${cl.task__inner} ${isDragging ? cl.task__dragging : ''}`}>
+      <div
+        onClick={handleOpenTask}
+        ref={drag}
+        className={`${cl.task__inner}
+        ${isDragging ? cl.task__dragging : ''}`}
+      >
         <h3 className={cl.task__title}>{task.title}</h3>
         <p className={cl.task__description}>{task.description}</p>
         <div
@@ -70,6 +85,8 @@ export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
         onConfirm={() => handleConfirm(task)}
         onClose={handleClose}
       />
+
+      <UpdateTaskForm task={task} onClose={handleCloseTask} show={showTaskModal} />
     </div>
   );
 };

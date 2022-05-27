@@ -16,6 +16,10 @@
   border-radius: 2px;
   font-size: 1em;
   text-align: center;
+
+  &:disabled {
+    opacity: 0.7;
+  }
 }
 
 .button {

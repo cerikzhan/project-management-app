@@ -1,6 +1,6 @@
 export default {
   login_page: 'User page',
-  profile_page: 'Profile page',
+  profile_page: 'Profile',
   signup_page: 'SignUp page',
   login: 'Sign In',
   user_name: 'Name:',

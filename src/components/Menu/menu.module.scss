@@ -30,7 +30,6 @@
     &-open {
       transform: translateX(0);
       box-shadow: 0 0em 1em #000000;
-      border-left: 1px solid #000000;
     }
   }
 
@@ -60,7 +59,6 @@
     color: white;
     background: none;
     font-weight: 300;
-    font-family: sans-serif;
     cursor: pointer;
     white-space: nowrap;
     letter-spacing: 0.5px;

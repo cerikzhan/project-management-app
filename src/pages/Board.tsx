@@ -45,7 +45,7 @@ const Board: React.FC = () => {
         <div className="board-page">
           <div className={'board-page__header'}>
             <h1 className={'board-page__title'}>{item.title}</h1>
-            <button onClick={handleOpenModal} className={'board-page__add-column'}>
+            <button onClick={handleOpenModal} className="btn color-button">
               {t('column.add')}
             </button>
           </div>

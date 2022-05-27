@@ -21,10 +21,32 @@
       font-size: 1.1em;
     }
 
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      right: 0.2em;
+
+      &-mini {
+        font-size: 1em;
+        cursor: pointer;
+        padding: 0.2em;
+      }
+    }
+
     &__input {
-      width: 130px;
+      flex: 1;
       font-size: 1.1em;
-      font-weight: bold;
+      font-weight: 500;
+      padding: 0.24em;
+      border: 1px solid #868686;
+      background: #fffcce;
+      width: 100%;
+      color: #333333;
+
+      &:focus, &:active {
+        outline: none;
+      }
     }
   }
 }

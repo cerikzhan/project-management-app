@@ -1334,6 +1334,8 @@
 }
 .fa-plus-square-o:before {
   content: "\f196";
+  display: block;
+  padding-top: 0.1em;
 }
 .fa-space-shuttle:before {
   content: "\f197";

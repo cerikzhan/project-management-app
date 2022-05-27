@@ -43,7 +43,7 @@ const Signup: React.FC = () => {
 
   return (
     <Spinner>
-      <div className="paper width-fit">
+      <div className="width-fit">
         {error && <p className={cl.form__error}>{t('user.user_signUp_error')}</p>}
         <UserFrom
           name={name}
@@ -54,8 +54,7 @@ const Signup: React.FC = () => {
           setLogin={setLogin}
           submitHandler={submitHandler}
           submitValue={'user.user_signUp'}
-          title={'user.signup_page'}
-          error={error ? error.code : ''}
+          title={'user.user_signUp'}
         />
       </div>
     </Spinner>

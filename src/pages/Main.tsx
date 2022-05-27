@@ -5,10 +5,12 @@ import Boards from '../components/Boards';
 const Main: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className="paper">
+    <>
       <h1>{t('board.boards_page')}</h1>
-      <Boards />
-    </div>
+      <div className="paper">
+        <Boards />
+      </div>
+    </>
   );
 };
 

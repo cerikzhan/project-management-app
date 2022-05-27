@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import Confirmation from '../Confirmation';
 import { Board } from '../../types/Entities/Board';
 import { useNavigate } from 'react-router-dom';
-import './../../assets/library/fontawesome.css';
 import Spinner from './../Spinner';
 
 const Boards: React.FC = () => {

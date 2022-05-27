@@ -14,13 +14,13 @@ const Menu: React.FC = () => {
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const close = () => setOpen(false);
+  const closeHamburgerMenu = () => setOpen(false);
   const { setLang, logoutUser } = userSlice.actions;
   const [showModal, setShowModal] = useState(false);
 
   const logout = async () => {
     await dispatch(logoutUser());
-    close();
+    closeHamburgerMenu();
   };
 
   const chooseLang = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +28,7 @@ const Menu: React.FC = () => {
   };
 
   const handleOpenModal = async () => {
+    closeHamburgerMenu();
     setShowModal(true);
   };
 
@@ -45,10 +46,10 @@ const Menu: React.FC = () => {
       <div>
         {user.id && (
           <nav className={`${cl.usermenu} ${open ? cl['usermenu-open'] : ''}`}>
-            <Link className={cl.usermenu_button} to="/boards">
+            <Link onClick={closeHamburgerMenu} className={cl.usermenu_button} to="/boards">
               {t('menu.boards')}
             </Link>
-            <Link onClick={close} className={cl.usermenu_button} to="/profile">
+            <Link onClick={closeHamburgerMenu} className={cl.usermenu_button} to="/profile">
               {t('menu.edit_profile')}
             </Link>
             <Link onClick={handleOpenModal} className="btn color-button" to="#">
@@ -60,7 +61,7 @@ const Menu: React.FC = () => {
       <nav className={cl['usermenu-right']}>
         {!user.id && (
           <>
-            <Link onClick={close} className="btn button" to="/signin">
+            <Link onClick={closeHamburgerMenu} className="btn button" to="/signin">
               {t('menu.login')}
             </Link>
             <Link className="btn color-button" to="/signup">

@@ -5,8 +5,8 @@ const Home: React.FC = () => {
   const { t } = useTranslation();
   return (
     <>
+      <h1>{t('welcome.head')}</h1>
       <div className="paper">
-        <h1>{t('welcome.head')}</h1>
         <div dangerouslySetInnerHTML={{ __html: t('welcome.text') }} />
       </div>
     </>

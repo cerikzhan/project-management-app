@@ -7,14 +7,19 @@
     flex-direction: column;
     width: 100%;
     padding: 5px;
-    border: 1px solid #345DEE;
+    border: 1px solid #c5c5c5;
     border-radius: 5px;
     background: white;
     cursor: pointer;
+    box-shadow: 0 1px 0 #091e4240;
   }
 
   &__title {
     margin: 0 0 10px 0;
+    background: rgb(171 171 171);
+    padding: 0.3em;
+    color: #fff;
+    font-size: 1.1em;
   }
 
   &__description {

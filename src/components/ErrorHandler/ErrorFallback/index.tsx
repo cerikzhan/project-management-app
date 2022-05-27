@@ -12,7 +12,7 @@ const ErrorFallback: React.ComponentType<FallbackProps> = ({ error, resetErrorBo
         <p>
           {t('errors.head')}: {error.message}
         </p>
-        <button className="button" onClick={resetErrorBoundary}>
+        <button className="btn color-button" onClick={resetErrorBoundary}>
           {t('errors.again')}
         </button>
       </div>

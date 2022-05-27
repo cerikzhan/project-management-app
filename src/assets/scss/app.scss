@@ -47,6 +47,10 @@ input:-internal-autofill-selected {
   background-color: #ffffff !important;
 }
 
+textarea {
+  resize: none;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -75,7 +79,7 @@ input:-internal-autofill-selected {
   }
 
   @media (max-width: 468px) {
-    padding: 2em;
+    padding: 1.5em;
   }
 }
 
@@ -104,13 +108,17 @@ h1 {
   color: #2e2e2e;
   background: linear-gradient(to right, #ffffffde, #ffffff00);
   margin: 0.7em 0;
-  padding: 0.5em 1em;
+  padding: 1.8rem 2.6rem;
   text-shadow: none;
   width: 100%;
   border-radius: 2px;
 
   @media (max-width: 600px) {
     font-size: 1.8em;
+  }
+
+  @media (max-width: 468px) {
+    padding: 0.5em 0.8em;
   }
 }
 
@@ -201,4 +209,10 @@ li {
   justify-content: center;
   gap: 1em;
   margin-top: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .hidden-xs {
+    display: none;
+  }
 }

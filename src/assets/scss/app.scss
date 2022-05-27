@@ -41,6 +41,9 @@ body {
 
 p {
   margin: 1em 0;
+  &:first-child, &:last-child {
+    margin: 0;
+  }
 }
 
 input:-internal-autofill-selected {

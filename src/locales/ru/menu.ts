@@ -1,7 +1,7 @@
 export default {
   login: 'Войти',
   signup: 'Регистрация',
-  edit_profile: 'Редактировать профиль',
+  edit_profile: 'Профиль',
   new_board: 'Новая доска',
   home: 'Главная',
   boards: 'К проектам',

@@ -55,7 +55,6 @@ const Signup: React.FC = () => {
           submitHandler={submitHandler}
           submitValue={'user.user_signUp'}
           title={'user.user_signUp'}
-          error={error ? error.code : ''}
         />
       </div>
     </Spinner>

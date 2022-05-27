@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import cl from './form.module.scss';
 import { isLoginError, isSignUpError } from './../../services/userService';
+import { useAppSelector } from '../../hooks/redux';
 
 type FormProps = {
   name?: string;
@@ -13,12 +14,12 @@ type FormProps = {
   submitHandler: (e: React.FormEvent) => void;
   submitValue: string;
   title: string;
-  error?: string;
   secondButtonHandler?: (e: React.FormEvent) => void;
 };
 
 const UserFrom: React.FC<FormProps> = (props) => {
   const { t } = useTranslation();
+  const { error } = useAppSelector((state) => state.user);
 
   return (
     <>
@@ -43,8 +44,7 @@ const UserFrom: React.FC<FormProps> = (props) => {
             {t('user.user_login')}
             <input
               className={
-                typeof props.error !== 'undefined' &&
-                (isLoginError(props.error) || isSignUpError(props.error))
+                isLoginError(error) || isSignUpError(error)
                   ? `${cl['form__input-error']} ${cl.form__input}`
                   : cl.form__input
               }
@@ -55,12 +55,18 @@ const UserFrom: React.FC<FormProps> = (props) => {
               minLength={3}
               maxLength={12}
             />
+            {isLoginError(error) && (
+              <div className={cl.form__error}>{t(`user.user_login_error`)}</div>
+            )}
+            {isSignUpError(error) && (
+              <div className={cl.form__error}>{t(`user.user_signUp_error`)}</div>
+            )}
           </label>
           <label className={cl.form__label}>
             {t('user.user_password')}
             <input
               className={
-                typeof props.error !== 'undefined' && isLoginError(props.error)
+                isLoginError(error)
                   ? `${cl['form__input-error']} ${cl.form__input}`
                   : cl.form__input
               }

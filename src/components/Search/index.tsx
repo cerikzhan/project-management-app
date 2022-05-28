@@ -11,11 +11,7 @@ export const SearchBar: React.FC = () => {
 
   useEffect(() => {
     withDebounce(search);
-  }, [search]);
-
-  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
-  };
+  });
 
   return (
     <div className={cl.search_bar}>
@@ -24,7 +20,7 @@ export const SearchBar: React.FC = () => {
         className={cl.search_bar__input}
         type="text"
         placeholder={t('board.search_placeholder')}
-        onChange={handleSearchInputChange}
+        onChange={(event) => setSearch(event.target.value)}
       />
       <img className={cl.search_bar__button} src={SearchIcon} alt="search" />
     </div>

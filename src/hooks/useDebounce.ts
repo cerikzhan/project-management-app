@@ -10,7 +10,7 @@ export const useDebounce = (payload: string): [(value: string) => void] => {
 
   useEffect(() => {
     dispatch(filterBoards(text));
-  }, [text]);
+  });
 
   const withDebounce = () => {
     return (value: string) => {

@@ -41,10 +41,17 @@ body {
 
 p {
   margin: 1em 0;
+  &:first-child, &:last-child {
+    margin: 0;
+  }
 }
 
 input:-internal-autofill-selected {
   background-color: #ffffff !important;
+}
+
+textarea {
+  resize: none;
 }
 
 .container {
@@ -75,7 +82,7 @@ input:-internal-autofill-selected {
   }
 
   @media (max-width: 468px) {
-    padding: 2em;
+    padding: 1.5em;
   }
 }
 
@@ -104,13 +111,17 @@ h1 {
   color: #2e2e2e;
   background: linear-gradient(to right, #ffffffde, #ffffff00);
   margin: 0.7em 0;
-  padding: 0.5em 1em;
+  padding: 1.5rem 2.6rem;
   text-shadow: none;
   width: 100%;
   border-radius: 2px;
 
   @media (max-width: 600px) {
     font-size: 1.8em;
+  }
+
+  @media (max-width: 468px) {
+    padding: 0.5em 0.8em;
   }
 }
 
@@ -138,6 +149,10 @@ li {
   height: calc(100vh - 10rem);
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 468px) {
+    height: auto;
+  }
 
   &__header {
     display: flex;
@@ -201,4 +216,10 @@ li {
   justify-content: center;
   gap: 1em;
   margin-top: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .hidden-xs {
+    display: none;
+  }
 }

@@ -46,11 +46,17 @@ const Boards: React.FC = () => {
         {boards.length > 0 ? (
           boards.map((item, i) => (
             <div className={cl.boards__item} key={item.id}>
-              <div className={cl['boards__col-narrow']}>{i + 1}</div>
-              <div className={cl.boards__col} onClick={() => openBoard(item.id)}>
+              <div className={`${cl['boards__col-narrow']} hidden-xs`}>{i + 1}</div>
+              <div
+                className={`${cl.boards__col} ${cl.boards__title}`}
+                onClick={() => openBoard(item.id)}
+              >
                 {item.title}
               </div>
-              <div className={cl.boards__col} onClick={() => openBoard(item.id)}>
+              <div
+                className={`${cl.boards__col} ${cl.boards__desc}`}
+                onClick={() => openBoard(item.id)}
+              >
                 {item.description}
               </div>
               <div className={cl['boards__col-narrow']}>

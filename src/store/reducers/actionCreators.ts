@@ -46,3 +46,7 @@ export const addNewBoard = createAsyncThunk('boards/createNewBoard', createNewBo
 export const addNewColumns = createAsyncThunk('boards/createNewColumn', createNewColumn);
 
 export const addNewTask = createAsyncThunk('boards/createNewTask', createNewTask);
+
+export const filterBoards = createAsyncThunk('boards/filterBoards', (value: string) => {
+  return Promise.resolve(value);
+});

@@ -5,7 +5,7 @@ export default {
     '</p><p>The task is a kind of consolidation of the "learned material", requires the application of knowledge and skills gained in the previous 6 tasks, plus it develops the skill of teamwork.' +
     '</p><p>The result of development should be an application that helps an individual in a team or group of developers achieve their goals - Project Management System.' +
     '</p><h2>Team working on the project:</h2>' +
-    '<ul><li><a href=https://github.com/iamserik" target="_blank" rel="noreferrer">Naviy Serikzhan <a>' +
+    '<ul><li><a href="https://github.com/iamserik" target="_blank" rel="noreferrer">Naviy Serikzhan<a>' +
     '</li><li><a href="https://github.com/choco-cat" target="_blank" rel="noreferrer">Natallia Panfilenka</a>' +
     '</li><li><a href="https://github.com/arteemm" target="_blank" rel="noreferrer">Artsiom Mianitski</a>' +
     '</li></ul>' +

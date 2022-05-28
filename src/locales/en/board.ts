@@ -7,4 +7,5 @@ export default {
   create: 'Create',
   board_title: 'Title',
   board_description: 'Description',
+  search_placeholder: 'Search board',
 };

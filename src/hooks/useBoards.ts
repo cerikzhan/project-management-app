@@ -16,7 +16,7 @@ export const useBoards = (): [Board[]] => {
     boards.filter((board) => {
       return (
         board.title.toLowerCase().includes(searchText.toLowerCase()) ||
-        board.description.includes(searchText.toLowerCase())
+        board.description.toLowerCase().includes(searchText.toLowerCase())
       );
     });
 

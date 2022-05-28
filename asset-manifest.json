@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/project-management-app/static/css/main.fca5929a.css",
+    "main.js": "/project-management-app/static/js/main.f851a53e.js",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/project-management-app/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/bg.webp": "/project-management-app/static/media/bg.89a8a1331f841e6117a7.webp",
+    "static/media/fontawesome-webfont.eot": "/project-management-app/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/project-management-app/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/project-management-app/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/project-management-app/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/loader.gif": "/project-management-app/static/media/loader.a1a996746e5e48352c81.gif",
+    "static/media/rs_school_js.svg": "/project-management-app/static/media/rs_school_js.fe36f023692478916a89.svg",
+    "static/media/icons-github.svg": "/project-management-app/static/media/icons-github.2efe96cf33f53969e82b.svg",
+    "index.html": "/project-management-app/index.html",
+    "static/media/search.svg": "/project-management-app/static/media/search.1a3268ba8c16f0163f6e89cb2157cbf6.svg",
+    "main.fca5929a.css.map": "/project-management-app/static/css/main.fca5929a.css.map",
+    "main.f851a53e.js.map": "/project-management-app/static/js/main.f851a53e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fca5929a.css",
+    "static/js/main.f851a53e.js"
+  ]
+}

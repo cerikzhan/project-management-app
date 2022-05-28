@@ -20,7 +20,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const App: React.FC = () => {
   initTranslation('en');
-
   return (
     <Provider store={store}>
       <ErrorHandler>

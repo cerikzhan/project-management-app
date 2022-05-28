@@ -1,6 +1,6 @@
 export default {
   board_page: 'Доска',
-  boards_page: 'Рабочая пространства',
+  boards_page: 'Рабочее пространство',
   no_results: 'Ничего нет :(',
   delete: 'Удалить доску',
   delete_text: 'Вы действительно хотите удалить доску',

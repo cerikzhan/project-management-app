@@ -4,15 +4,10 @@ import cl from './column.module.scss';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import {
-  deleteColumn,
-  updateColumn,
-  updateTaskColumn,
-} from '../../../store/reducers/actionCreators';
+import { deleteColumn, updateColumn } from '../../../store/reducers/actionCreators';
 import { ColumnHeader } from './Header';
 import { useDrag, useDrop } from 'react-dnd';
-import { COLUMN_DRAG, TASK_DRAG } from '../../../types/Constants/drag-types';
-import { TaskItem } from '../../../types/Entities/Task';
+import { COLUMN_DRAG } from '../../../types/Constants/drag-types';
 import AddTaskForm from '../../AddTaskForm/index';
 
 type ColumnProps = {

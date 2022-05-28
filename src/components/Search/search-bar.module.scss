@@ -1,0 +1,28 @@
+.search_bar {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 3px;
+
+  @media (max-width: 468px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__input {
+    display: inline-block;
+    flex: 1;
+    background-color: transparent;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+  }
+}

@@ -5,10 +5,10 @@ import { useDebounce } from '../../hooks/useDebounce';
 
 export const SearchBar: React.FC = () => {
   const [search, setSearch] = useState('');
-  const [setDebounce] = useDebounce('');
+  const [withDebounce] = useDebounce('');
 
   useEffect(() => {
-    setDebounce(search);
+    withDebounce(search);
   }, [search]);
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

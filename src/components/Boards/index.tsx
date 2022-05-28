@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import cl from './boards.module.scss';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { RootState } from '../../store/store';
-import { deleteBoard, fetchAllBoards } from '../../store/reducers/actionCreators';
+import { useAppDispatch } from '../../hooks/redux';
+import { deleteBoard } from '../../store/reducers/actionCreators';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../Confirmation';
 import { Board } from '../../types/Entities/Board';
 import { useNavigate } from 'react-router-dom';
 import Spinner from './../Spinner';
+import { useBoards } from '../../hooks/useBoards';
 
 const Boards: React.FC = () => {
   const [text, setText] = useState('');
@@ -16,11 +16,7 @@ const Boards: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { boards } = useAppSelector((state: RootState) => state.boards);
-
-  useEffect(() => {
-    dispatch(fetchAllBoards());
-  }, [dispatch]);
+  const [boards] = useBoards();
 
   const handleOpenModal = async (item: Board) => {
     setText(`${t('board.delete_text')} ${item.title}?`);

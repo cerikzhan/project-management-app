@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useAppDispatch } from './redux';
+import { filterBoards } from '../store/reducers/actionCreators';
 
 let timeoutId = 0;
 
 export const useDebounce = (payload: string): [(value: string) => void] => {
   const [text, setText] = useState(payload);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(text);
+    dispatch(filterBoards(text));
   }, [text]);
 
   const withDebounce = () => {

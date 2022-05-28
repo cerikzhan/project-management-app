@@ -5,7 +5,7 @@ export default {
     '</p><p>Задание является своеобразным закреплением «пройденного материала», требует применения знаний и умений, полученных на предыдущих 6 тасках, плюс развивает навык командной работы.' +
     '</p><p>Результатом разработки должно явиться приложение, помогающее достичь поставленные задачи отдельному человеку в команде или группе разработчиков - Система управления проектами.' +
     '</p><h2>Над проектом работала команда:</h2>' +
-    '<ul><li><a href="https://github.com/iamserik" target="_blank" rel="noreferrer">Naviy Serikzhan <a>' +
+    '<ul><li><a href="https://github.com/iamserik" target="_blank" rel="noreferrer">Naviy Serikzhan<a>' +
     '</li><li><a href="https://github.com/choco-cat" target="_blank" rel="noreferrer">Natallia Panfilenka</a>' +
     '</li><li><a href="https://github.com/arteemm" target="_blank" rel="noreferrer">Artsiom Mianitski</a>' +
     '</li></ul>' +

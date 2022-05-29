@@ -2,9 +2,9 @@ import { useAppDispatch, useAppSelector } from './redux';
 import { RootState } from '../store/store';
 import { useEffect } from 'react';
 import { fetchAllBoards } from '../store/reducers/actionCreators';
-import { Board } from '../types/Entities/Board';
+import { BoardItem } from '../types/Entities/Board';
 
-export const useBoards = (): [Board[]] => {
+export const useBoards = (): [BoardItem[]] => {
   const dispatch = useAppDispatch();
   const { boards, searchText } = useAppSelector((state: RootState) => state.boards);
 

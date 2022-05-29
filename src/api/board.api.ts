@@ -4,7 +4,11 @@ import { Board, BoardItem } from '../types/Entities/Board';
 //возвращает массив досок
 export const getAllBoards = async () => {
   const response = await request.get<Board[]>('/boards');
-  return response.data;
+  const boardsList = await response.data;
+  const boards = Promise.all(
+    boardsList.map(async (item) => await Promise.resolve(getSingleBoard(item.id)))
+  );
+  return boards;
 };
 
 //возвращает доску по ее id
@@ -16,8 +20,8 @@ export const getSingleBoard = async (boardId: string) => {
 //удаляет доску по ее id
 export const removeBoard = async (boardId: string) => {
   await request.delete(`/boards/${boardId}`);
-  const response = await request.get<Board[]>('/boards');
-  return response.data;
+  const boards = await getAllBoards();
+  return boards;
 };
 
 //create new board

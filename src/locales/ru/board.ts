@@ -8,4 +8,5 @@ export default {
   board_title: 'Заголовок',
   board_description: 'Описание',
   search_placeholder: 'Поиск доски',
+  columns: 'колонки(ок)',
 };

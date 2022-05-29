@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchAllBoards, deleteBoard, filterBoards } from './actionCreators';
-import { Board } from '../../types/Entities/Board';
+import { BoardItem } from '../../types/Entities/Board';
 
 interface StateTypeBoard {
-  boards: Board[];
+  boards: BoardItem[];
   searchText: string;
   loading: boolean;
   error: { message: string; code: string } | null;
 }
 
 const initialState: StateTypeBoard = {
-  boards: [] as Board[],
+  boards: [] as BoardItem[],
   searchText: '',
   loading: false,
   error: null,
@@ -25,7 +25,10 @@ export const boardsSlice = createSlice({
       state.error = null;
       state.loading = true;
     },
-    [fetchAllBoards.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
+    [fetchAllBoards.fulfilled.type]: (
+      state: StateTypeBoard,
+      action: PayloadAction<BoardItem[]>
+    ) => {
       state.loading = false;
       state.boards = action.payload;
     },
@@ -38,7 +41,7 @@ export const boardsSlice = createSlice({
       state.error = null;
       state.loading = true;
     },
-    [deleteBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<Board[]>) => {
+    [deleteBoard.fulfilled.type]: (state: StateTypeBoard, action: PayloadAction<BoardItem[]>) => {
       state.loading = false;
       state.boards = action.payload;
     },

@@ -115,7 +115,6 @@ export const userSlice = createSlice({
     [fetchUsers.rejected.type]: (state, action) => {
       state.loading = false;
       state.error = action.error;
-      state.user = {} as User;
     },
   },
 });

@@ -77,7 +77,6 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            maxLength={13}
           />
         </label>
         <label className={fm.form__label}>
@@ -99,13 +98,11 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
             onChange={(e) => setContributor(e.target.value)}
             value={contributor}
           >
-            {users.map((user) => {
-              return (
-                <option key={user.id} value={user.id} className={fm.form__option}>
-                  {user.name}
-                </option>
-              );
-            })}
+            {users.map((user) => (
+              <option key={user.id} value={user.id} className={fm.form__option}>
+                {user.name}
+              </option>
+            ))}
           </select>
         </label>
         <div className="modal-row">

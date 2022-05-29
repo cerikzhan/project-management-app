@@ -72,10 +72,10 @@ export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
         className={`${cl.task__inner}
         ${isDragging ? cl.task__dragging : ''}`}
       >
-        <h3 className={cl.task__title}>
-          {task.title}
+        <div className={cl.task__container}>
+          <h3 className={cl.task__title}>{task.title}</h3>
           <span className={cl.task__owner}>{userName?.name[0]}</span>
-        </h3>
+        </div>
         <p className={cl.task__description}>{task.description}</p>
         <div
           className={`${cl.task__emerging} button-mini emerging fa fa-trash-o`}

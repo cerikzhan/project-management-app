@@ -159,13 +159,9 @@ li {
 
 .board-page {
   width: 100%;
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 13rem);
   display: flex;
   flex-direction: column;
-
-  @media (max-width: 468px) {
-    height: auto;
-  }
 
   &__header {
     display: flex;

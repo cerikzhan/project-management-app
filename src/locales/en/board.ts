@@ -8,4 +8,5 @@ export default {
   board_title: 'Title',
   board_description: 'Description',
   search_placeholder: 'Search board',
+  columns: 'columns',
 };

@@ -3,7 +3,7 @@ import { LoginDTO } from '../types/DTO/LoginDTO';
 import { getUserFromToken, resetToken } from '../services/userService';
 import { UserCreateDTO } from '../types/DTO/UserCreateDTO';
 import { User } from '../types/Entities/User';
-const MAX_EXPIRED = 60 * 60 * 1000;
+const MAX_EXPIRED = 3 * 60 * 60 * 1000;
 
 export const fetchLogin = async (userdata: LoginDTO) => {
   const responseLogin = await request.post<{ token: string }>('signin', userdata);

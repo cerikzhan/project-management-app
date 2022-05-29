@@ -18,7 +18,8 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
   const dispatch = useAppDispatch();
   const [title, setTitle] = useState<string>(props.task.title);
   const [description, setDescription] = useState<string>(props.task.description);
-  const { id } = useAppSelector((state) => state.user.user);
+  const [contributor, setContributor] = useState<string>(props.task.userId || '');
+  const { users } = useAppSelector((state) => state.user);
   const [isChange, setIsChange] = useState(true);
 
   const closeModal = () => {
@@ -36,7 +37,7 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
           ...props.task,
           title: title,
           description,
-          userId: id,
+          userId: contributor || props.task.userId,
         },
         newColumnId: props.task.columnId,
       })
@@ -45,8 +46,12 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
   };
 
   useEffect(() => {
-    setIsChange(title === props.task.title && description === props.task.description);
-  }, [title, description]);
+    setIsChange(
+      title === props.task.title &&
+        description === props.task.description &&
+        contributor === props.task.userId
+    );
+  }, [title, description, contributor]);
 
   useEffect(() => {
     Modal.setAppElement('.container');
@@ -72,6 +77,7 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            maxLength={13}
           />
         </label>
         <label className={fm.form__label}>
@@ -84,6 +90,23 @@ const UpdateTaskForm: React.FC<FormProps> = (props) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+        </label>
+        <label className={fm.form__label}>
+          {t('user.contributor')}
+          <select
+            className={fm.form__input}
+            required
+            onChange={(e) => setContributor(e.target.value)}
+            value={contributor}
+          >
+            {users.map((user) => {
+              return (
+                <option key={user.id} value={user.id} className={fm.form__option}>
+                  {user.name}
+                </option>
+              );
+            })}
+          </select>
         </label>
         <div className="modal-row">
           <input

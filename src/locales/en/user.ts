@@ -17,4 +17,5 @@ export default {
   user_signUp_error: 'Login already exists!',
   user_login_error: 'Incorrect login or password!',
   apply: 'Apply',
+  contributor: 'Contributor',
 };

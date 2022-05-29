@@ -15,6 +15,7 @@ import {
   fetchDeleteUser,
   fetchUserAfterLogin,
   fetchSignUpUser,
+  fetchAllUsers,
 } from '../../api/user.api';
 
 export const login = createAsyncThunk('user/login', fetchLogin);
@@ -50,3 +51,5 @@ export const addNewTask = createAsyncThunk('boards/createNewTask', createNewTask
 export const filterBoards = createAsyncThunk('boards/filterBoards', (value: string) => {
   return Promise.resolve(value);
 });
+
+export const fetchUsers = createAsyncThunk('users/fetchAllUsers', fetchAllUsers);

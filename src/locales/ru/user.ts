@@ -17,4 +17,5 @@ export default {
   user_signUp_error: 'Этот логин уже занят!',
   user_login_error: 'Неправильный логин или пароль!',
   apply: 'Применить',
+  contributor: 'Ответсвенный',
 };

@@ -67,6 +67,7 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            maxLength={13}
           />
         </label>
         <label className={fm.form__label}>

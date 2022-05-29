@@ -7,7 +7,7 @@
   flex: 1;
   padding-bottom: 0.9em;
 
-  @media (max-width: 468px) {
+  @media (max-width: 400px) {
     flex-direction: column;
     overflow: visible;
   }

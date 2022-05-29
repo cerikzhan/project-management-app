@@ -10,10 +10,6 @@ const Header: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
 
   useEffect(() => {
-    document.title = 'Project Management System';
-  }, []);
-
-  useEffect(() => {
     const onScroll = (e: Event) => {
       const doc = e.target as HTMLDocument;
       setSticky(doc.documentElement.scrollTop > 50);

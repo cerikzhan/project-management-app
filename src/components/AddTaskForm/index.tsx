@@ -18,7 +18,8 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
   const dispatch = useAppDispatch();
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const { id } = useAppSelector((state) => state.user.user);
+  const { users, user } = useAppSelector((state) => state.user);
+  const [contributor, setContributor] = useState<string>(user.id);
 
   const closeModal = () => {
     props.onClose();
@@ -35,7 +36,7 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
         columnId: props.columnId,
         title,
         description,
-        userId: id,
+        userId: contributor,
       })
     );
     await dispatch(fetchSingleBoard(props.boardId));
@@ -79,6 +80,21 @@ const AddTaskForm: React.FC<FormProps> = (props) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+        </label>
+        <label className={fm.form__label}>
+          {t('user.contributor')}
+          <select
+            className={fm.form__input}
+            required
+            onChange={(e) => setContributor(e.target.value)}
+            value={contributor}
+          >
+            {users.map((user) => (
+              <option key={user.id} value={user.id} className={fm.form__option}>
+                {user.name}
+              </option>
+            ))}
+          </select>
         </label>
         <div className="modal-row">
           <input className="btn green-button stretched" type="submit" value={t('board.create')} />

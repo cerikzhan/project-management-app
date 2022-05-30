@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ColumnBoard } from '../Column';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import cl from './board.module.scss';
 import { Task } from '../Task';
 import { TaskItem } from '../../../types/Entities/Task';
-import { updateTaskColumn } from '../../../store/reducers/actionCreators';
+import { updateTaskColumn, fetchUsers } from '../../../store/reducers/actionCreators';
 import { EmptyTask } from '../EmptyTask';
 
 export const BoardTemplate: React.FC = () => {
   const { item: boardItem } = useAppSelector((state) => state.board);
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  });
 
   const changeTaskColumn = (payload?: unknown) => {
     if (!payload) return;

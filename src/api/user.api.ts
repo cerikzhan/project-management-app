@@ -47,3 +47,9 @@ export const fetchSignUpUser = async (userData: UserCreateDTO) => {
 
   return response.data;
 };
+
+export const fetchAllUsers = async () => {
+  const response = await request.get(`users`);
+
+  return response.data;
+};

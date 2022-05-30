@@ -5,7 +5,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { TASK_DRAG } from '../../../types/Constants/drag-types';
 import { useTranslation } from 'react-i18next';
 import Confirmation from '../../Confirmation';
-import { useAppDispatch } from '../../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { deleteTask } from '../../../store/reducers/actionCreators';
 import UpdateTaskForm from '../../UpdateTaskForm';
 
@@ -17,6 +17,8 @@ type TaskProps = {
 export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const { users } = useAppSelector((state) => state.user);
+  const userName = users.find((user) => user.id === task.userId);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: TASK_DRAG,
@@ -70,7 +72,10 @@ export const Task: React.FC<TaskProps> = ({ task, changeTaskColumn }) => {
         className={`${cl.task__inner}
         ${isDragging ? cl.task__dragging : ''}`}
       >
-        <h3 className={cl.task__title}>{task.title}</h3>
+        <div className={cl.task__container}>
+          <h3 className={cl.task__title}>{task.title}</h3>
+          <span className={cl.task__owner}>{userName?.name[0]}</span>
+        </div>
         <p className={cl.task__description}>{task.description}</p>
         <div
           className={`${cl.task__emerging} button-mini emerging fa fa-trash-o`}

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { login, changeUser, deleteUser, authUser, signUpUser } from './actionCreators';
+import { login, changeUser, deleteUser, authUser, signUpUser, fetchUsers } from './actionCreators';
 import { User } from '../../types/Entities/User';
 import { resetToken } from './../../services/userService';
 
@@ -9,6 +9,7 @@ interface StateTypeUser {
   error: { message: string; code: string } | null;
   lang: string;
   search: string;
+  users: User[];
 }
 
 const initialState: StateTypeUser = {
@@ -17,6 +18,7 @@ const initialState: StateTypeUser = {
   error: null,
   lang: 'en',
   search: 'testboard',
+  users: [] as User[],
 };
 
 export const userSlice = createSlice({
@@ -102,6 +104,17 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = action.error;
       state.user = {} as User;
+    },
+    [fetchUsers.pending.type]: (state) => {
+      state.error = null;
+    },
+    [fetchUsers.fulfilled.type]: (state: StateTypeUser, action: PayloadAction<User[]>) => {
+      state.loading = false;
+      state.users = action.payload;
+    },
+    [fetchUsers.rejected.type]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
     },
   },
 });

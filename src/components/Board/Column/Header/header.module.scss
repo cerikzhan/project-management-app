@@ -1,0 +1,52 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 250px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(204, 204, 204, 0.25);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &__title {
+      flex: 1;
+      margin: 0;
+      font-size: 1.1em;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      right: 0.2em;
+
+      &-mini {
+        font-size: 1em;
+        cursor: pointer;
+        padding: 0.2em;
+      }
+    }
+
+    &__input {
+      flex: 1;
+      font-size: 1.1em;
+      font-weight: 500;
+      padding: 0.24em;
+      border: 1px solid #868686;
+      background: #fffcce;
+      width: 100%;
+      color: #333333;
+
+      &:focus, &:active {
+        outline: none;
+      }
+    }
+  }
+}

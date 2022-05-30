@@ -1,0 +1,21 @@
+.spinner {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  width: calc(100% - 2em);
+  top: 0;
+
+  &__loader {
+    margin: auto;
+    width: 8em;
+    height: 8em;
+
+    @media (max-width: 468px) {
+      width: 3em;
+      height: 3em;
+    }
+  }
+}

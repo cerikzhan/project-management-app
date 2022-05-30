@@ -1,0 +1,60 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+  width: 60vw;
+  min-width: 200px;
+  max-width: 400px;
+
+  &-little {
+    row-gap: 1em;
+    width: 100%;
+    max-width: none;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+
+  &__input {
+    outline: none;
+    padding: 0.5em;
+    border: 1px solid #aaaaaa;
+    background-color: rgb(255 255 255);
+    transition: 0.1s;
+    font-size: 1.3rem;
+    
+    &:focus, &:active {
+      border-width: 1px;
+      border-color: #868686;
+      background: #fffcce;
+    }
+
+    &-error {
+      background: #ffcece;
+      border-color: #e51515;
+    }
+  }
+
+  &__error {
+    color: #ff2b2b;
+    position: absolute;
+    position: absolute;
+    bottom: -1.2em;
+    right: 0;
+    font-size: 0.85em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form {
+    row-gap: 1rem;
+
+    &__label, &__input {
+      font-size: 1.2rem;
+    }
+  }
+}
